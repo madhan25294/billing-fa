@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h2 class="text-center"><b>Login</b></h2>
+            <div class="form-group">
+                <label for="exampleInputEmail1"><b>Email address</b></label>
+                <input type="email" class="form-control" [(ngModel)]="userDetails.email" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputPassword1"><b>Password</b></label>
+                <input type="password" class="form-control" [(ngModel)]="userDetails.password"id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <br>
+            <button type="submit" (click)="checkUser()" class="btn btn-primary">Submit</button>
+            <div *ngIf="showWarning" class="alert alert-danger" role="alert">
+                    Please enter correct user details
+            </div>
+        </div>
+    </div>
+</div>
