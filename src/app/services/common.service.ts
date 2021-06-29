@@ -9,8 +9,8 @@ export class CommonService {
 
   }
 
-  getAllData() {
-    const url = 'http://localhost:4200/assets/cartitems.json';
+  getUsersData() {
+    const url = 'https://jsonplaceholder.typicode.com/posts';
     return this.http.get(url);
   }
 
