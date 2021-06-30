@@ -5,29 +5,33 @@
             <h2 class="text-center"><b>Register</b></h2>
             <div class="form-group">
                 <label for="exampleInputEmail1"><b>First Name</b></label>
-                <input type="text" class="form-control" [(ngModel)]="userDetails.name" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter Name">
+                <input type="text" class="form-control" [(ngModel)]="userDetails.name" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter Name">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1"><b>Last Name</b></label>
-                <input type="text" class="form-control" numberOnly [(ngModel)]="userDetails.lName" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter Age">
+                <input type="text" class="form-control" numberOnly [(ngModel)]="userDetails.lName"
+                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last name">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1"><b>Email address</b></label>
-                <input type="email" class="form-control" [(ngModel)]="userDetails.email" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email">
+                <input type="email" class="form-control" [(ngModel)]="userDetails.email" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1"><b>Password</b></label>
-                <input type="password" class="form-control" [(ngModel)]="userDetails.password" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" [(ngModel)]="userDetails.password"
+                    id="exampleInputPassword1" placeholder="Password">
             </div>
             <button type="submit" (click)="userRegistration()" class="btn btn-primary">Submit</button>
+            <div *ngIf="showWarning" class="alert alert-danger" role="alert">
+                {{warningMessage}}
+            </div>
         </div>
     </div>
 </div>
 
 <!-- <div><pre> -->
-  <!-- interpolation -->
-   <!-- =========== {{userDetails | json}} -->
+<!-- interpolation -->
+<!-- =========== {{userDetails | json}} -->
 <!-- </pre></div> -->
