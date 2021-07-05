@@ -10,7 +10,7 @@ export class CommonService {
   }
 
   getUsersData() {
-    const url = 'https://jsonplaceholder.typicode.com/posts';
+    const url = 'https://localhost:44346/api/CustomerInfo';
     return this.http.get(url);
   }
 
