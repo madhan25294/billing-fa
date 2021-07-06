@@ -9,3 +9,7 @@
 .light {
   background-color: #b6ced6;
 }
+
+.zoom:hover {
+  transform: scale(1.25); /* (150% zoom)*/
+}
