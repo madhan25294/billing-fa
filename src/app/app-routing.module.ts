@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
-import { OthersComponent } from './others/others.component';
+import { CustomersComponent } from './customers/customers.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'others', component: OthersComponent },
+  { path: 'customers', component: CustomersComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   {

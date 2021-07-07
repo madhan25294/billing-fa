@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../services/common.service';
 
 @Component({
-  selector: 'app-others',
-  templateUrl: './others.component.html',
-  styleUrls: ['./others.component.scss']
+  selector: 'app-customers',
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.scss']
 })
-export class OthersComponent implements OnInit {
+export class CustomersComponent implements OnInit {
   users: any;
   constructor(private commonSvc: CommonService) {
     this.getUsers()

@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 // services
 import { CommonService } from './services/common.service';
 import { PubsubService } from './services/pub-sub.service';
-import { OthersComponent } from './others/others.component';
+import { CustomersComponent } from './customers/customers.component';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import { OthersComponent } from './others/others.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    OthersComponent
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
