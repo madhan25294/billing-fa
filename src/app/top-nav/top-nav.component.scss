@@ -7,9 +7,15 @@
 }
 
 .light {
-  background-color: #b6ced6;
+  background-color: #D3D3D2;
 }
 
 .zoom:hover {
   transform: scale(1.25); /* (150% zoom)*/
+  font-weight: bold;
+}
+
+.padbtmtop0{
+  padding-bottom: 0;
+  padding-top: 0;
 }

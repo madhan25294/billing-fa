@@ -1,52 +1,20 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h2 class="text-center"><b>Login</b></h2>
-            <div class="form-group">
-                <label for="exampleInputEmail1"><b>Email address</b></label>
-                <input type="email" class="form-control" [(ngModel)]="userDetails.email" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter email">
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="exampleInputPassword1"><b>Password</b></label>
-                <input type="password" class="form-control" [(ngModel)]="userDetails.password"id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <br>
-            <button type="submit" (click)="checkUser()" class="btn btn-primary">Submit</button>
-            <div *ngIf="showWarning" class="alert alert-danger" role="alert">
-                    Please enter correct user details
-            </div>
-        </div>
-    </div>
-</div> -->
 
-<div class="container-fluid padLftRt0">
+
+<div class="container-fluid">
     <div class="row">
-        <div class="col-8 height100">
+        <div class="col-8 padLft0">
             <img class="img-fluid" src="../../assets/illustration.png" alt="">
         </div>
-        <div class="col height100 margintop225">
+        <div class="col margintop225">
             <div>
                 <img src="../../assets/topLoginImage.png" alt="">
             </div>
             <br>
             <form class="login-form">
-                <!-- <div class="form-floating mb-3">
-                    <input type="email" class="form-control" [(ngModel)]="userDetails.email" name="email" id="floatingInput"
-                        placeholder="domain\username">
-                    <label for="floatingInput">Email address</label>
-                </div> -->
                 <div class="mb-3">
                     <input type="email" class="form-control" [(ngModel)]="userDetails.email" name="email"
                         placeholder="domain\username">
                 </div>
-                <!-- <div class="form-floating">
-                    <input type="password" class="form-control" [(ngModel)]="userDetails.password" name="password"
-                        id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div> -->
                 <div class="mb-3">
                     <input type="password" class="form-control" [(ngModel)]="userDetails.password" name="password"
                         placeholder="password">
@@ -62,36 +30,3 @@
     </div>
 </div>
 
-<!-- <section class="login-block">
-    <div class="container">
-        <div class="row ">
-            <div class="col login-sec">
-                <h2 class="text-center">Login Now</h2>
-                <form class="login-form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="text">Username</label>
-                        <input type="text" class="form-control" [(ngModel)]="userDetails.email" name="fname"
-                            placeholder="Enter Email">
-
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1" class="text">Password</label>
-                        <input type="password" class="form-control" [(ngModel)]="userDetails.password" name="password"
-                            placeholder="Enter Password">
-                    </div>
-
-
-                    <div>
-                        <br>
-                        <button type="submit" class="btn btn-login" (click)="checkUser()">Submit</button>
-                    </div>
-
-                </form>
-                <div *ngIf="showWarning" class="alert alert-danger" role="alert">
-                    Please enter correct user details
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->

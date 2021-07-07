@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 // services
 import { CommonService } from './services/common.service';
 import { PubsubService } from './services/pub-sub.service';
-import { DetailsComponent } from './details/details.component';
 import { OthersComponent } from './others/others.component';
 
 
@@ -23,7 +22,6 @@ import { OthersComponent } from './others/others.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    DetailsComponent,
     OthersComponent
   ],
   imports: [
