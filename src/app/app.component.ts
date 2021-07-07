@@ -8,21 +8,8 @@ import { PubsubService } from './services/pub-sub.service';
 })
 export class AppComponent {
   title = 'Enterprise-Billing';
-  showHeaderFooter: boolean;
   constructor(private pubsubSvc: PubsubService) {
-    this.showHeaderFooter = false;
-    this.updateTopnav();
+    
   }
 
-  updateTopnav() {
-    this.pubsubSvc.subLoginStatus()
-      .subscribe(result => {
-        if (result === 'loggedIn') {
-          this.showHeaderFooter = true;
-        } else {
-          this.showHeaderFooter = false;
-        }
-      }, err => {
-      });
-  }
 }

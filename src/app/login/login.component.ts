@@ -28,32 +28,24 @@ export class LoginComponent implements OnInit {
   }
 
   checkUser() {
-    // const userDetails: any = localStorage.getItem('userDetails');
-    // const allUsers: any = JSON.parse(userDetails);
-    // if (allUsers) {
-    //   // tslint:disable-next-line:prefer-for-of
-    //   for (let i = 0; i < allUsers.length; i++) {
-    //     if (this.userDetails.email === allUsers[i].email && this.userDetails.password === allUsers[i].password) {
-    //       this.router.navigate(['/home']);
-    //       localStorage.setItem('token', 'loggedIn');
-    //       this.pubsubSvc.pubLoginStatus('loggedIn');
-    //       return;
-    //     }
-    //   }
-    // }
-    // this.userDetails = {
-    //   email: '',
-    //   password: ''
-    // };
-    // this.showWarning = true;
+    const userDetails: any = localStorage.getItem('userDetails');
+    const allUsers: any = JSON.parse(userDetails);
+    if (allUsers) {
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < allUsers.length; i++) {
+        if (this.userDetails.email === allUsers[i].email && this.userDetails.password === allUsers[i].password) {
+          this.router.navigate(['/home']);
+          localStorage.setItem('token', 'loggedIn');
+          this.pubsubSvc.pubLoginStatus('loggedIn');
+          return;
+        }
+      }
+    }
+    this.userDetails = {
+      email: '',
+      password: ''
+    };
+    this.showWarning = true;
 
-
-    if (this.userDetails.email === '' || this.userDetails.password === '') {
-      this.showWarning = true;
-      return
-    } 
-    this.router.navigate(['/home']);
-    localStorage.setItem('token', 'loggedIn');
-    this.pubsubSvc.pubLoginStatus('loggedIn');
   }
 }
