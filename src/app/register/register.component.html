@@ -76,7 +76,7 @@
 
                 </form>
                 <div *ngIf="showWarning" class="alert alert-danger" role="alert">
-                    {{warningMessage}}
+                    <span *ngFor="let item of warningMessage">*{{item}}<br></span>
                 </div>
             </div>
         </div>

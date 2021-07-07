@@ -9,11 +9,11 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 export class RegisterComponent implements OnInit {
   userDetails: any;
   showWarning: boolean;
-  warningMessage: string;
+  warningMessage: Array<any>;
 
   constructor(private router: Router) {
     this.showWarning = false;
-    this.warningMessage = '';
+    this.warningMessage = [];
 
     this.userDetails = {
       name: '',
@@ -27,28 +27,31 @@ export class RegisterComponent implements OnInit {
   }
 
   userRegistration() {
+    this.showWarning = false;
+    this.warningMessage = [];
     // validation 
     if (!this.userDetails.name || !this.userDetails.lName || !this.userDetails.email ||
       !this.userDetails.password) {
       this.showWarning = true;
-      this.warningMessage = 'Please enter all the fields';
-      return;
+      this.warningMessage.push('Please enter all the fields');
     }
     if (!/^[a-z][a-z\s]*$/.test(this.userDetails.name)) {
       this.showWarning = true;
-      this.warningMessage = 'Please enter valid first name';
-      return;
+      this.warningMessage.push('Please enter valid first name');
     }
     if (!/^[a-z][a-z\s]*$/.test(this.userDetails.lName)) {
       this.showWarning = true;
-      this.warningMessage = 'Please enter valid Last name';
-      return;
+      this.warningMessage.push('Please enter valid Last name');
     }
     if (!this.validateEmail(this.userDetails.email)) {
       this.showWarning = true;
-      this.warningMessage = 'Please enter valid email address';
-      return;
+      this.warningMessage.push('Please enter valid email address');
     }
+    if (this.showWarning) {
+      return
+    }
+
+
     let allUsers: any = [];
     const users: any = localStorage.getItem('userDetails')
     if (JSON.parse(users) && JSON.parse(users).length > 0) {
