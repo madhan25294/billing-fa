@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
   enableLoginButton() {
     if (this.userDetails.email && this.userDetails.password) {
       this.disableLoginButton = false;
+    } else {
+      this.disableLoginButton = true;
     }
   }
 

@@ -10,11 +10,11 @@
             <br>
             <form class="login-form">
                 <div class="mb-3">
-                    <input type="email" class="form-control" (ngModelChange)="enableLoginButton()"
+                    <input type="email" class="form-control" (keyup)="enableLoginButton()"
                         [(ngModel)]="userDetails.email" name="email" placeholder="domain\username">
                 </div>
                 <div class="mb-3">
-                    <input type="password" class="form-control" (ngModelChange)="enableLoginButton()"
+                    <input type="password" class="form-control" (keyup)="enableLoginButton()"
                      [(ngModel)]="userDetails.password" name="password"
                         placeholder="password">
                 </div>

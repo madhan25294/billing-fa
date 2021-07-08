@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,14 +8,10 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 })
 export class RegisterComponent implements OnInit {
   userDetails: any;
-  showWarning: boolean;
-  warningMessage: Array<any>;
   disableRegisterButton: boolean;
   validationMessages: any;
 
   constructor(private router: Router) {
-    this.showWarning = false;
-    this.warningMessage = [];
     this.disableRegisterButton = true;
 
     this.userDetails = {
@@ -35,6 +31,10 @@ export class RegisterComponent implements OnInit {
       },
       email: {
         msg: 'Please enter valid email',
+        show: false
+      },
+      password: {
+        msg: 'Please enter valid password',
         show: false
       }
     }
@@ -66,6 +66,13 @@ export class RegisterComponent implements OnInit {
           this.validationMessages.email.show = false;
         }
         break;
+      case 'password':
+        if (!this.userDetails.password) {
+          this.validationMessages.password.show = true;
+        } else {
+          this.validationMessages.password.show = false;
+        }
+        break;
       default:
         break;
     }
@@ -75,7 +82,7 @@ export class RegisterComponent implements OnInit {
         this.disableRegisterButton = true;
       }
     }
-    
+
     if (this.userDetails.name && this.userDetails.lName && this.userDetails.email &&
       this.userDetails.password) {
       this.disableRegisterButton = false;
@@ -83,31 +90,10 @@ export class RegisterComponent implements OnInit {
   }
 
   userRegistration() {
-    this.showWarning = false;
-    this.warningMessage = [];
-    // validation 
-    if (!this.userDetails.name || !this.userDetails.lName || !this.userDetails.email ||
-      !this.userDetails.password) {
-      this.showWarning = true;
-      this.warningMessage.push('Please enter all the fields');
-    }
-    if (!/^[a-z][a-z\s]*$/.test(this.userDetails.name)) {
-      this.showWarning = true;
-      this.warningMessage.push('Please enter valid first name');
-    }
-    if (!/^[a-z][a-z\s]*$/.test(this.userDetails.lName)) {
-      this.showWarning = true;
-      this.warningMessage.push('Please enter valid Last name');
-    }
-    if (!this.validateEmail(this.userDetails.email)) {
-      this.showWarning = true;
-      this.warningMessage.push('Please enter valid email address');
-    }
-    if (this.showWarning) {
+    if (this.disableRegisterButton) {
+      alert('Please enter all the details')
       return
     }
-
-
     let allUsers: any = [];
     const users: any = localStorage.getItem('userDetails')
     if (JSON.parse(users) && JSON.parse(users).length > 0) {
