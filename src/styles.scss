@@ -6,3 +6,13 @@ body{
   margin: 0;
   font-size: 62.5%;
 }
+
+.validationMessage{
+  color: red;
+  font-size: small;
+}
+
+.disableCustom {
+  cursor: none;
+  opacity: 0.5;
+}

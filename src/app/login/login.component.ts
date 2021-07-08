@@ -12,9 +12,11 @@ export class LoginComponent implements OnInit {
   userDetails: any;
   showWarning: boolean;
   nummbers: any = [];
+  disableLoginButton: boolean;
   // calls when we r creating instance of class
   constructor(private router: Router, private pubsubSvc: PubsubService) {
     this.showWarning = false;
+    this.disableLoginButton = true;
     this.userDetails = {
       email: '',
       password: ''
@@ -25,6 +27,12 @@ export class LoginComponent implements OnInit {
 
   // lifecylce hook
   ngOnInit() {
+  }
+
+  enableLoginButton() {
+    if (this.userDetails.email && this.userDetails.password) {
+      this.disableLoginButton = false;
+    }
   }
 
   checkUser() {
@@ -48,4 +56,5 @@ export class LoginComponent implements OnInit {
     this.showWarning = true;
 
   }
+
 }

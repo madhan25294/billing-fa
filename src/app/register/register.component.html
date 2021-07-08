@@ -6,41 +6,44 @@
                 <form class="login-form">
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="text">First Name</label>
-                        <input type="text" class="form-control" [(ngModel)]="userDetails.name"
-                            name="fname"  placeholder="Enter First Name">
-
+                        <input type="text" class="form-control" (ngModelChange)="enableRegisterButton('fname')"
+                            [(ngModel)]="userDetails.name" name="fname" placeholder="Enter First Name">
+                        <span class="validationMessage" *ngIf="validationMessages.name.show">{{validationMessages.name.msg}}</span>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="text">Last
                             Name</label>
-                        <input type="text" class="form-control" [(ngModel)]="userDetails.lName"
-                           name="lname" placeholder="Enter Last Name">
+                        <input type="text" class="form-control" (ngModelChange)="enableRegisterButton('lName')"
+                            [(ngModel)]="userDetails.lName" name="lname" placeholder="Enter Last Name">
+                        <span class="validationMessage" *ngIf="validationMessages.lName.show">{{validationMessages.lName.msg}}</span>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="text">Email</label>
-                        <input type="text" class="form-control" [(ngModel)]="userDetails.email"
-                           name="email" placeholder="Enter Email">
+                        <input type="text" class="form-control" (ngModelChange)="enableRegisterButton('email')"
+                            [(ngModel)]="userDetails.email" name="email" placeholder="Enter Email">
+                        <span class="validationMessage" *ngIf="validationMessages.email.show">{{validationMessages.email.msg}}</span>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="text">Password</label>
-                        <input type="password" class="form-control" [(ngModel)]="userDetails.password"
-                           name="password" placeholder="Enter Password">
+                        <input type="password" class="form-control"
+                            [(ngModel)]="userDetails.password" name="password" placeholder="Enter Password">
                     </div>
 
 
                     <div>
-                      
+
                         <br>
-                        <button type="submit" class="btn btn-login" (click)="userRegistration()">Register</button>
+                        <button type="submit" class="btn btn-login" [ngClass]="{disableCustom: disableRegisterButton }"
+                            (click)="userRegistration()">Register</button>
                     </div>
 
                 </form>
-                <div *ngIf="showWarning" class="alert alert-danger" role="alert">
+                <!-- <div *ngIf="showWarning" class="alert alert-danger" role="alert">
                     <span *ngFor="let item of warningMessage">*{{item}}<br></span>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
