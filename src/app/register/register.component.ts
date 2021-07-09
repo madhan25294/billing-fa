@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  // validating register fields and enabling register
   enableRegisterButton(type?: any) {
     switch (type) {
       case 'fname':
@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
       this.disableRegisterButton = false;
     }
   }
-
+  // will be called on submitting the register button
   userRegistration() {
     if (this.disableRegisterButton) {
       alert('Please enter all the details')

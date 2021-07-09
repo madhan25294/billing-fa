@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   // lifecylce hook
   ngOnInit() {
   }
-
+  // enabling and disabling signup button
   enableLoginButton() {
     if (this.userDetails.email && this.userDetails.password) {
       this.disableLoginButton = false;

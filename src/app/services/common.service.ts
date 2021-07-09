@@ -14,5 +14,4 @@ export class CommonService {
     return this.http.get(url);
   }
 
-
 }
