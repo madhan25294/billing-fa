@@ -50,58 +50,81 @@
             <td>File 1</td>
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <input type="checkbox" class="custom-control-input" id="receivedFile1">
               </div>
             </td>
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <input type="checkbox" class="custom-control-input" id="validatedFile1">
               </div>
             </td>
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <input type="checkbox" class="custom-control-input" id="processedFile1">
               </div>
             </td>
-            <td><button type="button" class="btn btn-outline-primary">Upload</button></td>
+            <td><button type="button" onclick="actionClicked('received', 'File1')"
+                class="btn btn-outline-primary">Received</button></td>
           </tr>
           <tr>
             <td>File 2</td>
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <input type="checkbox" class="custom-control-input" id="receivedFile2">
               </div>
             </td>
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <input type="checkbox" class="custom-control-input" id="validatedFile2">
               </div>
             </td>
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <input type="checkbox" class="custom-control-input" id="processedFile2">
               </div>
             </td>
-            <td><button type="button" class="btn btn-outline-primary">Upload</button></td>
+            <td><button type="button" onclick="actionClicked('validated', 'File2')"
+                class="btn btn-outline-primary">Validated</button></td>
           </tr>
           <tr>
             <td>File 3</td>
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <input type="checkbox" class="custom-control-input" id="receivedFile3">
               </div>
             </td>
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <input type="checkbox" class="custom-control-input" id="validatedFile3">
               </div>
             </td>
             <td>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <input type="checkbox" class="custom-control-input" id="processedFile3">
               </div>
             </td>
-            <td><button type="button" class="btn btn-outline-primary">Upload</button></td>
+            <td><button type="button" onclick="actionClicked('processed', 'File3')"
+                class="btn btn-outline-primary">Processed</button></td>
+          </tr>
+          <tr>
+            <td>File 4</td>
+            <td>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="receivedFile4">
+              </div>
+            </td>
+            <td>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="validatedFile4">
+              </div>
+            </td>
+            <td>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="processedFile4">
+              </div>
+            </td>
+            <td><button type="button" onclick="actionClicked('validated', 'File4')"
+                class="btn btn-outline-primary">Validated</button></td>
           </tr>
         </tbody>
       </table>
@@ -110,8 +133,34 @@
 
   <div class="footerClass"><span class="copyright">&#169; 2021
       First American Financial Corporation and its affiliates.All rights reserved.
-    </span></div>
+    </span>
+  </div>
 
+  <script>
+    function actionClicked(item, file) {
+      switch (item) {
+        case 'received':
+          document.getElementById(item + file).checked = true;
+          break;
+
+        case 'validated':
+          document.getElementById('received' + file).checked = true;
+          document.getElementById(item + file).checked = true;
+          break;
+
+        case 'processed':
+          document.getElementById('received' + file).checked = true;
+          document.getElementById('validated' + file).checked = true;
+          document.getElementById(item + file).checked = true;
+          break;
+
+        default:
+          break;
+      }
+      document.getElementById(item).checked = true;
+      // document.getElementById(item)  
+    }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" \
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
