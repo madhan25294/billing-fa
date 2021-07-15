@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 // services
 import { CommonService } from '../services/common.service';
 import * as XLSX from 'xlsx';
+declare var $: any;
 
 @Component({
   selector: 'app-customers',
@@ -9,18 +10,30 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent implements OnInit {
+  @ViewChild('closeModelButton') closeModelButton: any;
   users: any;
   searchVariable: any;
   searchBy: any;
+  customerInfo: any;
 
   constructor(private commonSvc: CommonService) {
+    this.users = [];
     this.getUsers();
     this.searchVariable = '';
     this.searchBy = 'companyName';
-    
+    this.initCustInfo();
   }
 
-  ngOnInit(): void {
+  initCustInfo() {
+    this.customerInfo = {
+      id: '',
+      managerName: '',
+      address: '',
+      company: ''
+    }
+  }
+
+  ngOnInit() {
   }
 
   getUsers() {
@@ -64,7 +77,7 @@ export class CustomersComponent implements OnInit {
     // })
   }
 
-  exportexcel(): void {
+  exportexcel() {
     /* pass here the table id */
     let element = document.getElementById('excel-table');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
@@ -76,6 +89,16 @@ export class CustomersComponent implements OnInit {
     /* save to file */
     XLSX.writeFile(wb, 'ExcelSheet.xlsx');
 
+  }
+
+  addCustomer() {
+    this.users.push({
+      custId: this.customerInfo.id,
+      accountManagerName: this.customerInfo.managerName,
+      addressDetails: this.customerInfo.address,
+      companyName: this.customerInfo.company
+    })
+    this.closeModelButton.nativeElement.click();
   }
 
 }
