@@ -99,6 +99,7 @@ export class CustomersComponent implements OnInit {
       companyName: this.customerInfo.company
     })
     this.closeModelButton.nativeElement.click();
+    this.initCustInfo();
   }
 
 }
