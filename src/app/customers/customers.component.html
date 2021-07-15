@@ -1,7 +1,31 @@
 <br />
+
 <div class="container">
   <div class="row">
-    <table class="table table-hover">
+    <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-3 col-md-3">
+      <div class="form-group">
+        <input type="email" class="form-control" [(ngModel)]="searchVariable" id="search" aria-describedby="emailHelp"
+          placeholder="Search">
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Search By
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button">Manager Name</button>
+          <button class="dropdown-item" type="button">Company Name</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3"></div>
+  </div>
+  <br>
+  <div class="row">
+    <table class="table table-hover" id="excel-table">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Customer Id</th>
@@ -11,7 +35,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of users">
+        <tr *ngFor="let item of users | FilterName:searchVariable : searchBy">
           <td>{{item.custId}}</td>
           <td>{{item.accountManagerName}}</td>
           <td>{{item.addressDetails}}</td>
@@ -20,4 +44,9 @@
       </tbody>
     </table>
   </div>
+  <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">Add
+    Customer</button> -->
+  &nbsp;
+  <button type="button" (click)="exportexcel()" class="btn btn-secondary">Export</button>
 </div>
+

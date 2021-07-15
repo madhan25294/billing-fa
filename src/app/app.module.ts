@@ -13,7 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { CommonService } from './services/common.service';
 import { PubsubService } from './services/pub-sub.service';
 import { CustomersComponent } from './customers/customers.component';
-
+// pipes
+import { FilterName } from '../app/pipes/namesearch.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CustomersComponent } from './customers/customers.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    CustomersComponent
+    CustomersComponent,
+    FilterName
   ],
   imports: [
     BrowserModule,
