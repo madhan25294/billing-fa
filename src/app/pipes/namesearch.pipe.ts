@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterName implements PipeTransform {
 
   transform(tabledata: any, searchByName: any, searchThrough: any): any {
-    if (searchByName === undefined) {
+    if (!searchByName || searchByName === undefined) {
       return tabledata;
     } else {
       return tabledata.filter(
