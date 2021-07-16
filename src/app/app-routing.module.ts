@@ -5,12 +5,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
+import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'customers', component: CustomersComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'invoice', component: GeneralInvoiceComponent },
   {
     path: '',
     redirectTo: '/login',

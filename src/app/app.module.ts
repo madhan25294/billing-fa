@@ -15,6 +15,7 @@ import { PubsubService } from './services/pub-sub.service';
 import { CustomersComponent } from './customers/customers.component';
 // pipes
 import { FilterName } from '../app/pipes/namesearch.pipe';
+import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FilterName } from '../app/pipes/namesearch.pipe';
     RegisterComponent,
     HomeComponent,
     CustomersComponent,
-    FilterName
+    FilterName,
+    GeneralInvoiceComponent
   ],
   imports: [
     BrowserModule,
