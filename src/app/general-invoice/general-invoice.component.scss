@@ -1,11 +1,32 @@
 .firstCube{
-  border: 1px solid black;
+  border: 2px solid #bfbebe;
   padding: 5px;
 }
+
+.firstCubeHt{
+  height: 200px;
+  overflow-y: auto;
+}
+
 .ptop30{
   padding-top: 30px;
 }
 
 .fontSizeSmall {
   font-size: smaller !important;
+}
+
+.gridTable{
+  height: 400px;
+  overflow-y: auto;
+}
+
+.gridTableHead {
+  position: sticky;
+  top: 0;
+  background:#dadada;
+}
+
+.mb0 {
+  margin-bottom: 0px;
 }
