@@ -137,7 +137,95 @@
       </div>
     </div>
   </div>
-  <div class="row firstCube mt-10">
-    2nd box
+  <p><b>Line Items</b></p>
+  <div class="row firstCube">
+    <div class="col-md-8">
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">New</button>&nbsp;
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">Edit</button>&nbsp;
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">Delete</button>
+      &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">Pramote</button>&nbsp;
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">Demote</button>
+      &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">Preview Invoice</button>&nbsp;
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">MMC Ext Stat Rpt</button>
+    </div>
+    <div class="col-md-4">
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">Ok</button>
+      &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">Cancel</button>
+      &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-secondary btn-sm fontSizeSmall">Apply</button>
+    </div>
+  </div>
+  <br>
+  <div class="row firstCube">
+    <div class="col-md-4">
+      <div class="form-group row">
+        <label for="colFormLabelSm" class="col-md-5 col-form-label col-form-label-sm fontSizeSmal">
+          Select GL Acc Nbr
+        </label>
+        <div class="col-md-7">
+          <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group row">
+        <label for="colFormLabelSm" class="col-md-5 col-form-label col-form-label-sm fontSizeSmal">
+          Select Cost Center
+        </label>
+        <div class="col-md-7">
+          <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group row">
+        <label for="colFormLabelSm" class="col-md-5 col-form-label col-form-label-sm fontSizeSmal">
+          Jump To Row
+        </label>
+        <div class="col-md-7">
+          <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <table class="table table-hover" id="excel-table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Line</th>
+          <th scope="col">GL Account Nbr</th>
+          <th scope="col">Text</th>
+          <th scope="col">Cost Center</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Rate</th>
+          <th scope="col">Ext</th>
+          <th scope="col">GroupHead</th>
+          <th scope="col">GroupID</th>
+          <th scope="col">CreditMemo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of gridData">
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+          <td>{{item}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./general-invoice.component.scss']
 })
 export class GeneralInvoiceComponent implements OnInit {
-
-  constructor() { }
+  gridData: any;
+  constructor() { 
+    this.gridData = Array.from(Array(100).keys());
+  }
 
   ngOnInit(): void {
   }
