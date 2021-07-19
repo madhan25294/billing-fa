@@ -232,16 +232,16 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of gridData">
-          <td>{{item}}</td>
-          <td>{{item}}</td>
-          <td>{{item}}</td>
-          <td>{{item}}</td>
-          <td>{{item}}</td>
-          <td>{{item}}</td>
-          <td>{{item}}</td>
-          <td>{{item}}</td>
-          <td>{{item}}</td>
-          <td>{{item}}</td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.Line" name="{{item.Line}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.GL" name="{{item.GL}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.Text" name="{{item.Text}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.Cost" name="{{item.Cost}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.Qty" name="{{item.Qty}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.Rate" name="{{item.Rate}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.Ext" name="{{item.Ext}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.GroupHead" name="{{item.GroupHead}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.GroupID" name="{{item.GroupID}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.CreditMemo" name="{{item.CreditMemo}}"  placeholder=""></td>
         </tr>
       </tbody>
     </table>
