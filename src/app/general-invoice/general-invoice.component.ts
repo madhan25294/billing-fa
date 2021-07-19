@@ -33,4 +33,8 @@ export class GeneralInvoiceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  saveTable() {
+    console.log(`Table data is ==== ${JSON.stringify(this.gridData)}`);
+  }
+
 }
