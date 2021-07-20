@@ -15,6 +15,7 @@ import { PubsubService } from './services/pub-sub.service';
 import { CustomersComponent } from './customers/customers.component';
 // pipes
 import { FilterName } from '../app/pipes/namesearch.pipe';
+import { OnlynumberDirective } from '../app/pipes/numberOnly.directive';
 import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { GeneralInvoiceComponent } from './general-invoice/general-invoice.compo
     HomeComponent,
     CustomersComponent,
     FilterName,
+    OnlynumberDirective,
     GeneralInvoiceComponent
   ],
   imports: [

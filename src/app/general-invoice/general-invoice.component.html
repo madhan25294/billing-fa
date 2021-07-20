@@ -226,10 +226,10 @@
           <th class="gridTableHead" scope="col">GL Account Nbr</th>
           <th class="gridTableHead" scope="col">Text</th>
           <th class="gridTableHead" scope="col">Cost Center</th>
-          <th class="gridTableHead" scope="col">Qty</th>
-          <th class="gridTableHead" scope="col">Rate</th>
-          <th class="gridTableHead" scope="col">Ext</th>
-          <th class="gridTableHead" scope="col">GroupHead</th>
+          <th class="gridTableHead" scope="col">Qty*</th>
+          <th class="gridTableHead" scope="col">Rate*</th>
+          <th class="gridTableHead" scope="col">Ext*</th>
+          <th class="gridTableHead" scope="col">GroupHead*</th>
           <th class="gridTableHead" scope="col">GroupID</th>
           <th class="gridTableHead" scope="col">CreditMemo</th>
         </tr>
@@ -240,10 +240,10 @@
           <td><input type="text" class="form-control" [(ngModel)]="item.GL" name="{{item.GL}}"  placeholder=""></td>
           <td><input type="text" class="form-control" [(ngModel)]="item.Text" name="{{item.Text}}"  placeholder=""></td>
           <td><input type="text" class="form-control" [(ngModel)]="item.Cost" name="{{item.Cost}}"  placeholder=""></td>
-          <td><input type="text" class="form-control" [(ngModel)]="item.Qty" name="{{item.Qty}}"  placeholder=""></td>
-          <td><input type="text" class="form-control" [(ngModel)]="item.Rate" name="{{item.Rate}}"  placeholder=""></td>
-          <td><input type="text" class="form-control" [(ngModel)]="item.Ext" name="{{item.Ext}}"  placeholder=""></td>
-          <td><input type="text" class="form-control" [(ngModel)]="item.GroupHead" name="{{item.GroupHead}}"  placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.Qty" name="{{item.Qty}}" appOnlynumber placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.Rate" name="{{item.Rate}}" appOnlynumber placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.Ext" name="{{item.Ext}}" appOnlynumber placeholder=""></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.GroupHead" name="{{item.GroupHead}}" appOnlynumber placeholder=""></td>
           <td><input type="text" class="form-control" [(ngModel)]="item.GroupID" name="{{item.GroupID}}"  placeholder=""></td>
           <td><input type="text" class="form-control" [(ngModel)]="item.CreditMemo" name="{{item.CreditMemo}}"  placeholder=""></td>
         </tr>
