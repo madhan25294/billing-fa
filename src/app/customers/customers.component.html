@@ -25,13 +25,13 @@
   </div>
   <br>
   <div class="row">
-    <table class="table table-hover" id="excel-table">
+    <table class="table table-hover" id="excel-table" data-resizable="true">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Customer Id</th>
-          <th scope="col" class="cursorPointer" (click)="sortTableCol('accountManagerName')">Account Manager Name</th>
+          <th scope="col" class="cursorPointer" (click)="sortTableCol('accountManagerName')">Account Manager Name<i class="fa fa-fw fa-sort"></i></th>
           <th scope="col">Address Details</th>
-          <th scope="col" class="cursorPointer" (click)="sortTableCol('companyName')">Company Name</th>
+          <th scope="col" class="cursorPointer" (click)="sortTableCol('companyName')">Company Name<i class="fa fa-fw fa-sort"></i></th>
         </tr>
       </thead>
       <tbody>

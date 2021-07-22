@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+declare var $: any;
 @Component({
   selector: 'app-general-invoice',
   templateUrl: './general-invoice.component.html',
@@ -31,6 +32,9 @@ export class GeneralInvoiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    $(function() {
+      $('#excel-table').resizableColumns()
+    })
   }
 
   saveTable() {
