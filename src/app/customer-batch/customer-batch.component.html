@@ -1,0 +1,16 @@
+<p>customer-batch works!</p>
+<div class="sample-tutorial">
+  <gc-spread-sheets [hostStyle]="hostStyle" (workbookInitialized)="initSpread($event)">
+    <gc-worksheet>
+    </gc-worksheet>
+  </gc-spread-sheets>
+  <div class="options-container">
+    <div class="option-row">
+      <p>Try clicking on the checkbox for ‘Highlight invalid data’ to see how you can highlight data in Spread
+        that isn’t valid in different ways.</p>
+      <input type="checkbox" id="highlightInvalidData" checked="checked"
+        (change)="changeHighlightInvalidData($event)" />
+      <label for="highlightInvalidData">Highlight invalid data</label>
+    </div>
+  </div>
+</div>

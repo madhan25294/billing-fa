@@ -36,12 +36,14 @@
             "styles": [
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/jquery-resizable-columns/dist/jquery.resizableColumns.css"
+              "node_modules/jquery-resizable-columns/dist/jquery.resizableColumns.css",
+              "node_modules/@grapecity/spread-sheets/styles/gc.spread.sheets.excel2013white.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
-              "node_modules/jquery-resizable-columns/dist/jquery.resizableColumns.min.js"
+              "node_modules/jquery-resizable-columns/dist/jquery.resizableColumns.min.js",
+              "node_modules/@grapecity/spread-sheets/dist/gc.spread.sheets.all.min.js"
             ]
           },
           "configurations": {

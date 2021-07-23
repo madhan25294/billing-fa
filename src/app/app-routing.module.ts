@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
 import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
+import { CustomerBatchComponent } from './customer-batch/customer-batch.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'invoice', component: GeneralInvoiceComponent },
+  { path: 'customerbatch', component: CustomerBatchComponent },
   {
     path: '',
     redirectTo: '/login',

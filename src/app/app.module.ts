@@ -18,6 +18,8 @@ import { FilterName } from '../app/pipes/namesearch.pipe';
 import { OnlynumberDirective } from '../app/pipes/numberOnly.directive';
 import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
 
+import { SpreadSheetsModule } from '@grapecity/spread-sheets-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,8 @@ import { GeneralInvoiceComponent } from './general-invoice/general-invoice.compo
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SpreadSheetsModule
   ],
   providers: [
     PubsubService,
