@@ -17,6 +17,9 @@ import { CustomersComponent } from './customers/customers.component';
 import { FilterName } from '../app/pipes/namesearch.pipe';
 import { OnlynumberDirective } from '../app/pipes/numberOnly.directive';
 import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
+import { TableLikeSpreadsheetComponent } from './table-like-spreadsheet/table-like-spreadsheet.component';
+// custom modules
+import { HotTableModule } from '@handsontable/angular';
 
 @NgModule({
   declarations: [
@@ -28,14 +31,16 @@ import { GeneralInvoiceComponent } from './general-invoice/general-invoice.compo
     CustomersComponent,
     FilterName,
     OnlynumberDirective,
-    GeneralInvoiceComponent
+    GeneralInvoiceComponent,
+    TableLikeSpreadsheetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HotTableModule.forRoot()
   ],
   providers: [
     PubsubService,
