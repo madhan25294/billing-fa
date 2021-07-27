@@ -1,0 +1,13 @@
+<gc-spread-sheets [backColor]="spreadBackColor" [hostStyle]="hostStyle" (workbookInitialized)="workbookInit($event)">
+  <gc-worksheet [name]="sheetName" [dataSource]="dataset">
+    <gc-column [width]="columnWidth" dataField="line" ></gc-column>
+    <gc-column [width]="columnWidth" dataField="glAccNbr" ></gc-column>
+    <gc-column [width]="columnWidth" dataField="text"  formatter="$ #.00"></gc-column>
+    <gc-column [width]="columnWidth" dataField="costCenter" ></gc-column>
+    <gc-column [width]="columnWidth" dataField="qty" ></gc-column>
+    <gc-column [width]="columnWidth" dataField="rate" ></gc-column>
+    <gc-column [width]="columnWidth" dataField="groupHeader" ></gc-column>
+    <gc-column [width]="columnWidth" dataField="groupId" ></gc-column>
+    <gc-column [width]="columnWidth" dataField="creditMemo" ></gc-column>
+  </gc-worksheet>
+</gc-spread-sheets>

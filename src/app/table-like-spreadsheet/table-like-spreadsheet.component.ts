@@ -29,7 +29,7 @@ export class TableLikeSpreadsheetComponent implements OnInit {
       manualColumnResize: true,
       manualRowResize: true,
       // autoColumnSize: {syncLimit: '100%'},
-      width: '1200',
+      width: '900',
       height: '500',
       licenseKey: 'non-commercial-and-evaluation'
     };

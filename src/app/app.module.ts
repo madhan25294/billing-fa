@@ -20,6 +20,8 @@ import { GeneralInvoiceComponent } from './general-invoice/general-invoice.compo
 import { TableLikeSpreadsheetComponent } from './table-like-spreadsheet/table-like-spreadsheet.component';
 // custom modules
 import { HotTableModule } from '@handsontable/angular';
+import { SpreadSheetsModule } from "@grapecity/spread-sheets-angular";
+import { GrapeCityComponent } from './grape-city/grape-city.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { HotTableModule } from '@handsontable/angular';
     FilterName,
     OnlynumberDirective,
     GeneralInvoiceComponent,
-    TableLikeSpreadsheetComponent
+    TableLikeSpreadsheetComponent,
+    GrapeCityComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { HotTableModule } from '@handsontable/angular';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HotTableModule.forRoot()
+    HotTableModule.forRoot(),
+    SpreadSheetsModule
   ],
   providers: [
     PubsubService,
