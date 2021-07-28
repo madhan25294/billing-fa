@@ -17,11 +17,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { FilterName } from '../app/pipes/namesearch.pipe';
 import { OnlynumberDirective } from '../app/pipes/numberOnly.directive';
 import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
-import { TableLikeSpreadsheetComponent } from './table-like-spreadsheet/table-like-spreadsheet.component';
 // custom modules
-import { HotTableModule } from '@handsontable/angular';
-import { SpreadSheetsModule } from "@grapecity/spread-sheets-angular";
-import { GrapeCityComponent } from './grape-city/grape-city.component';
 
 @NgModule({
   declarations: [
@@ -33,18 +29,14 @@ import { GrapeCityComponent } from './grape-city/grape-city.component';
     CustomersComponent,
     FilterName,
     OnlynumberDirective,
-    GeneralInvoiceComponent,
-    TableLikeSpreadsheetComponent,
-    GrapeCityComponent
+    GeneralInvoiceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    HotTableModule.forRoot(),
-    SpreadSheetsModule
+    HttpClientModule
   ],
   providers: [
     PubsubService,

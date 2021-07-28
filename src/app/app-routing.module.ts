@@ -6,8 +6,6 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
 import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
-import { TableLikeSpreadsheetComponent } from './table-like-spreadsheet/table-like-spreadsheet.component';
-import { GrapeCityComponent } from './grape-city/grape-city.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,8 +13,6 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'invoice', component: GeneralInvoiceComponent },
-  { path: 'table', component: TableLikeSpreadsheetComponent},
-  { path: 'grapecity', component: GrapeCityComponent},
   {
     path: '',
     redirectTo: '/login',
