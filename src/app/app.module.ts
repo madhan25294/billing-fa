@@ -17,6 +17,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { FilterName } from '../app/pipes/namesearch.pipe';
 import { OnlynumberDirective } from '../app/pipes/numberOnly.directive';
 import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
+import { TableComponent } from './table/table.component';
 // custom modules
 
 @NgModule({
@@ -29,7 +30,8 @@ import { GeneralInvoiceComponent } from './general-invoice/general-invoice.compo
     CustomersComponent,
     FilterName,
     OnlynumberDirective,
-    GeneralInvoiceComponent
+    GeneralInvoiceComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

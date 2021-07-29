@@ -1,0 +1,24 @@
+.tbody {
+  min-height:10px;
+  overflow-y:scroll;
+}
+
+.activeRow {
+  background:#a0a0e4;
+}
+
+.customers td, .customers th {
+  border: 1px solid grey;
+  padding: 8px;
+}
+
+.htScroll {
+  height: 550px;
+  overflow-y: auto;
+}
+
+.tableHead th {
+  position: sticky;
+  top: 0;
+  background:#f9caca;
+}
