@@ -1,0 +1,107 @@
+<div class="container">
+  <h2>Enterprise Billing - Data Import</h2>
+
+    <div class="mb-3 row">
+      <label  class="col-lg-2 col-md-2 col-form-label">Input From</label>
+      <div class="col-lg-4 col-md-4">
+        <input class="form-control" type="text" placeholder="Search" aria-label="default input example">
+
+      </div>
+       <div class="col-lg-2 col-md-2">
+        <button class="btn btn-secondary" type="button">Select</button>
+      </div>
+    </div>
+  
+
+
+  <div class="mb-3 row">
+    <label for="staticEmail" class="col-lg-2 col-md-2 col-form-label">Source Type</label>
+    <div class="col-lg-4 col-md-4">
+      <select class="form-select" aria-label="Default select example">
+        <option value="1">44-ELS-Week 1 DTreeEQ</option>
+        <option value="2">45-ELS-Week 2 DTreeEQ</option>
+        <option value="3">46-ELS-Week 3 DTreeEQ</option>
+        <option value="4">47-ELS-Week 4 DTreeEQ</option>
+        <option value="5">48-ELS-Week 5 DTreeEQ</option>
+        <option value="6">76-Signature (SIS) - Monthly</option>
+        <option value="7">77-Signature (SIS) - Week 1</option>
+        <option value="8">78-Signature (SIS) - Week 2</option>
+        <option value="9">79-Signature (SIS) - Week 3</option>
+        <option value="10">80-Signature(SIS) - Week 4</option>
+      </select>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-lg-2 col-md-2 col-form-label">Billing Period</label>
+    <div class="col-lg-4 col-md-4">
+      <!-- <input type="text" name="daterange" value="01/01/2021 - 01/02/2021" /> -->
+      <input type="text" ngxDaterangepickerMd [(ngModel)]="selected" class="form-control"/>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Source Name</th>
+            <th scope="col">Processed Date&Time</th>
+            <th scope="col">Verified Date&Time</th>
+            <th scope="col">Received Date&Time</th>
+            <th scope="col">Verified By</th>
+            <th scope="col">Logs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>File 1</td>
+            <td>July 30th</td>
+            <td>Aug 2nd</td>
+            <td>Aug 4th</td>
+            <td>Lead User</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>File 2</td>
+            <td>July 30th</td>
+            <td>Aug 2nd</td>
+            <td>Aug 4th</td>
+            <td>Lead User</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>File 3</td>
+            <td>July 30th</td>
+            <td>Aug 2nd</td>
+            <td>Aug 4th</td>
+            <td>Lead User</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>File 4</td>
+            <td>July 30th</td>
+            <td>Aug 2nd</td>
+            <td>Aug 4th</td>
+            <td>Lead User</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th>5</th>
+            <td>File 5</td>
+            <td>July 30th</td>
+            <td>Aug 2nd</td>
+            <td>Aug 4th</td>
+            <td>Lead User</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

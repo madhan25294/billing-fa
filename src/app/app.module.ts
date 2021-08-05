@@ -18,7 +18,9 @@ import { FilterName } from '../app/pipes/namesearch.pipe';
 import { OnlynumberDirective } from '../app/pipes/numberOnly.directive';
 import { GeneralInvoiceComponent } from './general-invoice/general-invoice.component';
 import { TableComponent } from './table/table.component';
+import { DataImportComponent } from './data-import/data-import.component';
 // custom modules
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 @NgModule({
   declarations: [
@@ -31,14 +33,16 @@ import { TableComponent } from './table/table.component';
     FilterName,
     OnlynumberDirective,
     GeneralInvoiceComponent,
-    TableComponent
+    TableComponent,
+    DataImportComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxDaterangepickerMd.forRoot()
   ],
   providers: [
     PubsubService,
