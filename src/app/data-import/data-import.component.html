@@ -1,15 +1,15 @@
 <div class="container">
   <h4>Enterprise Billing - Data Import</h4>
 
-    <div class="mb-3 row">
-      <label  class="col-lg-2 col-md-2 col-form-label">Input From</label>
-      <div class="col-lg-4 col-md-4">
-        <input class="form-control" type="text" placeholder="Search" aria-label="default input example">
+  <div class="mb-3 row">
+    <label class="col-lg-2 col-md-2 col-form-label">Input From</label>
+    <div class="col-lg-4 col-md-4">
+      <input class="form-control" type="text" placeholder="Search" aria-label="default input example">
 
-      </div>
-       
     </div>
-  
+
+  </div>
+
 
 
   <div class="mb-3 row">
@@ -33,7 +33,18 @@
     <label for="inputPassword" class="col-lg-2 col-md-2 col-form-label">Billing Period</label>
     <div class="col-lg-4 col-md-4">
       <!-- <input type="text" name="daterange" value="01/01/2021 - 01/02/2021" /> -->
-      <input type="text" ngxDaterangepickerMd [(ngModel)]="selected" class="form-control"/>
+      <!-- <input type="text" ngxDaterangepickerMd [(ngModel)]="selected" class="form-control"/> -->
+      <mat-form-field>
+
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate [(ngModel)]="dateRange.startDate" placeholder="From Date">
+          <input matEndDate [(ngModel)]="dateRange.endDate" placeholder="To Date">
+        </mat-date-range-input>
+
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+      </mat-form-field>
     </div>
     <div class="col-lg-2 col-md-2">
       <button class="btn btn-secondary" type="button" (click)="searchItems()">Select</button>

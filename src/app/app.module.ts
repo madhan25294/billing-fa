@@ -26,6 +26,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 // material module
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const toastConfig = {
   "timeOut": 2000,
@@ -62,7 +64,10 @@ const toastConfig = {
     NgxDaterangepickerMd.forRoot(),
     ToastrModule.forRoot(toastConfig),
     BrowserAnimationsModule,
-    MatDatepickerModule
+    
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
   ],
   providers: [
     PubsubService,

@@ -8,9 +8,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DataImportComponent implements OnInit {
   selected: any;
+  dateRange: any;
   constructor(
     private toastr: ToastrService
-  ) { }
+  ) { 
+    this.dateRange = {
+      startDate: '',
+      endDate: ''
+    }
+  }
 
   ngOnInit(): void {
   }
