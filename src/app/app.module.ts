@@ -21,6 +21,23 @@ import { TableComponent } from './table/table.component';
 import { DataImportComponent } from './data-import/data-import.component';
 // custom modules
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
+// material module
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+const toastConfig = {
+  "timeOut": 2000,
+  "positionClass": "toast-top-right",
+  "onActivateTick": true,
+  "enableHtml": true,
+  "error": "toast-error",
+  "info": "toast-info",
+  "success": "toast-success",
+  "warning": "toast-warning",
+  "progressBar": true
+}
 
 @NgModule({
   declarations: [
@@ -42,7 +59,10 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxDaterangepickerMd.forRoot()
+    NgxDaterangepickerMd.forRoot(),
+    ToastrModule.forRoot(toastConfig),
+    BrowserAnimationsModule,
+    MatDatepickerModule
   ],
   providers: [
     PubsubService,
