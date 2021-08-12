@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <a href="http://www.firstam.com/" title="First American Home">
+    <img src="//s21.q4cdn.com/992793803/files/design/logo.png" alt="First American Logo" class="img-width">
+  </a>
+
+    <button mat-button [matMenuTriggerFor]="menu">Tools</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="tools/files" routerLinkActive="active">Import Data</button>
+      <button mat-menu-item routerLink="tools/logs" routerLinkActive="active">Search Logs</button>
+    </mat-menu>
+    <button mat-button routerLink="data/dataimport">Data Import</button>
+  </mat-toolbar>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

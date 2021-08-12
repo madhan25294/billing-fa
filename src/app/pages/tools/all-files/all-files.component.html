@@ -1,0 +1,32 @@
+<h1>Import Data</h1>
+  
+<mat-table [dataSource]="dataList" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef [ngClass]="'w-75'"> id </mat-header-cell>
+      <mat-cell *matCellDef="let element" [ngClass]="'w-75'"> {{element.id}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef> phone </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="website">
+      <mat-header-cell *matHeaderCellDef> website </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.website}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>

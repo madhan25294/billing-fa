@@ -1,0 +1,92 @@
+name: $(SourceBranchName)_$(date:yyyyMMdd)_Enterprise_Billing_UI
+trigger:
+  branches:
+        include:
+          - abc
+stages:
+ - stage: Enterprise_Billing_UI_Build
+   jobs:
+      - job: Build
+        pool:
+          vmImage: 'ubuntu-latest'
+        variables:
+          currentdatetimefolder: $[format('{0:ddMMyyyy}', pipeline.startTime)]
+        steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '14.x'
+          displayName: 'Install Node.js'
+          
+        # - script: |
+        #     npm install -g @angular/cli
+        #     npm install
+        #     npm run build --prod --configuration=production
+        #   displayName: 'npm install and build main'
+        #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))`
+          
+        - script: |
+            pushd "Angular/"
+            npm install -g @angular/cli
+            npm install             
+            popd                        
+          displayName: 'npm install '          
+
+        - script: |
+            pushd "Angular/"
+            node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod --configuration=production
+          displayName: 'npm build azure-pipeline-ui-poc'
+          
+
+        - task: ArchiveFiles@2          
+          inputs:
+             archiveFile: $(build.artifactstagingdirectory)/enterprisebilling.zip
+             rootFolderOrFile: 'Angular/dist'
+             includeRootFolder: false
+             archiveType: 'zip'
+          displayName: Archive dist folder
+
+        - task: PublishBuildArtifacts@1
+          displayName: 'Publish Artifact'
+          inputs:
+            PathtoPublish: '$(build.artifactstagingdirectory)'
+          condition: succeeded()
+
+ - stage: Enterprise_Billing_UI_Deploy_Dev
+   displayName: 'Deploy Enterprise Billing UI to Dev'
+   dependsOn: Enterprise_Billing_UI_Build
+   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev')) 
+   jobs:
+      - job: DeployStage
+        pool:
+          vmImage: 'ubuntu-latest'
+          environment: 'Billing UI Deployment'
+        variables:
+          currentdatetimefolder: $[format('{0:ddMMyyyy}', pipeline.startTime)]
+
+        # steps:
+        #  - task: AzureWebApp@1
+        #    inputs:
+        #       azureSubscription: '<Azure subscription>'
+        #       appName: '<Name of web app>'
+        #       package: $(build.artifactstagingdirectory)/enterprisebilling.zip
+          
+ - stage: Enterprise_Billing_UI_Deploy_Prod
+   displayName: 'Deploy Enterprise Billing UI to Prod'
+   dependsOn: Enterprise_Billing_UI_Build
+   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main')) 
+   jobs:
+      - job: DeployStage
+        pool:
+          vmImage: 'ubuntu-latest'
+          environment: 'Billing UI Production'
+        variables:
+          currentdatetimefolder: $[format('{0:ddMMyyyy}', pipeline.startTime)]
+        # steps:
+        # - task: AzureWebApp@1
+        #   inputs:
+        #     azureSubscription: '<Azure subscription>'
+        #     appName: '<Name of web app>'
+        #     package: $(build.artifactstagingdirectory)/enterprisebilling.zip
+              
+       
+ 
