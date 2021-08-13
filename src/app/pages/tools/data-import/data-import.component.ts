@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-data-import',
@@ -12,7 +17,7 @@ export class DataImportComponent implements OnInit {
   public dataList = new MatTableDataSource();
   public displayedColumns: string[] = ['no', 'sourcename', 'processedDate', 'verifiedDate', 'receivedDate', 'verifiedBy', 'logs'];
 
-  constructor() {
+  constructor(private _snackBar: MatSnackBar) {
     this.dateRange = {
       startDate: '',
       endDate: ''
@@ -20,17 +25,25 @@ export class DataImportComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataList.data  =   [
-      {no:1, sourcename: 'madhan', processedDate: 'rajesh@gmail.com',verifiedDate:'2323223',receivedDate:'www.web.com', verifiedBy: 'Lead User', logs: 'View Log'},
-      {no:2, sourcename: 'Paresh', processedDate: 'paresh@gmail.com',verifiedDate:'2323223',receivedDate:'www.web.com', verifiedBy: 'Lead User', logs: 'View Log'},
-      {no:3, sourcename: 'sdssd', processedDate: 'sdssd@gmail.com',verifiedDate:'2323223',receivedDate:'www.web.com', verifiedBy: 'Lead User', logs: 'View Log'},
-      {no:4, sourcename: 'sdf', processedDate: 'sdf@gmail.com',verifiedDate:'2323223',receivedDate:'www.web.com', verifiedBy: 'Lead User', logs: 'View Log'},
-      {no:5, sourcename: 'Paasdresh', processedDate: 'Paasdresh@gmail.com',verifiedDate:'2323223',receivedDate:'www.web.com', verifiedBy: 'Lead User', logs: 'View Log'},
-      {no:6, sourcename: 'ht', processedDate: 'ssds@gmail.com',verifiedDate:'2323223',receivedDate:'www.web.com', verifiedBy: 'Lead User', logs: 'View Log'},
+    this.dataList.data = [
+      { no: 1, sourcename: 'File 1', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
+      { no: 2, sourcename: 'File 2', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
+      { no: 3, sourcename: 'File 3', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
+      { no: 4, sourcename: 'File 4', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
+      { no: 5, sourcename: 'File 5', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
+      { no: 6, sourcename: 'File 6', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
     ];
   }
 
   searchItems() {
+    this.openSnackBar()
+  }
+
+  openSnackBar() {
+    this._snackBar.open('Working', 'Splash', {
+      horizontalPosition: 'end',
+      verticalPosition: 'bottom',
+    });
   }
 
 }
