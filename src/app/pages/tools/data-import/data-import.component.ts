@@ -40,9 +40,10 @@ export class DataImportComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.open('Working', 'Splash', {
+    this._snackBar.open('Its Working', 'Splash', {
       horizontalPosition: 'end',
       verticalPosition: 'bottom',
+      duration: 2000  
     });
   }
 

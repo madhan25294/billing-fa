@@ -7,8 +7,9 @@ import { AllFilesComponent } from './all-files/all-files.component';
 import { ToolsRoutingModule } from './tools.routing.module';
 import { LogsComponent } from './logs/logs.component';
 import { DataImportComponent } from './data-import/data-import.component';
-import { MaterialModule } from '../../layout/material.module';
+
 // material modules
+import { MaterialModule } from '../../layout/material-component.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';

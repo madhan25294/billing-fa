@@ -1,5 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import './variables';
 @import './mixins';
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
+
+.w-15{
+    max-width: 15%;
+}
+.w-10{
+    max-width: 10%;
+}
+.scroll-table-container {
+    height: 400px;
+    overflow: auto;
+  }
