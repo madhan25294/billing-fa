@@ -25,10 +25,15 @@ export class DataImportComponent implements OnInit {
     }
     this.srcType = [
       { name: 'All', val: 'all' },
-      { name: '45-ELS-Week 2 DTreeEQ', val: '45_ELS_Week_2_DTreeEQ' },
-      { name: 'asdf2', val: 'asdf2' },
-      { name: 'asdf3', val: 'asdf3' },
-      { name: 'asdf4', val: 'asdf4' }
+      { name: '45-ELS-Week 2 DTreeEQ', val: '45_ELS_Week_2_DTreeEQ'},
+      { name: '46-ELS-Week 3 DTreeEQ', val: '46_ELS_Week_3_ DTreeEQ'},
+      { name: '47-ELS-Week 4 DTreeEQ', val: '47_ELS_Week_4_ DTreeEQ'},
+      { name: '48-ELS-Week 5 DTreeEQ', val: '48_ELS_Week_5_ DTreeEQ'},
+      { name: '76-Signature (SIS) - Monthly', val: '76_Signature_(SIS)_Monthly'},
+      { name: '77-Signature (SIS) - Week 1', val: '77_Signature_(SIS)_Week 1'},
+      { name: '78-Signature (SIS) - Week 2', val: '78_Signature_(SIS)_Week 2'},
+      { name: '79-Signature (SIS) - Week 3', val: '79_Signature_(SIS)_Week 3'},
+      { name: '80-Signature (SIS) - Week 4', val: '80_Signature_(SIS)_Week 4'},
     ];
     this.selectedSrcType = 'all';
   }

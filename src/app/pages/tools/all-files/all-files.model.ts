@@ -1,10 +1,22 @@
-export class AllFiles {
+// export class AllGetFiles {
+//     "data": GetFiles;
+
+// }
+export class GetFiles {
     "id": number;
-    "transFileName": string;
-    "sourceDesc": string;
-    "isImported": boolean;
-    "isValidated": boolean;
-    "isLoaded": boolean;
-    "userAction": string;
-    "userName": string;
+    "fileName": string | null;
+    "source": string | null;
+    "sourceId": number;
+    "periodId": number;
+    "receivedFileStatus": boolean;
+    "validateFileStatus": boolean;
+    "processedFileStatus": boolean;
+    "receivedFileDate": string | null;
+    "validateFileDate": string | null;
+    "processedFileDate": string | null;
+    "fileProcessStatus": number;
+    "fileProcessStatusDesc": string | null;
+    "receivedUserName": string | null;
+    "processedUserName": string | null;
+    "validatedUserName": string | null;
 }

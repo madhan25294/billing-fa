@@ -14,9 +14,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     MatToolbarModule,
@@ -31,7 +35,10 @@ import { MatTableModule } from '@angular/material/table';
     MatTabsModule,
     MatSelectModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule {

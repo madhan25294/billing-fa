@@ -5,31 +5,20 @@ import { FormsModule } from '@angular/forms';
 
 import { AllFilesComponent } from './all-files/all-files.component';
 import { ToolsRoutingModule } from './tools.routing.module';
-import { LogsComponent } from './logs/logs.component';
 import { DataImportComponent } from './data-import/data-import.component';
 
 // material modules
 import { MaterialModule } from '../../layout/material-component.module';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
-  declarations: [AllFilesComponent, LogsComponent, DataImportComponent],
+  declarations: [AllFilesComponent, DataImportComponent],
   imports: [
     CommonModule,
     RouterModule,
     MaterialModule,
     ToolsRoutingModule,
     FormsModule,
-    // material modules
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatSelectModule,
-    MatSnackBarModule
   ],
   exports: [
 

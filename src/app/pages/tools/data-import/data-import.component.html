@@ -19,15 +19,6 @@
       <mat-form-field appearance="fill" id="staticEmail" class="width100">
         <mat-select value ="{{selectedSrcType}}">
           <mat-option value="{{item.val}}" *ngFor="let item of srcType">{{item.name}}</mat-option>
-          <!-- <mat-option value="1">45-ELS-Week 2 DTreeEQ</mat-option>
-          <mat-option value="2">46-ELS-Week 3 DTreeEQ</mat-option>
-          <mat-option value="3">47-ELS-Week 4 DTreeEQ</mat-option>
-          <mat-option value="4">48-ELS-Week 5 DTreeEQ</mat-option>
-          <mat-option value="5">76-Signature (SIS) - Monthly</mat-option>
-          <mat-option value="6">Signature (SIS) - Week 1</mat-option>
-          <mat-option value="7">78-Signature (SIS) - Week 2</mat-option>
-          <mat-option value="8">79-Signature (SIS) - Week 3</mat-option>
-          <mat-option value="9">80-Signature(SIS) - Week 4</mat-option> -->
         </mat-select>
       </mat-form-field>
     </div>
@@ -53,7 +44,7 @@
   <br>
 
   <div class="container">
-    <div class="row scroll-datatable">
+    <div class="row scroll-datatable mat-elevation-z8">
       <mat-table [dataSource]="dataList" class="">
 
         <ng-container matColumnDef="no">

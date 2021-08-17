@@ -2,48 +2,48 @@
 <div class="scroll-table-container mat-elevation-z8">
   <mat-table [dataSource]="dataList" class="">
 
-    <ng-container matColumnDef="transFileName">
+    <ng-container matColumnDef="fileName">
       <mat-header-cell *matHeaderCellDef> File Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.transFileName}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="sourceDesc">
+    <ng-container matColumnDef="source">
       <mat-header-cell *matHeaderCellDef> Source </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.sourceDesc}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.source}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="isImported">
+    <ng-container matColumnDef="receivedFileStatus">
       <mat-header-cell *matHeaderCellDef [ngClass]="'w-10'" color="accent"> Received </mat-header-cell>
       <mat-cell *matCellDef="let element" [ngClass]="'w-10 px-3'">
-        <mat-checkbox [checked]="element.isImported" name="chkReceived-{{element.id}}" id="chkReceived-{{element.id}}"
+        <mat-checkbox [checked]="element.receivedFileStatus" name="chkReceived-{{element.id}}" id="chkReceived-{{element.id}}"
           [disableRipple]="true" (click)="$event.preventDefault()"></mat-checkbox>
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="isValidated">
+    <ng-container matColumnDef="validateFileStatus">
       <mat-header-cell *matHeaderCellDef [ngClass]="'w-10'"> Validated </mat-header-cell>
       <mat-cell *matCellDef="let element" [ngClass]="'w-10 px-3'">
-        <mat-checkbox [checked]="element.isValidated" name="chkValidated-{{element.id}}"
+        <mat-checkbox [checked]="element.validateFileStatus" name="chkValidated-{{element.id}}"
           id="chkValidated-{{element.id}}" [disableRipple]="true" (click)="$event.preventDefault()"></mat-checkbox>
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="isLoaded">
+    <ng-container matColumnDef="processedFileStatus">
       <mat-header-cell *matHeaderCellDef [ngClass]="'w-10'"> Processed </mat-header-cell>
       <mat-cell *matCellDef="let element" [ngClass]="'w-10 px-3'">
-        <mat-checkbox [checked]="element.isLoaded" name="chkProcessed-{{element.id}}" id="chkProcessed-{{element.id}}"
+        <mat-checkbox [checked]="element.processedFileStatus" name="chkProcessed-{{element.id}}" id="chkProcessed-{{element.id}}"
           [disableRipple]="true" (click)="$event.preventDefault()"></mat-checkbox>
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="userAction">
+    <ng-container matColumnDef="fileProcessStatus">
       <mat-header-cell *matHeaderCellDef [ngClass]="'w-15'"> User Action </mat-header-cell>
       <mat-cell *matCellDef="let element" [ngClass]="'w-15'">
-        <button *ngIf="element.userAction==='R'" mat-stroked-button color="primary">File Received</button>
-        <button *ngIf="element.userAction==='V'" mat-stroked-button color="primary">File Verified</button>
-        <button *ngIf="element.userAction==='P'" mat-stroked-button color="primary">Process File</button>
-        <button *ngIf="element.userAction==='FP'" mat-flat-button [disableRipple]="true"
-          (click)="$event.preventDefault()">File Processed</button>
+        <button *ngIf="element.fileProcessStatus===0" mat-stroked-button color="primary">File Received</button>
+        <button *ngIf="element.fileProcessStatus===1" mat-stroked-button color="primary">File Importing</button>
+        <button *ngIf="element.fileProcessStatus===2" mat-stroked-button color="primary">File Verified</button>
+        <button *ngIf="element.fileProcessStatus===3" mat-flat-button [disableRipple]="true"
+          (click)="$event.preventDefault()">Process File</button>
       </mat-cell>
     </ng-container>
 
