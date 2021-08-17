@@ -2,11 +2,9 @@
   <h2>Enterprise Billing - Data Import</h2>
 
   <div class="mb-3 row">
-    <label class="col-lg-2 col-md-2 col-form-label">Input From</label>
+    <label for="inputForm" class="col-lg-2 col-md-2 col-form-label">Input From</label>
     <div class="col-lg-4 col-md-4">
-      <!-- <input class="form-control" type="text" placeholder="Search" aria-label="default input example"> -->
-      <mat-form-field class="example-full-width" appearance="fill" style="width:100%">
-        <!-- <mat-label>In</mat-label> -->
+      <mat-form-field class="example-full-width width100" id="inputForm" appearance="fill">
         <input matInput placeholder="Enter value" value="">
       </mat-form-field>
     </div>
@@ -18,22 +16,10 @@
   <div class="mb-3 row">
     <label for="staticEmail" class="col-lg-2 col-md-2 col-form-label">Source Type</label>
     <div class="col-lg-4 col-md-4">
-      <!-- <select class="form-select" aria-label="Default select example">
-        <option value="1">All</option>
-        <option value="2">45-ELS-Week 2 DTreeEQ</option>
-        <option value="3">46-ELS-Week 3 DTreeEQ</option>
-        <option value="4">47-ELS-Week 4 DTreeEQ</option>
-        <option value="5">48-ELS-Week 5 DTreeEQ</option>
-        <option value="6">76-Signature (SIS) - Monthly</option>
-        <option value="7">77-Signature (SIS) - Week 1</option>
-        <option value="8">78-Signature (SIS) - Week 2</option>
-        <option value="9">79-Signature (SIS) - Week 3</option>
-        <optio value="10">80-Signature(SIS) - Week 4</optio>
-      </select> -->
-      <mat-form-field appearance="fill" style="width:100%">
-        <mat-select value ="All">
-          <mat-option value="All" selected>All</mat-option>
-          <mat-option value="1">45-ELS-Week 2 DTreeEQ</mat-option>
+      <mat-form-field appearance="fill" id="staticEmail" class="width100">
+        <mat-select value ="{{selectedSrcType}}">
+          <mat-option value="{{item.val}}" *ngFor="let item of srcType">{{item.name}}</mat-option>
+          <!-- <mat-option value="1">45-ELS-Week 2 DTreeEQ</mat-option>
           <mat-option value="2">46-ELS-Week 3 DTreeEQ</mat-option>
           <mat-option value="3">47-ELS-Week 4 DTreeEQ</mat-option>
           <mat-option value="4">48-ELS-Week 5 DTreeEQ</mat-option>
@@ -41,7 +27,7 @@
           <mat-option value="6">Signature (SIS) - Week 1</mat-option>
           <mat-option value="7">78-Signature (SIS) - Week 2</mat-option>
           <mat-option value="8">79-Signature (SIS) - Week 3</mat-option>
-          <mat-option value="9">80-Signature(SIS) - Week 4</mat-option>
+          <mat-option value="9">80-Signature(SIS) - Week 4</mat-option> -->
         </mat-select>
       </mat-form-field>
     </div>
@@ -49,15 +35,11 @@
   <div class="mb-3 row">
     <label for="inputPassword" class="col-lg-2 col-md-2 col-form-label">Billing Period</label>
     <div class="col-lg-4 col-md-4">
-      <!-- <input type="text" name="daterange" value="01/01/2021 - 01/02/2021" /> -->
-      <!-- <input type="text" ngxDaterangepickerMd [(ngModel)]="selected" class="form-control"/> -->
-      <mat-form-field style="width:100%">
-
+      <mat-form-field class="width100">
         <mat-date-range-input [rangePicker]="picker">
           <input matStartDate [(ngModel)]="dateRange.startDate" placeholder="From Date">
           <input matEndDate [(ngModel)]="dateRange.endDate" placeholder="To Date">
         </mat-date-range-input>
-
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
 
@@ -71,12 +53,12 @@
   <br>
 
   <div class="container">
-    <div class="row">
-      <mat-table [dataSource]="dataList" class="mat-elevation-z8">
+    <div class="row scroll-datatable">
+      <mat-table [dataSource]="dataList" class="">
 
         <ng-container matColumnDef="no">
-          <mat-header-cell *matHeaderCellDef [ngClass]="'w-75'"> No </mat-header-cell>
-          <mat-cell *matCellDef="let element" [ngClass]="'w-75'"> {{element.no}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef > No </mat-header-cell>
+          <mat-cell *matCellDef="let element" > {{element.no}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="sourcename">

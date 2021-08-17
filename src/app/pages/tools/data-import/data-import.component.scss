@@ -1,5 +1,15 @@
 .anchor {
-  color: blue;
+  color:	#0000FF;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.width100 {
+  width: 100%;
+}
+
+
+.scroll-datatable {
+  height: 250px;
+  overflow: auto;
 }

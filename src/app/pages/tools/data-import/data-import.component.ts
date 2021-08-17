@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {
   MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
 @Component({
@@ -12,16 +10,27 @@ import {
   styleUrls: ['./data-import.component.scss']
 })
 export class DataImportComponent implements OnInit {
-  selected: any;
-  dateRange: any;
+  selected: string;
+  dateRange: { [key: string]: string; };
+  srcType: Array<any>;
+  selectedSrcType: string;
   public dataList = new MatTableDataSource();
   public displayedColumns: string[] = ['no', 'sourcename', 'processedDate', 'verifiedDate', 'receivedDate', 'verifiedBy', 'logs'];
 
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar) {
+    this.selected = ''
     this.dateRange = {
       startDate: '',
       endDate: ''
     }
+    this.srcType = [
+      { name: 'All', val: 'all' },
+      { name: '45-ELS-Week 2 DTreeEQ', val: '45_ELS_Week_2_DTreeEQ' },
+      { name: 'asdf2', val: 'asdf2' },
+      { name: 'asdf3', val: 'asdf3' },
+      { name: 'asdf4', val: 'asdf4' }
+    ];
+    this.selectedSrcType = 'all';
   }
 
   ngOnInit() {
@@ -40,10 +49,10 @@ export class DataImportComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.open('Its Working', 'Splash', {
+    this.snackBar.open('Its Working', 'Splash', {
       horizontalPosition: 'end',
       verticalPosition: 'bottom',
-      duration: 2000  
+      duration: 2000
     });
   }
 
