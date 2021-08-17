@@ -311,15 +311,6 @@ export class DataImportComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.dataList.data = [
-    //   { no: 1, sourcename: 'File 1', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
-    //   { no: 2, sourcename: 'File 2', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
-    //   { no: 3, sourcename: 'File 3', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
-    //   { no: 4, sourcename: 'File 4', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
-    //   { no: 5, sourcename: 'File 5', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
-    //   { no: 6, sourcename: 'File 6', processedDate: 'July 30th', verifiedDate: 'Aug 2nd', receivedDate: 'Aug 4th', verifiedBy: 'Lead User', logs: 'View Log' },
-    // ];
-
     this.dataList.data = [
       {
         "id": 1,
