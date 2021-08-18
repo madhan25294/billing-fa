@@ -5,7 +5,7 @@
     <label for="inputForm" class="col-lg-2 col-md-2 col-form-label">Input From</label>
     <div class="col-lg-4 col-md-4">
       <mat-form-field class="width100" id="inputForm" appearance="fill">
-        <input matInput placeholder="Enter value" value="">
+        <input matInput placeholder="Enter value" [(ngModel)]="inputDataObj.inputVal" value="">
       </mat-form-field>
     </div>
 
@@ -14,23 +14,23 @@
 
 
   <div class="mb-3 row">
-    <label for="sourceType" class="col-lg-2 col-md-2 col-form-label">Source Type</label>
+    <label for="srcType" class="col-lg-2 col-md-2 col-form-label">Source Type</label>
     <div class="col-lg-4 col-md-4">
-      <mat-form-field appearance="fill" id="sourceType" class="width100">
-        <mat-select value="{{ selectedSrcType }}">
+      <mat-form-field appearance="fill" id="srcType" class="width100">
+        <mat-select value ="{{inputDataObj.srcTypeId}}">
           <mat-option value="all">All</mat-option>
-          <mat-option value="{{item.transSourceId}}" *ngFor="let item of srcType">{{item.sourceDesc}}</mat-option>
+          <mat-option value="{{item.transSourceId}}" (click)="inputDataObj.srcTypeId = item.transSourceId" *ngFor="let item of srcType">{{item.sourceDesc}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
   </div>
   <div class="mb-3 row">
-    <label for="inputPassword" class="col-lg-2 col-md-2 col-form-label">Billing Period</label>
+    <label for="billingPeriod" class="col-lg-2 col-md-2 col-form-label">Billing Period</label>
     <div class="col-lg-4 col-md-4">
-      <mat-form-field class="width100">
+      <mat-form-field class="width100" id="billingPeriod">
         <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate [(ngModel)]="dateRange.startDate" placeholder="From Date">
-          <input matEndDate [(ngModel)]="dateRange.endDate" placeholder="To Date">
+          <input matStartDate [(ngModel)]="inputDataObj.billingPeriod.startDate" placeholder="From Date">
+          <input matEndDate [(ngModel)]="inputDataObj.billingPeriod.endDate" placeholder="To Date">
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
@@ -46,11 +46,11 @@
 
   <div class="container">
     <div class="row scroll-datatable mat-elevation-z8">
-      <mat-table [dataSource]="dataList">
-
+      <mat-table [dataSource]="dataList" class="">
+        'id', 'fileName', 'processedFileDate', 'validateFileDate', 'receivedFileDate', 'validatedUserName'
         <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef> No </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef > Id </mat-header-cell>
+          <mat-cell *matCellDef="let element" > {{element.id}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="fileName">
@@ -60,21 +60,21 @@
 
         <ng-container matColumnDef="processedFileDate">
           <mat-header-cell *matHeaderCellDef> Processed Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.processedFileDate}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.processedFileDate |  date}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="validateFileDate">
           <mat-header-cell *matHeaderCellDef> Validated Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.validateFileDate}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.validateFileDate | date}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="receivedFileDate">
           <mat-header-cell *matHeaderCellDef> Received Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.receivedFileDate}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.receivedFileDate | date}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="validatedUserName">
-          <mat-header-cell *matHeaderCellDef> Verified By </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Validated By </mat-header-cell>
           <mat-cell *matCellDef="let element" class="anchor"> {{element.validatedUserName}} </mat-cell>
         </ng-container>
 

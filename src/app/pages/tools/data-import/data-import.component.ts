@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { DataImportService } from './data-import.service';
 
 
 @Component({
@@ -10,20 +11,25 @@ import { SnackBarService } from 'src/app/services/snack-bar.service';
 })
 export class DataImportComponent implements OnInit {
   selected: string;
-  dateRange: { [key: string]: any; };
+  inputDataObj: { [key: string]: any; };
   srcType: Array<any>;
-  selectedSrcType: number | string;
   public dataList = new MatTableDataSource();
   public displayedColumns: string[] = ['id', 'fileName', 'processedFileDate', 'validateFileDate', 'receivedFileDate', 'validatedUserName'];
 
-  constructor(private snackBService: SnackBarService) {
+  constructor(
+    private snackBService: SnackBarService,
+    private dataImportService: DataImportService) {
     this.selected = ''
     const currentDate = new Date();
-    this.dateRange = {
-      startDate: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
-      endDate: new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)
+    this.inputDataObj = {
+      inputVal: '',
+      srcType: 'all',
+      srcTypeId: 'all',
+      billingPeriod: {
+        startDate: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+        endDate: new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)
+      }
     }
-
     this.srcType = [
       {
         "transSourceId": 2,
@@ -305,8 +311,7 @@ export class DataImportComponent implements OnInit {
         "transSourceId": 87,
         "sourceDesc": "TaxSource"
       }
-    ]
-    this.selectedSrcType = 'all';
+    ];
   }
 
   ngOnInit() {
@@ -406,12 +411,22 @@ export class DataImportComponent implements OnInit {
   }
 
   searchItems() {
-    this.openSnackBar()
-
+    // this.dataImportService.getImportDataFiles(this.inputDataObj.inputVal, this.inputDataObj.srcTypeId,
+    //   this.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
+    //   .subscribe((result: any) => {
+    //     this.snackBService.openSnackBar('Got data', '');
+    //     this.dataList.data = result || [];
+    //   }, (err: any) => {
+    //     this.snackBService.openSnackBar(err.error, '');
+    //   })
   }
 
-  openSnackBar() {
-    this.snackBService.openSnackBar('Its Working', 'Splash');
+  getFormattedDate(date: any) {
+    let year = date.getFullYear();
+    let month = (1 + date.getMonth()).toString().padStart(2, '0');
+    let day = date.getDate().toString().padStart(2, '0');
+
+    return month + '/' + day + '/' + year;
   }
 
 }
