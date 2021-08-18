@@ -55,27 +55,27 @@
 
         <ng-container matColumnDef="fileName">
           <mat-header-cell *matHeaderCellDef> Source Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+          <mat-cell *matCellDef="let element" matTooltip={{element.fileName}}> {{element.fileName}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="processedFileDate">
           <mat-header-cell *matHeaderCellDef> Processed Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.processedFileDate |  date}} </mat-cell>
+          <mat-cell *matCellDef="let element" matTooltip={{element.processedFileDate}}> {{(element.processedFileDate | date: 'dd-MM-yyyy') || '-'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="validateFileDate">
           <mat-header-cell *matHeaderCellDef> Validated Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.validateFileDate | date}} </mat-cell>
+          <mat-cell *matCellDef="let element" matTooltip={{element.validateFileDate}}> {{(element.validateFileDate | date: 'dd-MM-yyyy') || '-'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="receivedFileDate">
           <mat-header-cell *matHeaderCellDef> Received Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.receivedFileDate | date}} </mat-cell>
+          <mat-cell *matCellDef="let element" matTooltip={{element.receivedFileDate}}> {{(element.receivedFileDate | date: 'dd-MM-yyyy') || '-'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="validatedUserName">
           <mat-header-cell *matHeaderCellDef> Validated By </mat-header-cell>
-          <mat-cell *matCellDef="let element" class="anchor"> {{element.validatedUserName}} </mat-cell>
+          <mat-cell class="asdf" *matCellDef="let element" class="anchor"> {{element.validatedUserName || '-'}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
