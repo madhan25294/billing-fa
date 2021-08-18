@@ -17,9 +17,8 @@
     <label for="staticEmail" class="col-lg-2 col-md-2 col-form-label">Source Type</label>
     <div class="col-lg-4 col-md-4">
       <mat-form-field appearance="fill" id="staticEmail" class="width100">
-        <mat-select value="{{ selectedSrcType }}">
-          <mat-option value="all">All</mat-option>
-          <mat-option value="{{item.transSourceId}}" *ngFor="let item of srcType">{{item.sourceDesc}}</mat-option>
+        <mat-select value ="{{selectedSrcType}}">
+          <mat-option value="{{item.val}}" *ngFor="let item of srcType">{{item.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -46,36 +45,41 @@
 
   <div class="container">
     <div class="row scroll-datatable mat-elevation-z8">
-      <mat-table [dataSource]="dataList">
+      <mat-table [dataSource]="dataList" class="">
 
-        <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef> No </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        <ng-container matColumnDef="no">
+          <mat-header-cell *matHeaderCellDef > No </mat-header-cell>
+          <mat-cell *matCellDef="let element" > {{element.no}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="fileName">
+        <ng-container matColumnDef="sourcename">
           <mat-header-cell *matHeaderCellDef> Source Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.sourcename}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="processedFileDate">
+        <ng-container matColumnDef="processedDate">
           <mat-header-cell *matHeaderCellDef> Processed Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.processedFileDate}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.processedDate}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="validateFileDate">
-          <mat-header-cell *matHeaderCellDef> Validated Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.validateFileDate}} </mat-cell>
+        <ng-container matColumnDef="verifiedDate">
+          <mat-header-cell *matHeaderCellDef> Verified Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.verifiedDate}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="receivedFileDate">
+        <ng-container matColumnDef="receivedDate">
           <mat-header-cell *matHeaderCellDef> Received Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.receivedFileDate}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.receivedDate}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="validatedUserName">
+        <ng-container matColumnDef="verifiedBy">
           <mat-header-cell *matHeaderCellDef> Verified By </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.validatedUserName}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.verifiedBy}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="logs">
+          <mat-header-cell *matHeaderCellDef> Logs </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="anchor"> {{element.logs}}</mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
