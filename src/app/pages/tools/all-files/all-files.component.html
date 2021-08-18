@@ -15,8 +15,8 @@
     <ng-container matColumnDef="receivedFileStatus">
       <mat-header-cell *matHeaderCellDef [ngClass]="'w-10'" color="accent"> Received </mat-header-cell>
       <mat-cell *matCellDef="let element" [ngClass]="'w-10 px-3'">
-        <mat-checkbox [checked]="element.receivedFileStatus" name="chkReceived-{{element.id}}" id="chkReceived-{{element.id}}"
-          [disableRipple]="true" (click)="$event.preventDefault()"></mat-checkbox>
+        <mat-checkbox [checked]="element.receivedFileStatus" name="chkReceived-{{element.id}}"
+          id="chkReceived-{{element.id}}" [disableRipple]="true" (click)="$event.preventDefault()"></mat-checkbox>
       </mat-cell>
     </ng-container>
 
@@ -31,19 +31,47 @@
     <ng-container matColumnDef="processedFileStatus">
       <mat-header-cell *matHeaderCellDef [ngClass]="'w-10'"> Processed </mat-header-cell>
       <mat-cell *matCellDef="let element" [ngClass]="'w-10 px-3'">
-        <mat-checkbox [checked]="element.processedFileStatus" name="chkProcessed-{{element.id}}" id="chkProcessed-{{element.id}}"
-          [disableRipple]="true" (click)="$event.preventDefault()"></mat-checkbox>
+        <mat-checkbox [checked]="element.processedFileStatus" name="chkProcessed-{{element.id}}"
+          id="chkProcessed-{{element.id}}" [disableRipple]="true" (click)="$event.preventDefault()"></mat-checkbox>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="fileProcessStatus">
       <mat-header-cell *matHeaderCellDef [ngClass]="'w-15'"> User Action </mat-header-cell>
       <mat-cell *matCellDef="let element" [ngClass]="'w-15'">
-        <button *ngIf="element.fileProcessStatus===0" mat-stroked-button color="primary">File Received</button>
-        <button *ngIf="element.fileProcessStatus===1" mat-stroked-button color="primary">File Importing</button>
-        <button *ngIf="element.fileProcessStatus===2" mat-stroked-button color="primary">File Verified</button>
-        <button *ngIf="element.fileProcessStatus===3" mat-flat-button [disableRipple]="true"
-          (click)="$event.preventDefault()">Process File</button>
+        <ng-container
+          *ngIf="(element.fileProcessStatus===0 || element.fileProcessStatus===2 || element.fileProcessStatus===3)">
+          <!-- File Received -->
+          <button *ngIf="element.fileProcessStatus===0" mat-stroked-button color="accent" name="btn-{{element.id}}"
+            (click)="updateFileStatus(element)" id="btn-{{element.id}}">File Received</button>
+          <!-- File Verified -->
+          <button *ngIf="element.fileProcessStatus===2" mat-stroked-button color="accent" name="btn-{{element.id}}"
+            (click)="updateFileStatus(element)" id="btn-{{element.id}}">File Verified</button>
+          <!-- Process File -->
+          <button *ngIf="element.fileProcessStatus===3" mat-stroked-button color="accent" name="btn-{{element.id}}"
+            (click)="updateFileStatus(element)" id="btn-{{element.id}}">Process File</button>
+        </ng-container>
+
+
+        <ng-container
+          *ngIf="(element.fileProcessStatus===1 || element.fileProcessStatus===4 || element.fileProcessStatus===5 || element.fileProcessStatus===6 || element.fileProcessStatus===7)">
+          <!-- File Importing -->
+          <button *ngIf="element.fileProcessStatus===1" mat-flat-button (click)="$event.preventDefault()"
+            [disableRipple]="true" name="btn-{{element.id}}" id="btn-{{element.id}}">File Importing</button>
+          <!-- File Processing -->
+          <button *ngIf="element.fileProcessStatus===4" mat-flat-button (click)="$event.preventDefault()"
+            [disableRipple]="true" name="btn-{{element.id}}" id="btn-{{element.id}}">File Processing</button>
+          <!-- Process Completed -->
+          <button *ngIf="element.fileProcessStatus===5" mat-flat-button (click)="$event.preventDefault()"
+            [disableRipple]="true" name="btn-{{element.id}}" id="btn-{{element.id}}">Process Completed</button>
+          <!-- Import Failure -->
+          <button *ngIf="element.fileProcessStatus===6" mat-flat-button (click)="$event.preventDefault()"
+            [disableRipple]="true" name="btn-{{element.id}}" id="btn-{{element.id}}">Import Failure</button>
+          <!-- Process Failure -->
+          <button *ngIf="element.fileProcessStatus===7" mat-flat-button (click)="$event.preventDefault()"
+            [disableRipple]="true" name="btn-{{element.id}}" id="btn-{{element.id}}">Process Failure</button>
+        </ng-container>
+
       </mat-cell>
     </ng-container>
 

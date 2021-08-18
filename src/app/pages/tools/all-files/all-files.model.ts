@@ -1,7 +1,3 @@
-// export class AllGetFiles {
-//     "data": GetFiles;
-
-// }
 export class GetFiles {
     "id": number;
     "fileName": string | null;
