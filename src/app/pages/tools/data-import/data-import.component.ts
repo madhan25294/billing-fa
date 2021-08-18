@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import {
-  MatSnackBar,
-} from '@angular/material/snack-bar';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
+
 
 @Component({
   selector: 'app-data-import',
@@ -17,11 +16,11 @@ export class DataImportComponent implements OnInit {
   public dataList = new MatTableDataSource();
   public displayedColumns: string[] = ['id', 'fileName', 'processedFileDate', 'validateFileDate', 'receivedFileDate', 'validatedUserName'];
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBService: SnackBarService) {
     this.selected = ''
     const currentDate = new Date();
     this.dateRange = {
-      startDate: currentDate,
+      startDate: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
       endDate: new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)
     }
 
@@ -403,18 +402,16 @@ export class DataImportComponent implements OnInit {
         "validatedUserName": null
       }
     ]
+
   }
 
   searchItems() {
     this.openSnackBar()
+
   }
 
   openSnackBar() {
-    this.snackBar.open('Its Working', 'Splash', {
-      horizontalPosition: 'end',
-      verticalPosition: 'bottom',
-      duration: 2000
-    });
+    this.snackBService.openSnackBar('Its Working', 'Splash');
   }
 
 }

@@ -1,7 +1,9 @@
+@import "../../../../scss/variables";
+
 .anchor {
-  color:	#0000FF;
-    text-decoration: underline;
-    cursor: pointer;
+  color: $color-blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .width100 {

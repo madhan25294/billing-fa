@@ -4,7 +4,7 @@
   <div class="mb-3 row">
     <label for="inputForm" class="col-lg-2 col-md-2 col-form-label">Input From</label>
     <div class="col-lg-4 col-md-4">
-      <mat-form-field class="example-full-width width100" id="inputForm" appearance="fill">
+      <mat-form-field class="width100" id="inputForm" appearance="fill">
         <input matInput placeholder="Enter value" value="">
       </mat-form-field>
     </div>
@@ -14,9 +14,9 @@
 
 
   <div class="mb-3 row">
-    <label for="staticEmail" class="col-lg-2 col-md-2 col-form-label">Source Type</label>
+    <label for="sourceType" class="col-lg-2 col-md-2 col-form-label">Source Type</label>
     <div class="col-lg-4 col-md-4">
-      <mat-form-field appearance="fill" id="staticEmail" class="width100">
+      <mat-form-field appearance="fill" id="sourceType" class="width100">
         <mat-select value="{{ selectedSrcType }}">
           <mat-option value="all">All</mat-option>
           <mat-option value="{{item.transSourceId}}" *ngFor="let item of srcType">{{item.sourceDesc}}</mat-option>
@@ -75,7 +75,7 @@
 
         <ng-container matColumnDef="validatedUserName">
           <mat-header-cell *matHeaderCellDef> Verified By </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.validatedUserName}} </mat-cell>
+          <mat-cell *matCellDef="let element" class="anchor"> {{element.validatedUserName}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
