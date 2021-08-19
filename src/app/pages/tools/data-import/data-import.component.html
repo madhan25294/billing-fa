@@ -5,7 +5,7 @@
     <label for="inputForm" class="col-lg-2 col-md-2 col-form-label">Input From</label>
     <div class="col-lg-4 col-md-4">
       <mat-form-field class="width100" id="inputForm" appearance="fill">
-        <input matInput placeholder="Enter value" [(ngModel)]="inputDataObj.inputVal" value="">
+        <input matInput placeholder="Enter value" [(ngModel)]="inputDataObj.searchText" value="">
       </mat-form-field>
     </div>
 
@@ -76,6 +76,11 @@
         <ng-container matColumnDef="validatedUserName">
           <mat-header-cell *matHeaderCellDef> Validated By </mat-header-cell>
           <mat-cell class="asdf" *matCellDef="let element" class="anchor"> {{element.validatedUserName || '-'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="logs">
+          <mat-header-cell *matHeaderCellDef> View Logs </mat-header-cell>
+          <mat-cell class="asdf" *matCellDef="let element" class="anchor"> View Logs </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

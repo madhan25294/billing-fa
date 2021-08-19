@@ -34,5 +34,12 @@ chrome-profiler-events*.json
 /.sass-cache
 /connect.lock
 /coverage
-/lib
-fzu-zwdk-mjg
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db

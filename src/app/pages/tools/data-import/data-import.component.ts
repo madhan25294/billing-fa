@@ -10,19 +10,17 @@ import { DataImportService } from './data-import.service';
   styleUrls: ['./data-import.component.scss']
 })
 export class DataImportComponent implements OnInit {
-  selected: string;
   inputDataObj: { [key: string]: any; };
   srcType: Array<any>;
   public dataList = new MatTableDataSource();
-  public displayedColumns: string[] = ['id', 'fileName', 'processedFileDate', 'validateFileDate', 'receivedFileDate', 'validatedUserName'];
+  public displayedColumns: string[] = ['id', 'fileName', 'processedFileDate', 'validateFileDate', 'receivedFileDate', 'validatedUserName', 'logs'];
 
   constructor(
     private snackBService: SnackBarService,
     private dataImportService: DataImportService) {
-    this.selected = ''
     const currentDate = new Date();
     this.inputDataObj = {
-      inputVal: '',
+      searchText: '',
       srcType: 'all',
       srcTypeId: '0',
       billingPeriod: {
@@ -79,7 +77,7 @@ export class DataImportComponent implements OnInit {
         "transSourceId": 22,
         "sourceDesc": "AIS NY : Westchester Billing (3)"
       },
-      { 
+      {
         "transSourceId": 23,
         "sourceDesc": "AIS NY : Richmond Billing (4)"
       },
@@ -312,6 +310,8 @@ export class DataImportComponent implements OnInit {
         "sourceDesc": "TaxSource"
       }
     ];
+    // this.srcType = [];
+    // this.srcTypes();
   }
 
   ngOnInit() {
@@ -407,15 +407,25 @@ export class DataImportComponent implements OnInit {
         "validatedUserName": null
       }
     ]
-    this.dataList.data = []
+    // this.dataList.data = []
   }
 
   searchItems() {
-    this.dataImportService.getImportDataFiles(this.inputDataObj.inputVal, this.inputDataObj.srcTypeId,
+    this.dataImportService.getImportDataFiles(this.inputDataObj.searchText, this.inputDataObj.srcTypeId,
       this.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
       .subscribe((result: any) => {
         this.snackBService.success('Got data', '');
         this.dataList.data = result || [];
+      }, (err: any) => {
+        this.snackBService.error(err.error, '');
+      })
+  }
+
+  srcTypes() {
+    this.dataImportService.getSrcTypes()
+      .subscribe((result: any) => {
+        this.snackBService.success('Got data', '');
+        this.srcType = result || [];
       }, (err: any) => {
         this.snackBService.error(err.error, '');
       })

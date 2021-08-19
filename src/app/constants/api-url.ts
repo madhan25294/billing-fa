@@ -6,5 +6,6 @@ export const API_URL = {
   },
   GET_FILES: '/importData/GetFiles',
   UPDATE_FILE_STATUS: '/importData/UpdateFileStatus',
-  BILLING_SEARCH:'/ImportData/Search'
+  BILLING_SEARCH:'/ImportData/Search',
+  BILLING_SRC_TYPE: '/ImportData/SourceType'
 };
