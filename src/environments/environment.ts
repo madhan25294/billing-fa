@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'https://localhost:44302/api'
+  backendUrl: 'https://localhost:44302/api',
+  billingUrl: 'http://localhost/Billing/api'
+
 };
 
 /*

@@ -13,12 +13,21 @@ export class SnackBarService {
     2.the action 
     3.the duration, alignment, etc. */
   
-    openSnackBar(message: string, action: string) {
+    success(message: string, action: string='close') {
       this.snackBar.open(message, action, {
-         duration: 112000,
+         duration: 2000,
          verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
          horizontalPosition: 'right', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
-         panelClass: ['blue-snackbar']
+         panelClass: ['snackbar-success']
+      });
+    }
+
+    error(message: string, action: string='close') {
+      this.snackBar.open(message, action, {
+         duration: 2000,
+         verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
+         horizontalPosition: 'right', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
+         panelClass: ['snackbar-error']
       });
     }
 }

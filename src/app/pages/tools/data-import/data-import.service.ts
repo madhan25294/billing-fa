@@ -13,7 +13,7 @@ export class DataImportService {
 
 
   getImportDataFiles(text: string, srcId: number | string, strtDate: string, endDate: string) {
-    const url = `${environment.backendUrl}/ImportData/Search?searchText=${text}&sourceTypeId=${srcId}&billingStartDate=${strtDate}&billingEndDate=${endDate}`;
+    const url = `${environment.billingUrl}${API_URL.BILLING_SEARCH}?searchText=${text}&sourceTypeId=${srcId}&billingStartDate=${strtDate}&billingEndDate=${endDate}`;
     return this.httpClient.get(url);
   }
 

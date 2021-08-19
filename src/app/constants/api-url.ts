@@ -4,6 +4,7 @@ export const API_URL = {
     UPDATE_PASSWORD: '/ChangePassword',
     LOGOUT: '/Logout'
   },
-  GET_FILES: '/importData/getAllFiles',
-  UPDATE_FILE_STATUS: '/importData/UpdateFileStatus'
+  GET_FILES: '/importData/GetFiles',
+  UPDATE_FILE_STATUS: '/importData/UpdateFileStatus',
+  BILLING_SEARCH:'/ImportData/Search'
 };

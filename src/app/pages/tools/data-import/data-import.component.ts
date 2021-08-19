@@ -24,7 +24,7 @@ export class DataImportComponent implements OnInit {
     this.inputDataObj = {
       inputVal: '',
       srcType: 'all',
-      srcTypeId: 'all',
+      srcTypeId: '0',
       billingPeriod: {
         startDate: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
         endDate: new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)
@@ -79,7 +79,7 @@ export class DataImportComponent implements OnInit {
         "transSourceId": 22,
         "sourceDesc": "AIS NY : Westchester Billing (3)"
       },
-      {
+      { 
         "transSourceId": 23,
         "sourceDesc": "AIS NY : Richmond Billing (4)"
       },
@@ -407,18 +407,18 @@ export class DataImportComponent implements OnInit {
         "validatedUserName": null
       }
     ]
-
+    this.dataList.data = []
   }
 
   searchItems() {
-    // this.dataImportService.getImportDataFiles(this.inputDataObj.inputVal, this.inputDataObj.srcTypeId,
-    //   this.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
-    //   .subscribe((result: any) => {
-    //     this.snackBService.openSnackBar('Got data', '');
-    //     this.dataList.data = result || [];
-    //   }, (err: any) => {
-    //     this.snackBService.openSnackBar(err.error, '');
-    //   })
+    this.dataImportService.getImportDataFiles(this.inputDataObj.inputVal, this.inputDataObj.srcTypeId,
+      this.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
+      .subscribe((result: any) => {
+        this.snackBService.success('Got data', '');
+        this.dataList.data = result || [];
+      }, (err: any) => {
+        this.snackBService.error(err.error, '');
+      })
   }
 
   getFormattedDate(date: any) {

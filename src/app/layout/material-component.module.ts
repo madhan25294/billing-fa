@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -20,7 +19,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
-    CommonModule,
   ],
   exports: [
     MatToolbarModule,

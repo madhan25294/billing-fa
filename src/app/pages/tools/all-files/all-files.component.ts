@@ -29,13 +29,21 @@ export class AllFilesComponent implements OnInit {
     this.allFilesService.getFiles().subscribe((data) => {
       this.dataList.data = data || [];
     }, (err: HttpErrorResponse) => {
-      this.snackBService.openSnackBar(err.error, 'close');
+      this.snackBService.error("Error occured");
     });
 
   }
 
-  public updateFileStatus(element: object) {
-   
+  public updateFileStatus(element:any) {
+    const userAction = (element.fileProcessStatus === 0 ? 'R' : (element.fileProcessStatus === 2 ? 'V' : 'P'));
+    const fileData = { fileID: element.id, userAction: userAction, userName:'mkumbhar' };
+    this.allFilesService.updateFileStatus(fileData)
+      .subscribe((data) => {
+        this.snackBService.success(data);
+        this.getAllFiles();
+      }, (err: HttpErrorResponse) => {
+        this.snackBService.error("Error occured");
+      });
   }
 
 
