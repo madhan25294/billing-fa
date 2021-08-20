@@ -416,7 +416,7 @@ export class DataImportComponent implements OnInit {
     this.dataImportService.getImportDataFiles(this.inputDataObj.searchText, this.inputDataObj.srcTypeId,
       this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
       .subscribe((result: any) => {
-        this.snackBService.success('Got data', '');
+        this.snackBService.success('', '');
         this.dataList.data = result || [];
       }, (err: any) => {
         this.snackBService.error(err.error, '');
@@ -426,7 +426,7 @@ export class DataImportComponent implements OnInit {
   getAllSourceTypes() {
     this.dataImportService.getSourceTypes()
       .subscribe((result: any) => {
-        this.snackBService.success('Got data', '');
+        this.snackBService.success('', '');
         this.srcType = result || [];
       }, (err: any) => {
         this.snackBService.error(err.error, '');
