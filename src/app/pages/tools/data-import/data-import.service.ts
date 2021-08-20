@@ -17,7 +17,7 @@ export class DataImportService {
     return this.httpClient.get(url);
   }
 
-  getSrcTypes() {
+  getSourceTypes() {
     return this.httpClient.get(`${environment. backendUrl}${API_URL.BILLING_SRC_TYPE}`)
   }
 }

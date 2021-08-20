@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
+// services
 import { DataImportService } from './data-import.service';
-
+import { ConstantService } from '../../../services/constant.service';
 
 @Component({
   selector: 'app-data-import',
@@ -17,7 +18,8 @@ export class DataImportComponent implements OnInit {
 
   constructor(
     private snackBService: SnackBarService,
-    private dataImportService: DataImportService) {
+    private dataImportService: DataImportService,
+    private constantService: ConstantService) {
     const currentDate = new Date();
     this.inputDataObj = {
       searchText: '',
@@ -311,7 +313,7 @@ export class DataImportComponent implements OnInit {
       }
     ];
     // this.srcType = [];
-    // this.srcTypes();
+    // this.getAllSourceTypes();
   }
 
   ngOnInit() {
@@ -412,7 +414,7 @@ export class DataImportComponent implements OnInit {
 
   searchItems() {
     this.dataImportService.getImportDataFiles(this.inputDataObj.searchText, this.inputDataObj.srcTypeId,
-      this.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
+      this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
       .subscribe((result: any) => {
         this.snackBService.success('Got data', '');
         this.dataList.data = result || [];
@@ -421,22 +423,14 @@ export class DataImportComponent implements OnInit {
       })
   }
 
-  srcTypes() {
-    this.dataImportService.getSrcTypes()
+  getAllSourceTypes() {
+    this.dataImportService.getSourceTypes()
       .subscribe((result: any) => {
         this.snackBService.success('Got data', '');
         this.srcType = result || [];
       }, (err: any) => {
         this.snackBService.error(err.error, '');
       })
-  }
-
-  getFormattedDate(date: any) {
-    let year = date.getFullYear();
-    let month = (1 + date.getMonth()).toString().padStart(2, '0');
-    let day = date.getDate().toString().padStart(2, '0');
-
-    return month + '/' + day + '/' + year;
   }
 
 }
