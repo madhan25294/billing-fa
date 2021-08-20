@@ -13,11 +13,11 @@ export class DataImportService {
 
 
   getImportDataFiles(text: string, srcId: number | string, strtDate: string, endDate: string) {
-    const url = `${environment.billingUrl}${API_URL.BILLING_SEARCH}?searchText=${text}&sourceTypeId=${srcId}&billingStartDate=${strtDate}&billingEndDate=${endDate}`;
+    const url = `${environment. backendUrl}${API_URL.BILLING_SEARCH}?searchText=${text}&sourceTypeId=${srcId}&billingStartDate=${strtDate}&billingEndDate=${endDate}`;
     return this.httpClient.get(url);
   }
 
   getSrcTypes() {
-    return this.httpClient.get(`${environment.billingUrl}${API_URL.BILLING_SRC_TYPE}`)
+    return this.httpClient.get(`${environment. backendUrl}${API_URL.BILLING_SRC_TYPE}`)
   }
 }
