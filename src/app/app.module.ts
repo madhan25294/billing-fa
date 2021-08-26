@@ -10,6 +10,7 @@ import { AuthInterceptor } from "./services/auth-interceptor.service";
 import { LayoutModule } from "./layout/layout.module";
 import { AppRoutingModule } from './app.routing.module';
 import { ToolsModule } from './pages/tools/tools.module';
+import { FileModule } from './pages/file/file.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { AuthGuard } from './services/auth-guard.service';
 import { EventService } from './services/event.service';
@@ -22,13 +23,14 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     HammerModule,
     RouterModule,
-    LayoutModule,   
+    LayoutModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
     AuthModule,
     ToolsModule,
+    FileModule,
     AppRoutingModule,
   ],
   providers: [
