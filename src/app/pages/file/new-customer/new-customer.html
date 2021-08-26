@@ -1,1 +1,35 @@
-<h1>new customer</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-5 col-md-5">
+      <button class="m-right20" mat-stroked-button disabled>Ok</button>
+      <button class="m-right20" mat-stroked-button>Cancel</button>
+      <button class="m-right20" mat-stroked-button disabled>Apply</button>
+    </div>
+    <div class="col-lg-2 col-md-2" disabled>
+      <button mat-stroked-button disabled>Create Profile</button></div>
+  </div>
+</div>
+<mat-tab-group animationDuration="0ms">
+  <mat-tab label="Customer Info">
+    <div class="container-fluid">
+      <div class="border-grey">
+        <!-- copy paste the below div-->
+        <div class="row">
+          <div class="col-lg-2 col-md-2">
+            Company Name
+          </div>
+          <div class="col-lg-10 col-md-10">
+            <mat-form-field class="form-element width100">
+              <input matInput placeholder="Emailaddress" >
+              <!-- <mat-error>
+                error
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Oracle Setup">Content 2</mat-tab>
+  <mat-tab label="Contact Information">Content 3</mat-tab>
+</mat-tab-group>
