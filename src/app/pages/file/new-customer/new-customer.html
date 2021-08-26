@@ -11,16 +11,108 @@
 </div>
 <mat-tab-group animationDuration="0ms">
   <mat-tab label="Customer Info">
+    <h3>Primary Information</h3>
     <div class="container-fluid">
       <div class="border-grey">
-        <!-- copy paste the below div-->
         <div class="row">
-          <div class="col-lg-2 col-md-2">
+          <div class="col-lg-2 col-md-2 my-auto mx-auto text-center">
             Company Name
           </div>
           <div class="col-lg-10 col-md-10">
             <mat-form-field class="form-element width100">
-              <input matInput placeholder="Emailaddress" >
+              <input matInput placeholder="" >
+              <!-- <mat-error>
+                error
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 my-auto mx-auto text-center">
+                Account No
+              </div>
+              <div class="col-lg-8 col-md-8">
+                <mat-form-field class="form-element width100">
+                  <input matInput placeholder="" >
+                  <!-- <mat-error>
+                    error
+                  </mat-error> -->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 my-auto mx-auto text-center">
+                Dallas 11i AR No
+              </div>
+              <div class="col-lg-8 col-md-8">
+                <mat-form-field class="form-element width100">
+                  <input matInput placeholder="" >
+                  <!-- <mat-error>
+                    error
+                  </mat-error> -->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 col-md-2 my-auto mx-auto text-center">
+            Branch Code
+          </div>
+          <div class="col-lg-10 col-md-10">
+            <mat-form-field class="form-element width100">
+              <input matInput placeholder="" >
+              <!-- <mat-error>
+                error
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 col-md-2 my-auto mx-auto text-center">
+            Industry
+          </div>
+          <div class="col-lg-7 col-md-7">
+            <mat-form-field appearance="fill" id="srcType" class="width100">
+              <mat-select value ="0">
+                <mat-option value="0">-Select an industry-</mat-option>
+                <mat-option value="1">one</mat-option>
+                <mat-option value="2">two</mat-option>
+                <mat-option value="3">three</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3 col-md-3 my-auto mx-auto text-center">
+            <mat-checkbox class="example-margin">Active</mat-checkbox>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 col-md-2 my-auto mx-auto text-center">
+            SIS Parent
+          </div>
+          <div class="col-lg-5 col-md-5">
+            <mat-form-field class="form-element width100">
+              <input matInput placeholder="" >
+              <!-- <mat-error>
+                error
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-5 col-md-5 my-auto mx-auto text-center">
+            <mat-checkbox class="example-margin">SIS Consolidated billing flag</mat-checkbox>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 col-md-2 my-auto mx-auto text-center">
+            P.O.No
+          </div>
+          <div class="col-lg-10 col-md-10">
+            <mat-form-field class="form-element width100">
+              <input matInput placeholder="" >
               <!-- <mat-error>
                 error
               </mat-error> -->
