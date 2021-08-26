@@ -2,7 +2,6 @@
 
 .anchor {
   color: $color-blue;
-  // text-decoration: underline;
   cursor: pointer;
 }
 
@@ -17,24 +16,7 @@
 }
 
 //** mat-table css **//
-.mat-column-fileName {
-  flex: 0 0 25% !important;
-  min-width: 104px !important;
-}
-
-.mat-tooltip-class-here {
-  white-space: pre-line !important;
-}
-
 .mat-header-cell {
   color:$color-black;
   font-weight: bold;
-}
-
-.mat-cell{
-  justify-content: center;
-}
-
-.mat-header-cell {
-  justify-content: center;
 }

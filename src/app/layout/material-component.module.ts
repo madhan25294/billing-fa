@@ -1,4 +1,5 @@
 // import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -21,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   imports: [
   ],
   exports: [
+    MatCardModule,
     MatToolbarModule,
     MatInputModule,
     MatIconModule,

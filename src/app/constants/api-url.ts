@@ -4,8 +4,8 @@ export const API_URL = {
     UPDATE_PASSWORD: '/ChangePassword',
     LOGOUT: '/Logout'
   },
-  GET_FILES: '/importData/GetFiles',
-  UPDATE_FILE_STATUS: '/importData/UpdateFileStatus',
+  GET_FILES: '/ImportData/GetFiles',
+  UPDATE_FILE_STATUS: '/ImportData/UpdateFileStatus',
   BILLING_SEARCH:'/ImportData/Search',
   BILLING_SRC_TYPE: '/ImportData/SourceType'
 };

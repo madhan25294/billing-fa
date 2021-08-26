@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 
 
 const routes: Routes = [
-    // this is a fallback route
-    { path: '**', redirectTo: 'user/login', pathMatch: 'full' }
+    { path: '**', redirectTo: 'login', pathMatch: 'full' }
   ];
 
 @NgModule({

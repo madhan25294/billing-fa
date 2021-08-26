@@ -26,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
     headers['Accept'] = 'application/json';
 
     if (token) {
-      headers['Authorization'] = 'bearer ' + token;
+     // headers['Authorization'] = 'bearer ' + token;
     }
 
     

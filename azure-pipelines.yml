@@ -34,7 +34,7 @@ stages:
         - script: |
             pushd "Angular/"
             node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod --configuration=production
-          displayName: 'npm build azure-pipeline-ui-poc'
+          displayName: 'npm build code'
           
 
         - task: ArchiveFiles@2          

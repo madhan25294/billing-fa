@@ -1,34 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/services/auth-guard.service';
 import { AllFilesComponent } from './all-files/all-files.component';
 import { DataImportComponent } from './data-import/data-import.component'
 
 const routes: Routes = [
   {
-    path: 'tools',
-    children: [
-      {
-        path: 'files',
-        component: AllFilesComponent,
-        loadChildren: () =>
-          import(
-            './tools.module'
-          ).then(m => m.ToolsModule)
-      }
-    ]
+    path: 'tools', component: AllFilesComponent,
+    children: [{ path: 'files', component: AllFilesComponent, canActivate: [AuthGuard] }]
   },
   {
-    path: 'data',
-    children: [
-      {
-        path: 'dataimport',
-        component: DataImportComponent,
-        loadChildren: () =>
-          import(
-            './tools.module'
-          ).then(m => m.ToolsModule)
-      }
-    ]
+    path: 'data', component: DataImportComponent,
+    children: [{ path: 'dataimport', component: DataImportComponent, canActivate: [AuthGuard] }]
   }
 ];
 
@@ -38,4 +21,6 @@ const routes: Routes = [
   providers: []
 })
 export class ToolsRoutingModule { }
+
+
 

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material-component.module';
-import { BodyComponent } from './body/body.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BodyComponent } from './body/body.component';
 
 
 @NgModule({
@@ -10,6 +11,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   exports: [

@@ -1,13 +1,17 @@
-<mat-toolbar color="primary">
-  <a href="http://www.firstam.com/" title="First American Home">
+<mat-toolbar color="primary"  *ngIf="isLoggedIn$ | async as isLoggedIn">
+  <a  title="First American Home">
     <img src="//s21.q4cdn.com/992793803/files/design/logo.png" alt="First American Logo" class="img-width">
   </a>
 
-    <button mat-button [matMenuTriggerFor]="menu">Tools</button>
-    <mat-menu #menu="matMenu">
+    <button mat-button [matMenuTriggerFor]="toolsMenu">Tools</button>
+    <mat-menu #toolsMenu="matMenu">
       <button mat-menu-item routerLink="tools/files" routerLinkActive="active">Import Data</button>
     </mat-menu>
     <button mat-button routerLink="data/dataimport">Data Import</button>
+    <button mat-button [matMenuTriggerFor]="settingsMenu">Settings</button>
+    <mat-menu #settingsMenu="matMenu">
+      <button mat-menu-item (click)="onLogout()">Logout</button>
+    </mat-menu>
   </mat-toolbar>
 <div class="content">
   <router-outlet></router-outlet>
