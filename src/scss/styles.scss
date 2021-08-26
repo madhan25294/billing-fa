@@ -25,6 +25,10 @@ body {
   background: mat-color($theme-warn);
 }
 
+.background-white {
+  background: $color-white;
+}
+
 
 /** mat-table css **/
 .mat-header-cell {
@@ -32,3 +36,8 @@ body {
   font-weight: bold;
 }
 /** mat-table css **/
+
+.custom-dialog-container .mat-dialog-container {
+  width: 600px;
+  height: 400px;
+ }

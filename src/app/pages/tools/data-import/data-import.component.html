@@ -4,7 +4,7 @@
   <div class="mb-3 row">
     <label for="inputForm" class="col-lg-2 col-md-2 col-form-label">Input From</label>
     <div class="col-lg-4 col-md-4">
-      <mat-form-field class="width100" id="inputForm" appearance="fill">
+      <mat-form-field class="width100" id="inputForm" appearance="standard">
         <input matInput placeholder="Enter value" [(ngModel)]="inputDataObj.searchText" value="">
       </mat-form-field>
     </div>
@@ -16,9 +16,8 @@
   <div class="mb-3 row">
     <label for="srcType" class="col-lg-2 col-md-2 col-form-label">Source Type</label>
     <div class="col-lg-4 col-md-4">
-      <mat-form-field appearance="fill" id="srcType" class="width100">
+      <mat-form-field appearance="standard" id="srcType" class="width100">
         <mat-select value ="{{inputDataObj.srcTypeId}}">
-          <mat-option value="0">All</mat-option>
           <mat-option value="{{item.transSourceId}}" (click)="inputDataObj.srcTypeId = item.transSourceId" *ngFor="let item of srcType">{{item.sourceDesc}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -79,8 +78,8 @@
         </ng-container>
 
         <ng-container matColumnDef="logs">
-          <mat-header-cell *matHeaderCellDef> View Logs </mat-header-cell>
-          <mat-cell class="asdf" *matCellDef="let element" class="anchor"> View Logs </mat-cell>
+          <mat-header-cell *matHeaderCellDef > View Logs </mat-header-cell>
+          <mat-cell class="asdf" *matCellDef="let element" class="anchor" (click)="openLogs()"> View Logs </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
