@@ -78,8 +78,7 @@ export class DataImportComponent implements OnInit {
   }
 
   openLogs(selectedRow:  { [key: string]: any; }) {
-    // havetodo
-    this.dataImportService.getViewLogsData('','','')
+    this.dataImportService.getViewLogsData(selectedRow.id,selectedRow.sourceId,selectedRow.periodId)
     .subscribe((response: any) => {
       this.openDialog(response);
     }, err => {
@@ -102,17 +101,17 @@ export class DialogContentDialog {
     this.displayedColumns = Object.keys(this.data.modelData.logs[0]);
     this.dataSource = this.data.modelData.logs;
     this.keyValues = {
-      sourceDesc: this.data.modelData.sourceDesc,
-      importedDatetime: this.data.modelData.importedDatetime,
-      periodID: this.data.modelData.periodID,
-      fromDate: this.data.modelData.fromDate,
-      toDate: this.data.modelData.toDate,
-      fullPathTransFileName: this.data.modelData.fullPathTransFileName,
-      rowsOnFile: this.data.modelData.rowsOnFile,
-      rowsWithError: this.data.modelData.rowsWithError,
-      rowsImported: this.data.modelData.rowsImported,
-      totalDollars: this.data.modelData.totalDollars,
-      quantity: this.data.modelData.quantity,
+      sourceDesc: this.data.modelData.sourceDesc || '',
+      importedDatetime: this.data.modelData.importedDatetime || '',
+      periodID: this.data.modelData.periodID || '',
+      fromDate: this.data.modelData.fromDate || '',
+      toDate: this.data.modelData.toDate || '',
+      fullPathTransFileName: this.data.modelData.fullPathTransFileName || '',
+      rowsOnFile: this.data.modelData.rowsOnFile || '',
+      rowsWithError: this.data.modelData.rowsWithError || '',
+      rowsImported: this.data.modelData.rowsImported || '',
+      totalDollars: this.data.modelData.totalDollars || '',
+      quantity: this.data.modelData.quantity || '',
     }
   }
 
