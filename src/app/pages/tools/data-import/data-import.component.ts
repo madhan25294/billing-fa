@@ -63,7 +63,6 @@ export class DataImportComponent implements OnInit {
   }
 
   openDialog(selectedData: { [key: string]: any; }) {
-
     const dialogRef = this.dialog.open(DialogContentDialog,
       {
         data: {
@@ -98,7 +97,7 @@ export class DialogContentDialog {
   dataSource: Array<any>;
   keyValues: { [key: string]: any; };
   constructor(@Inject(MAT_DIALOG_DATA) public data: { [key: string]: any; }) {
-    this.displayedColumns = Object.keys(this.data.modelData.logs[0]);
+    this.displayedColumns = this.data.modelData.logs[0] ? Object.keys(this.data.modelData.logs[0]): [];
     this.dataSource = this.data.modelData.logs;
     this.keyValues = {
       sourceDesc: this.data.modelData.sourceDesc || '',
