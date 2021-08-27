@@ -1,5 +1,5 @@
-import { Component, OnInit , Inject} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
@@ -62,11 +62,12 @@ export class DataImportComponent implements OnInit {
       })
   }
 
-  openDialog() {
+  openDialog(selectedData: { [key: string]: any; }) {
+
     const dialogRef = this.dialog.open(DialogContentDialog,
       {
         data: {
-          logs: 'logs'
+          modelData: selectedData
         },
         panelClass: 'custom-dialog-container'
       });
@@ -76,8 +77,14 @@ export class DataImportComponent implements OnInit {
     });
   }
 
-  openLogs() {
-    this.openDialog();
+  openLogs(selectedRow:  { [key: string]: any; }) {
+    // havetodo
+    this.dataImportService.getViewLogsData('','','')
+    .subscribe((response: any) => {
+      this.openDialog(response);
+    }, err => {
+      this.snackBService.error(err.error, '');
+    })
   }
 
 }
@@ -85,7 +92,29 @@ export class DataImportComponent implements OnInit {
 @Component({
   selector: 'dialog-content.html',
   templateUrl: 'dialog-content.html',
+  styleUrls: ['./data-import.component.scss']
 })
 export class DialogContentDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  displayedColumns: string[];
+  dataSource: Array<any>;
+  keyValues: { [key: string]: any; };
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { [key: string]: any; }) {
+    this.displayedColumns = Object.keys(this.data.modelData.logs[0]);
+    this.dataSource = this.data.modelData.logs;
+    this.keyValues = {
+      sourceDesc: this.data.modelData.sourceDesc,
+      importedDatetime: this.data.modelData.importedDatetime,
+      periodID: this.data.modelData.periodID,
+      fromDate: this.data.modelData.fromDate,
+      toDate: this.data.modelData.toDate,
+      fullPathTransFileName: this.data.modelData.fullPathTransFileName,
+      rowsOnFile: this.data.modelData.rowsOnFile,
+      rowsWithError: this.data.modelData.rowsWithError,
+      rowsImported: this.data.modelData.rowsImported,
+      totalDollars: this.data.modelData.totalDollars,
+      quantity: this.data.modelData.quantity,
+    }
+  }
+
+
 }

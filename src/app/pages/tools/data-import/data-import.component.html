@@ -74,12 +74,12 @@
 
         <ng-container matColumnDef="validatedUserName">
           <mat-header-cell *matHeaderCellDef> Validated By </mat-header-cell>
-          <mat-cell class="asdf" *matCellDef="let element" class="anchor"> {{element.validatedUserName || '-'}} </mat-cell>
+          <mat-cell  *matCellDef="let element" class="anchor"> {{element.validatedUserName || '-'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="logs">
-          <mat-header-cell *matHeaderCellDef > View Logs </mat-header-cell>
-          <mat-cell class="asdf" *matCellDef="let element" class="anchor" (click)="openLogs()"> View Logs </mat-cell>
+          <mat-header-cell *matHeaderCellDef> View Logs </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="anchor" (click)="openLogs(element)"> View Logs </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

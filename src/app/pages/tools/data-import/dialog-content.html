@@ -1,7 +1,25 @@
 <h2 mat-dialog-title>Logs Page</h2>
-<div>
- {{data.logs}}
+<div *ngFor="let item of keyValues| keyvalue">{{item.key}} : {{item.value}}</div>
+<div class="container-fluid">
+  <div class="row scroll-datatable mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+      <ng-container matColumnDef="{{item}}"  *ngFor="let item of displayedColumns">
+        <th mat-header-cell *matHeaderCellDef> {{item}} </th>
+        <td mat-cell *matCellDef="let element"> {{element[item]}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 </div>
+
+
 <!-- <mat-dialog-content class="mat-typography">
   <h3>Develop across all platforms</h3>
   <p>Learn one way to build applications with Angular and reuse your code and abilities to build
