@@ -2,7 +2,7 @@
   <h2>Enterprise Billing - Data Import</h2>
 
   <div class="mb-3 row">
-    <label for="inputForm" class="col-lg-2 col-md-2 col-form-label">Input From</label>
+    <label for="inputForm" class="col-lg-2 col-md-2 my-auto text-center">Input From</label>
     <div class="col-lg-4 col-md-4">
       <mat-form-field class="width100" id="inputForm" appearance="standard">
         <input matInput placeholder="Enter value" [(ngModel)]="inputDataObj.searchText" value="">
@@ -14,7 +14,7 @@
 
 
   <div class="mb-3 row">
-    <label for="srcType" class="col-lg-2 col-md-2 col-form-label">Source Type</label>
+    <label for="srcType" class="col-lg-2 col-md-2 my-auto text-center">Source Type</label>
     <div class="col-lg-4 col-md-4">
       <mat-form-field appearance="standard" id="srcType" class="width100">
         <mat-select value ="{{inputDataObj.srcTypeId}}">
@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="mb-3 row">
-    <label for="billingPeriod" class="col-lg-2 col-md-2 col-form-label">Billing Period</label>
+    <label for="billingPeriod" class="col-lg-2 col-md-2 my-auto text-center">Billing Period</label>
     <div class="col-lg-4 col-md-4">
       <mat-form-field class="width100" id="billingPeriod">
         <mat-date-range-input [rangePicker]="picker">
