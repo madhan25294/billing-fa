@@ -44,7 +44,7 @@ export class DataImportComponent implements OnInit {
     this.dataImportService.getImportDataFiles(this.inputDataObj.searchText, this.inputDataObj.srcTypeId,
       this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
       .subscribe((result: any) => {
-        this.snackBService.success('', '');
+        // this.snackBService.success('', '');
         this.dataList.data = result || [];
       }, (err: any) => {
         this.snackBService.error(err.error, '');
