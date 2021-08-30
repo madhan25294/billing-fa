@@ -6,6 +6,9 @@
     <div class="col-lg-4 col-md-4">
       <mat-form-field class="width100" id="inputForm" appearance="standard">
         <input matInput placeholder="Enter value" [(ngModel)]="inputDataObj.searchText" value="">
+        <mat-error *ngIf="true">
+          Name should not be longerthan 50 characters
+       </mat-error>
       </mat-form-field>
     </div>
 
