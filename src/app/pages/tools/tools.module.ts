@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../../layout/material-component.module';
 import { AllFilesComponent } from './all-files/all-files.component';
 import { ToolsRoutingModule } from './tools.routing.module';
 import { DataImportComponent } from './data-import/data-import.component';
 import { DialogContentDialog } from './data-import/data-import.component';
 
-// material modules
-import { MaterialModule } from '../../layout/material-component.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [AllFilesComponent, DataImportComponent, DialogContentDialog],
+  declarations: [AllFilesComponent, DataImportComponent,DialogContentDialog],
   imports: [
     CommonModule,
     RouterModule,

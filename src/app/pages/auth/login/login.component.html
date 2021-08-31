@@ -1,24 +1,61 @@
+<div class="auth-page">
 
-
-  <div class="signin-content">
-    <mat-card>
-      <mat-card-content>
-        <form [formGroup]="form" (ngSubmit)="login()">
-          <p>Please login to continue</p>
-          <mat-form-field class="full-width-input">
-            <input matInput placeholder="User" formControlName="email" type="email"  required>
-            <!-- <mat-error *ngIf="isFieldInvalid('email')">
-              Please enter your email
-            </mat-error> -->
-          </mat-form-field>
-          <mat-form-field class="full-width-input">
-            <input matInput type="password" placeholder="Password" formControlName="password" required>
-            <!-- <mat-error *ngIf="isFieldInvalid('email')">
-              Please inform your password
-            </mat-error> -->
-          </mat-form-field>
-          <button mat-raised-button color="primary" type="submit">Login</button>
-        </form>
-      </mat-card-content>
-    </mat-card>
+  <div class="auth-page__logo">
+    <div class="auth-page__logo-wrapper">
+      <p class="auth-page__logo-para"> Welcome back! Please login to your account
+      </p>
+      <h6 class="auth-page__logo-title">The First American Corporation</h6>
+      <p class="auth-page__divider"></p>
+      <p class="auth-page__logo-para"> First American Title helps homebuyers and sellers, real estate agents and
+        brokers, mortgage lenders, commercial property
+        professionals, homebuilders and developers, title agencies and legal professionals close transactions. find out
+        more
+        about our products and services, and how First American can help you streamline your transaction and protect
+        your investment.
+      </p>
+      <hr />
+    </div>
   </div>
+  <div class="auth-page__content-block">
+    <div class="auth-page__content-wrapper">
+
+      <div class="auth-page__mt-large">
+        <div class="header background-primary" fxLayout="column" fxLayoutAlign="center center">
+        </div>
+        <div class="padding card-body" fxLayout="column" fxLayoutGap="16px" [formGroup]="form">
+          <div fxFlex="auto" fxLayout="column">
+            <mat-label class="text-center">
+              <img class="auth-page__logo-img" src="https://www.firstam.com/assets/lib/core/1.7/img/head-logo.png"
+                alt="logo">
+
+            </mat-label>
+            <mat-form-field fxFlex="grow" appearance="fill">
+              <mat-label>E-Mail</mat-label>
+              <input matInput required formControlName="email" [pattern]="constantService.EMAIL_PATTERN">
+              <button type="button" mat-icon-button matSuffix color="primary">
+                <mat-icon>person</mat-icon>
+              </button>
+            </mat-form-field>
+            <mat-form-field fxFlex="grow" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="inputType" formControlName="password" required>
+              <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()" color="primary"
+                matTooltip="Toggle Visibility">
+                <mat-icon *ngIf="visible">visibility</mat-icon>
+                <mat-icon *ngIf="!visible">visibility_off</mat-icon>
+              </button>
+              <mat-hint>Click the eye to toggle visibility</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <button type="button" mat-raised-button color="primary" [disabled]="form.invalid" (click)="onClickSignIn()">
+            SIGN IN
+          </button>
+          <mat-hint>@2021 First American Financial Corporation.</mat-hint>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

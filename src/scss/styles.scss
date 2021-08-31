@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import './theme';
+@import "./theme";
 @import "./variables";
 
 html,
@@ -7,14 +7,15 @@ body {
   height: 100%;
 }
 
-.w-15 {
-  max-width: 15%;
-}
 .w-10 {
   max-width: 10%;
 }
+.w-15 {
+  max-width: 15%;
+}
 .scroll-table-container {
-  height: 400px;
+  max-height: 80vh;
+  height: 50vh;
   overflow: auto;
 }
 
@@ -24,19 +25,16 @@ body {
 .snackbar-error {
   background: mat-color($theme-warn);
 }
+/** mat-table css **/
+.mat-header-cell {
+  color: $color-black;
+  font-weight: bold;
+}
 
+/** mat-table css **/
 .background-white {
   background: $color-white;
 }
-
-
-/** mat-table css **/
-.mat-header-cell {
-  color:$color-black;
-  font-weight: bold;
-}
-/** mat-table css **/
-
 .custom-dialog-container .mat-dialog-container {
   width: 600px;
   height: 400px;

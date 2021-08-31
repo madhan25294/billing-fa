@@ -11,9 +11,9 @@ import { BodyComponent } from './body/body.component';
   imports: [
     CommonModule,
     RouterModule,
+    MaterialModule,
     FormsModule,
-    ReactiveFormsModule,
-    MaterialModule
+    ReactiveFormsModule
   ],
   exports: [
     BodyComponent
