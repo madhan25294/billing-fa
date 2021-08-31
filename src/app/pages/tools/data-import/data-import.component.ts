@@ -14,6 +14,7 @@ import { ConstantService } from '../../../services/constant.service';
   styleUrls: ['./data-import.component.scss']
 })
 export class DataImportComponent implements OnInit {
+  readonly ERROR_MESSAGES = ERROR_MESSAGES;
   inputDataObj: { [key: string]: any; };
   srcType: Array<any>;
   public dataList = new MatTableDataSource();

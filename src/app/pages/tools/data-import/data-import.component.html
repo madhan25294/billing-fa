@@ -4,11 +4,11 @@
   <div class="mb-3 row">
     <label for="inputForm" class="col-lg-2 col-md-2 my-auto text-center">Input From</label>
     <div class="col-lg-4 col-md-4">
-      <mat-form-field class="width100" id="inputForm" appearance="standard">
+      <mat-form-field class="full-width" id="inputForm" appearance="standard">
         <input matInput placeholder="Enter value" [(ngModel)]="inputDataObj.searchText" value="">
       </mat-form-field>
       <mat-error *ngIf="inputDataObj.searchText.length > 50">
-        Text should not be longerthan 50 characters
+        Text should not be longer than 50 characters
      </mat-error>
     </div>
 
@@ -19,7 +19,7 @@
   <div class="mb-3 row">
     <label for="srcType" class="col-lg-2 col-md-2 my-auto text-center">Source Type</label>
     <div class="col-lg-4 col-md-4">
-      <mat-form-field appearance="standard" id="srcType" class="width100">
+      <mat-form-field appearance="standard" id="srcType" class="full-width">
         <mat-select value ="{{inputDataObj.srcTypeId}}">
           <mat-option value="{{item.transSourceId}}" (click)="inputDataObj.srcTypeId = item.transSourceId" *ngFor="let item of srcType">{{item.sourceDesc}}</mat-option>
         </mat-select>
@@ -29,10 +29,10 @@
   <div class="mb-3 row">
     <label for="billingPeriod" class="col-lg-2 col-md-2 my-auto text-center">Billing Period</label>
     <div class="col-lg-4 col-md-4">
-      <mat-form-field class="width100" id="billingPeriod">
+      <mat-form-field class="full-width" id="billingPeriod">
         <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate [(ngModel)]="inputDataObj.billingPeriod.startDate" placeholder="From Date">
-          <input matEndDate [(ngModel)]="inputDataObj.billingPeriod.endDate" placeholder="To Date">
+          <input readonly  matStartDate [(ngModel)]="inputDataObj.billingPeriod.startDate" placeholder="From Date">
+          <input readonly  matEndDate [(ngModel)]="inputDataObj.billingPeriod.endDate" placeholder="To Date">
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
@@ -40,16 +40,14 @@
       </mat-form-field>
     </div>
     <div class="col-lg-3 col-md-3">
-      <button class="btn btn-secondary" type="button" (click)="searchItems()">Select</button>
+      <button class="btn btn-secondary" type="button" (click)="searchItems()">Search</button>
     </div>
   </div>
 
   <br>
-
   <div class="container">
-    <div class="row scroll-datatable mat-elevation-z8">
+    <div class="row scroll-datatable mat-elevation-z8" *ngIf="dataList.data.length > 0">
       <mat-table [dataSource]="dataList" class="">
-        'id', 'fileName', 'processedFileDate', 'validateFileDate', 'receivedFileDate', 'validatedUserName'
         <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef > Id </mat-header-cell>
           <mat-cell *matCellDef="let element" > {{element.id}} </mat-cell>
@@ -89,4 +87,5 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>
+    <div class="align-center" *ngIf="!(dataList.data.length > 0)"> <b>{{ERROR_MESSAGES.NO_RECORDS}}</b></div>
   </div>
