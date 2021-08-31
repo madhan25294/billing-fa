@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { ERROR_MESSAGES } from '../../../constants/data-import';
+// models
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
 // services
@@ -43,9 +44,9 @@ export class DataImportComponent implements OnInit {
   searchItems() {
     this.dataImportService.getImportDataFiles(this.inputDataObj.searchText, this.inputDataObj.srcTypeId,
       this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
-      .subscribe((result: any) => {
+      .subscribe((searchedResults) => {
         // this.snackBService.success('', '');
-        this.dataList.data = result || [];
+        this.dataList.data = searchedResults || [];
       }, (err: any) => {
         this.snackBService.error(err.error, '');
       })
@@ -53,9 +54,9 @@ export class DataImportComponent implements OnInit {
 
   getAllSourceTypes() {
     this.dataImportService.getSourceTypes()
-      .subscribe((result: any) => {
+      .subscribe((sourceTypes) => {
         // this.snackBService.success('', '');
-        this.srcType = result || [];
+        this.srcType = sourceTypes || [];
         this.searchItems();
       }, (err: any) => {
         this.snackBService.error(err.error, '');
@@ -63,12 +64,13 @@ export class DataImportComponent implements OnInit {
   }
 
   openDialog(selectedData: { [key: string]: any; }) {
-    const dialogRef = this.dialog.open(DialogContentDialog,
+    const dialogRef = this.dialog.open(ViewLogsDialogContent,
       {
         data: {
           modelData: selectedData
         },
-        panelClass: 'custom-dialog-container'
+        width: '600px',
+        height: '400px',
       });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -76,28 +78,28 @@ export class DataImportComponent implements OnInit {
     });
   }
 
-  openLogs(selectedRow:  { [key: string]: any; }) {
-    this.dataImportService.getViewLogsData(selectedRow.id,selectedRow.sourceId,selectedRow.periodId)
-    .subscribe((response: any) => {
-      this.openDialog(response);
-    }, err => {
-      this.snackBService.error(err.error, '');
-    })
+  openLogs(selectedRow: { [key: string]: any; }) {
+    this.dataImportService.getViewLogsData(selectedRow.id, selectedRow.sourceId, selectedRow.periodId)
+      .subscribe((viewLogData) => {
+        this.openDialog(viewLogData);
+      }, err => {
+        this.snackBService.error(err.error, '');
+      })
   }
 
 }
 
 @Component({
-  selector: 'dialog-content.html',
-  templateUrl: 'dialog-content.html',
+  selector: 'viewlogs-dialog-content',
+  templateUrl: 'viewlogs-dialog-content.html',
   styleUrls: ['./data-import.component.scss']
 })
-export class DialogContentDialog {
+export class ViewLogsDialogContent {
   displayedColumns: string[];
   dataSource: Array<any>;
   keyValues: { [key: string]: any; };
   constructor(@Inject(MAT_DIALOG_DATA) public data: { [key: string]: any; }) {
-    this.displayedColumns = this.data.modelData.logs[0] ? Object.keys(this.data.modelData.logs[0]): [];
+    this.displayedColumns = this.data.modelData.logs[0] ? Object.keys(this.data.modelData.logs[0]) : [];
     this.dataSource = this.data.modelData.logs;
     this.keyValues = {
       sourceDesc: this.data.modelData.sourceDesc || '',

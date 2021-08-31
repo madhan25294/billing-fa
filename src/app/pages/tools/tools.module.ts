@@ -5,11 +5,11 @@ import { MaterialModule } from '../../layout/material-component.module';
 import { AllFilesComponent } from './all-files/all-files.component';
 import { ToolsRoutingModule } from './tools.routing.module';
 import { DataImportComponent } from './data-import/data-import.component';
-import { DialogContentDialog } from './data-import/data-import.component';
+import { ViewLogsDialogContent } from './data-import/data-import.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [AllFilesComponent, DataImportComponent,DialogContentDialog],
+  declarations: [AllFilesComponent, DataImportComponent,ViewLogsDialogContent],
   imports: [
     CommonModule,
     RouterModule,
