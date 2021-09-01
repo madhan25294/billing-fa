@@ -30,12 +30,12 @@
     <label for="billingPeriod" class="col-lg-2 col-md-2 my-auto text-center">Billing Period</label>
     <div class="col-lg-4 col-md-4">
       <mat-form-field class="full-width" id="billingPeriod">
-        <mat-date-range-input [rangePicker]="picker">
+        <mat-date-range-input [rangePicker]="picker" [max]="currentDate">
           <input readonly  matStartDate [(ngModel)]="inputDataObj.billingPeriod.startDate" placeholder="From Date">
           <input readonly  matEndDate [(ngModel)]="inputDataObj.billingPeriod.endDate" placeholder="To Date">
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-date-range-picker #picker ></mat-date-range-picker>
 
       </mat-form-field>
     </div>
@@ -87,5 +87,5 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>
-    <div class="align-center" *ngIf="!(dataList.data.length > 0)"> <b>{{ERROR_MESSAGES.NO_RECORDS}}</b></div>
+    <div class="align-center" *ngIf="!(dataList.data.length > 0) && checkIsRecords"> <b>{{WARNING_MESSAGES.NO_RECORDS}}</b></div>
   </div>

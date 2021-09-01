@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ERROR_MESSAGES } from '../../../constants/data-import';
+import { WARNING_MESSAGES } from '../../../constants/warning-messages';
 // models
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
@@ -14,28 +14,30 @@ import { ConstantService } from '../../../services/constant.service';
   styleUrls: ['./data-import.component.scss']
 })
 export class DataImportComponent implements OnInit {
-  readonly ERROR_MESSAGES = ERROR_MESSAGES;
-  inputDataObj: { [key: string]: any; };
-  srcType: Array<any>;
+  readonly WARNING_MESSAGES = WARNING_MESSAGES;
+  public inputDataObj: { [key: string]: any; };
+  public checkIsRecords: boolean;
+  public srcType: Array<any>;
   public dataList = new MatTableDataSource();
   public displayedColumns: string[] = ['id', 'fileName', 'processedFileDate', 'validateFileDate', 'receivedFileDate', 'validatedUserName', 'logs'];
-
+  public currentDate: { [key: string]: any; };
   constructor(
     private snackBService: SnackBarService,
     private dataImportService: DataImportService,
     private constantService: ConstantService,
     public dialog: MatDialog) {
-    const currentDate = new Date();
+    this.currentDate = new Date();
     this.inputDataObj = {
       searchText: '',
       srcType: 'all',
       srcTypeId: '0',
       billingPeriod: {
-        startDate: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
-        endDate: new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)
+        startDate: new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1),
+        endDate: new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0)
       }
     }
     this.srcType = [];
+    this.checkIsRecords = false;
   }
 
   ngOnInit() {
@@ -46,9 +48,10 @@ export class DataImportComponent implements OnInit {
     this.dataImportService.getImportDataFiles(this.inputDataObj.searchText, this.inputDataObj.srcTypeId,
       this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
       .subscribe((searchedResults) => {
-        // this.snackBService.success('', '');
         this.dataList.data = searchedResults || [];
+        this.checkIsRecords = true;
       }, (err: any) => {
+        this.checkIsRecords = true;
         this.snackBService.error(err.error, '');
       })
   }
@@ -56,7 +59,6 @@ export class DataImportComponent implements OnInit {
   getAllSourceTypes() {
     this.dataImportService.getSourceTypes()
       .subscribe((sourceTypes) => {
-        // this.snackBService.success('', '');
         this.srcType = sourceTypes || [];
         this.searchItems();
       }, (err: any) => {
@@ -75,7 +77,6 @@ export class DataImportComponent implements OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

@@ -1,25 +1,25 @@
 export class GetSourceTypes {
-  "transSourceId": number;
-  "sourceDesc": string
+  "transSourceId": number | null;
+  "sourceDesc": string | null
 }
 
 export class GetImportDataSearchResults {
-  "id": number;
-  "fileName": string;
-  "sourceId": number;
-  "periodId": string;
-  "receivedFileDate": string;
-  "validateFileDate": string;
-  "processedFileDate": string;
-  "validatedUserName": string;
+  "id": number | null;
+  "fileName": string | null;
+  "sourceId": number | null;
+  "periodId": string | null;
+  "receivedFileDate": string | null;
+  "validateFileDate": string | null;
+  "processedFileDate": string | null;
+  "validatedUserName": string | null;
 }
 
 export class GetViewLogsData {
   "statusCode": string | null;
   "statusMessage": string | null;
-  "transactionSourceID": number;
+  "transactionSourceID": number | null;
   "sourceDesc": string | null;
-  "importedDatetime": string | number;
+  "importedDatetime": string | number | null;
   "periodID": number | null;
   "fromDate": string | null;
   "toDate": string | null;
@@ -29,5 +29,5 @@ export class GetViewLogsData {
   "rowsImported": number | null;
   "totalDollars": number | null;
   "quantity": number | null;
-  "logs": Array<any>;
+  "logs": Array<any> | null;
 }
