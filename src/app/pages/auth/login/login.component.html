@@ -22,38 +22,48 @@
       <div class="auth-page__mt-large">
         <div class="header background-primary" fxLayout="column" fxLayoutAlign="center center">
         </div>
-        <div class="padding card-body" fxLayout="column" fxLayoutGap="16px" [formGroup]="form">
+        <form novalidate #loginFormGroup="ngForm" (ngSubmit)="loginFormGroup.valid && onClickSignIn()">
+
+
           <div fxFlex="auto" fxLayout="column">
             <mat-label class="text-center">
               <img class="auth-page__logo-img" src="https://www.firstam.com/assets/lib/core/1.7/img/head-logo.png"
                 alt="logo">
 
             </mat-label>
-            <mat-form-field fxFlex="grow" appearance="fill">
-              <mat-label>E-Mail</mat-label>
-              <input matInput required formControlName="email" [pattern]="constantService.EMAIL_PATTERN">
+           
+
+            <mat-form-field fxFlex="grow" appearance="fill" class="mb-1">
+              <mat-label>User Name</mat-label>
+              <input matInput  name="textName" [(ngModel)]="userName" #textName="ngModel" required [minLength]="5">
               <button type="button" mat-icon-button matSuffix color="primary">
                 <mat-icon>person</mat-icon>
               </button>
+              <mat-error *ngIf="textName.errors?.required">
+                Please enter user name
+              </mat-error>
             </mat-form-field>
-            <mat-form-field fxFlex="grow" appearance="fill">
+            <mat-form-field fxFlex="grow" appearance="fill" class="mb-1">
               <mat-label>Password</mat-label>
-              <input matInput [type]="inputType" formControlName="password" required>
+              <input matInput [type]="inputType" name="txtPassword" [(ngModel)]="password" #txtPassword="ngModel" required [minLength]="5">
               <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()" color="primary"
                 matTooltip="Toggle Visibility">
                 <mat-icon *ngIf="visible">visibility</mat-icon>
                 <mat-icon *ngIf="!visible">visibility_off</mat-icon>
               </button>
               <mat-hint>Click the eye to toggle visibility</mat-hint>
+              <mat-error *ngIf="txtPassword.errors?.required">
+                Please enter password
+              </mat-error>
             </mat-form-field>
-          </div>
 
-          <button type="button" mat-raised-button color="primary" [disabled]="form.invalid" (click)="onClickSignIn()">
+          <button type="submit" mat-raised-button color="primary" [disabled]="loginFormGroup.invalid">
             SIGN IN
           </button>
-          <mat-hint>@2021 First American Financial Corporation.</mat-hint>
+          <mat-hint  class="mt-1">@2021 First American Financial Corporation.</mat-hint>
 
         </div>
+        </form>
       </div>
 
     </div>

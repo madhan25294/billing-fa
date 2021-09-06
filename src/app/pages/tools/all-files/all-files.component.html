@@ -48,8 +48,7 @@
 
         <!-- 1 File Importing  4 File Processing 5 Process Completed 6 Import Failure 7 Process Failure-->
         <ng-template #elseBlock>
-          <button mat-flat-button (click)="$event.preventDefault()" [disableRipple]="true" name="btn-{{element.id}}"
-            id="btn-{{element.id}}">{{fileStatus[element.fileProcessStatus]}}</button>
+          {{fileStatus[element.fileProcessStatus]}}
         </ng-template>
 
       </mat-cell>

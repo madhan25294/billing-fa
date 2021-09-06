@@ -1,8 +1,8 @@
 export const API_URL = {
   AUTH: {
-    LOGIN: '/Login',
+    LOGIN: '/Account/Login',
     UPDATE_PASSWORD: '/ChangePassword',
-    LOGOUT: '/Logout'
+    REFRESH_TOKEN: '/RefreshToken'
   },
   GET_FILES: '/ImportData/GetFiles',
   UPDATE_FILE_STATUS: '/ImportData/UpdateFileStatus',

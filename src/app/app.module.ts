@@ -14,6 +14,7 @@ import { AuthModule } from './pages/auth/auth.module';
 import { AuthGuard } from './services/auth-guard.service';
 import { EventService } from './services/event.service';
 import { RouterModule } from '@angular/router';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { RouterModule } from '@angular/router';
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     AuthGuard,
     EventService,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,3 @@
-import { ConstantService } from './constant.service';
 import {
   HttpErrorResponse,
   HttpHandler,
@@ -11,12 +10,12 @@ import { LOCAL_STORAGE_KEY } from "../constants/local-storage";
 import { Router } from "@angular/router";
 import { Util } from 'src/app/utils/util';
 import { tap } from "rxjs/operators";
+import { SnackBarService } from './snack-bar.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router,
-    private constantService: ConstantService) {}
+  constructor(private router: Router,private snackBService: SnackBarService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const token = Util.getStorage(LOCAL_STORAGE_KEY.TOKEN);
@@ -26,7 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
     headers['Accept'] = 'application/json';
 
     if (token) {
-     // headers['Authorization'] = 'bearer ' + token;
+     headers['Authorization'] = 'bearer ' + token;
     }
 
     
@@ -39,7 +38,7 @@ export class AuthInterceptor implements HttpInterceptor {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
               Util.clearStorage();
-            //  this.constantService.error("Session is expired");
+              this.snackBService.error("Session is expired");
               this.router.navigate(["./login"]);
             } else {
               return;
