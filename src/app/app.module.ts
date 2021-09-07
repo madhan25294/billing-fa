@@ -6,15 +6,15 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AuthInterceptor } from "./services/auth-interceptor.service";
+import { AuthInterceptor } from "./shared/auth-interceptor.service";
 import { LayoutModule } from "./layout/layout.module";
 import { AppRoutingModule } from './app.routing.module';
 import { ToolsModule } from './pages/tools/tools.module';
 import { AuthModule } from './pages/auth/auth.module';
-import { AuthGuard } from './services/auth-guard.service';
-import { EventService } from './services/event.service';
+import { AuthGuard } from './shared/auth-guard.service';
+import { EventService } from './shared/event.service';
 import { RouterModule } from '@angular/router';
-import { UserService } from './services/user.service';
+import { UserService } from './shared/user.service';
 
 @NgModule({
   declarations: [AppComponent],

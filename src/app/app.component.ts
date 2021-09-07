@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatIconRegistry } from "@angular/material/icon";
 import { LOCAL_STORAGE_KEY } from './constants/local-storage';
-import { EventService } from './services/event.service';
+import { EventService } from './shared/event.service';
 import { Util } from './utils/util';
 
 @Component({
@@ -26,6 +26,5 @@ export class AppComponent implements OnInit{
       this.eventService.loggedIn.next(true);
     }
   }
-
   
 }

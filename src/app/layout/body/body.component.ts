@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { EventService } from 'src/app/services/event.service';
-import { Util } from 'src/app/utils/util';
+import { EventService } from '../../shared/event.service';
+import { Util } from '../../utils/util';
 
 @Component({
   selector: 'app-body',

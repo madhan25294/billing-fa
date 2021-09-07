@@ -1,12 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage';
-import { ConstantService } from 'src/app/services/constant.service';
-import { EventService } from 'src/app/services/event.service';
-import { SnackBarService } from 'src/app/services/snack-bar.service';
-import { UserService } from 'src/app/services/user.service';
-import { Util } from 'src/app/utils/util';
+import { finalize } from 'rxjs/operators';
+import { LOCAL_STORAGE_KEY } from '../../../constants/local-storage';
+import { ConstantService } from '../../../shared/constant.service';
+import { EventService } from '../../../shared/event.service';
+import { SnackBarService } from '../../../shared/snack-bar.service';
+import { UserService } from '../../../shared/user.service';
+import { Util } from '../../../utils/util';
+import { AuthenticationToken } from '../auth-token';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -19,11 +21,7 @@ export class LoginComponent implements OnInit {
   public visible = false;
   public userName:string='';
   public password:string='';
-  // form: FormGroup;
-  // public form: FormGroup  = this.fb.group({
-  //   userName: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
-  //   password: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)])
-  // });
+  public isClickedOnce: boolean;
 
   
   
@@ -32,16 +30,11 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private snackBService: SnackBarService,
     private eventService: EventService, private cd: ChangeDetectorRef,) {
-      
+    this.isClickedOnce = false;  
     this.eventService.loggedIn.next(false);
   }
   ngOnInit() {
-    
     Util.clearStorage();
-    // this.form = this.fb.group({
-    //   userName: ['', Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)],
-    //   password: ['', Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]
-    // });
   }
 
 
@@ -58,23 +51,43 @@ export class LoginComponent implements OnInit {
   }
 
   public getUserDetails() {
-     }
-
-
+    return new Promise((resolve, reject) => {
+      this.userService.getUserDetails().subscribe(data => {
+        if (Util.isDefinedAndNotNull(data)) {
+          Util.setStorage(LOCAL_STORAGE_KEY.USERNAME, data);
+          resolve(data);
+        }
+      }, (error) => {
+        reject(error);
+      });
+    })
+  }
+  
   onClickSignIn() {
+    this.isClickedOnce = true;
     const usersName = this.userName.replace ("\\\\", "\\")
-    this.userService.signIn(usersName, this.password).subscribe((res: any) => {
+    this.userService.signIn(usersName, this.password)
+    .pipe(
+      finalize(() => {
+        this.isClickedOnce = false;
+      })
+    ).subscribe((res: AuthenticationToken) => {
       Util.setStorage(LOCAL_STORAGE_KEY.TOKEN, res.token);
-      this.eventService.loggedIn.next(true);
-      this.snackBService.success('Login successfull');
-      this.router.navigate(['./tools/files']);
+      Util.setStorage(LOCAL_STORAGE_KEY.TOKENEXPIRATION, res.tokenExpiration);
+      Promise.all([this.getUserDetails()]).then((data) => {
+        this.eventService.loggedIn.next(true);
+        this.snackBService.success('Login successfull');
+        this.router.navigate(['./tools/files']);
+      }).catch((error) => {
+        this.snackBService.error('Error while getting user details');
+      });
 
-     
-    }, (error: HttpErrorResponse) => {
+    },
+     (error: HttpErrorResponse) => {
       if (error.status === 401) {
-        this.snackBService.error('You have entered invalid credentials');
+        this.snackBService.error(error.error || 'The user name or password is incorrect.');
       } else {
-        this.snackBService.error(error?.statusText || 'Internal Server Error');
+        this.snackBService.error(error?.error || 'Internal Server Error for Login');
       }
     });
 

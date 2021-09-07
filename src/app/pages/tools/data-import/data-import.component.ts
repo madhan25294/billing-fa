@@ -3,10 +3,10 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { WARNING_MESSAGES } from '../../../constants/warning-messages';
 // models
 import { MatTableDataSource } from '@angular/material/table';
-import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { SnackBarService } from '../../../shared/snack-bar.service';
 // services
 import { DataImportService } from './data-import.service';
-import { ConstantService } from '../../../services/constant.service';
+import { ConstantService } from '../../../shared/constant.service';
 
 @Component({
   selector: 'app-data-import',
@@ -67,7 +67,7 @@ export class DataImportComponent implements OnInit {
   }
 
   openDialog(selectedData: { [key: string]: any; }) {
-    const dialogRef = this.dialog.open(ViewLogsDialogContent,
+    const dialogRef = this.dialog.open(ViewLogsDialogContentComponent,
       {
         data: {
           modelData: selectedData
@@ -92,11 +92,11 @@ export class DataImportComponent implements OnInit {
 }
 
 @Component({
-  selector: 'viewlogs-dialog-content',
+  selector: 'app-viewlogs-dialog-content',
   templateUrl: 'viewlogs-dialog-content.html',
   styleUrls: ['./data-import.component.scss']
 })
-export class ViewLogsDialogContent {
+export class ViewLogsDialogContentComponent {
   displayedColumns: string[];
   dataSource: Array<any>;
   keyValues: { [key: string]: any; };

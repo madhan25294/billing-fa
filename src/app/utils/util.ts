@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage';
+import { LOCAL_STORAGE_KEY } from '../constants/local-storage';
 
 interface callbackFunc {
   (data: any): any;
@@ -128,41 +128,6 @@ export class Util {
     replaceWith: any
   ): string {
     return value.replace(new RegExp(replaceString, "g"), replaceWith);
-  }
-
-  public static splitIntoSubArray(
-    data: Array<any>,
-    start: number,
-    end: number
-  ): Array<any> {
-    let dataSet = [];
-    if (Util.isDefinedAndNotNull(data)) {
-      dataSet = data.slice(start, end);
-    }
-    return dataSet;
-  }
-
-
-  public static compare(obj1: any, obj2: any) {
-    for (var p in obj1) {
-      if (obj1.hasOwnProperty(p) !== obj2.hasOwnProperty(p)) return false;
-   
-      switch (typeof (obj1[p])) {
-        case 'object':
-          if (!this.compare(obj1[p], obj2[p])) return false;
-          break;
-        case 'function':
-          if (typeof (obj2[p]) == 'undefined' || (p != 'compare' && obj1[p].toString() != obj2[p].toString())) return false;
-          break;
-        default:
-          if (obj1[p] != obj2[p]) return false;
-      }
-    }
-   
-    for (var p in obj2) {
-      if (typeof (obj1[p]) == 'undefined') return false;
-    }
-    return true;
   }
 
   public static setStorage(key: string, value: any) {

@@ -2,10 +2,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { MatTableDataSource } from '@angular/material/table';
-import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { SnackBarService } from '../../../shared/snack-bar.service';
 import { GetFiles } from './all-files.model';
 import { AllFilesService } from './all-files.service';
 import { FILE_PROCESSING_STATUS } from '../../../constants/processing-status';
+import { LOCAL_STORAGE_KEY } from '../../../constants/local-storage';
+import { Util } from '../../../utils/util';
 
 
 @Component({
@@ -36,16 +38,19 @@ export class AllFilesComponent implements OnInit {
   }
 
   public updateFileStatus(element: any) {
-    const userAction = (element.fileProcessStatus === 0 ? 'R' : (element.fileProcessStatus === 2 ? 'V' : 'P'));
-    const fileData = { fileID: element.id, userAction: userAction, userName: 'mkumbhar' };
-    this.allFilesService.updateFileStatus(fileData)
-      .subscribe((data) => {
-        this.snackBService.success(data);
-        this.getAllFiles();
-      }, (err: HttpErrorResponse) => {
-        this.snackBService.error("Error occured");
-      });
-  }
+    const userName = Util.getStorage(LOCAL_STORAGE_KEY.USERNAME) || '';
+    if(Util.isDefinedAndNotNull(userName)) {
 
+      const userAction = (element.fileProcessStatus === 0 ? 'R' : (element.fileProcessStatus === 2 ? 'V' : 'P'));
+      const fileData = { fileID: element.id, userAction: userAction, userName: userName };
+      this.allFilesService.updateFileStatus(fileData)
+        .subscribe((data) => {
+          this.snackBService.success(data);
+          this.getAllFiles();
+        }, (err: HttpErrorResponse) => {
+          this.snackBService.error("Error occured");
+        });
+    }
+  }
 
 }
