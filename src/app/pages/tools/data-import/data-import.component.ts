@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { WARNING_MESSAGES } from '../../../constants/warning-messages';
+
 // models
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackBarService } from '../../../shared/snack-bar.service';
@@ -11,33 +11,73 @@ import { ConstantService } from '../../../shared/constant.service';
 @Component({
   selector: 'app-data-import',
   templateUrl: './data-import.component.html',
-  styleUrls: ['./data-import.component.scss']
+  styleUrls: ['./data-import.component.scss'],
 })
 export class DataImportComponent implements OnInit {
-  readonly WARNING_MESSAGES = WARNING_MESSAGES;
-  public inputDataObj: { [key: string]: any; };
+  public inputDataObj: { [key: string]: any };
   public checkIsRecords: boolean;
   public srcType: Array<any>;
   public dataList = new MatTableDataSource();
-  public displayedColumns: string[] = ['id', 'fileName', 'processedFileDate', 'validateFileDate', 'receivedFileDate', 'validatedUserName', 'logs'];
-  public currentDate: { [key: string]: any; };
+  public displayedColumns: string[] = [
+    'id',
+    'fileName',
+    'processedFileDate',
+    'validateFileDate',
+    'receivedFileDate',
+    'validatedUserName',
+    'logs',
+  ];
+  public currentDate: { [key: string]: any };
   constructor(
     private snackBService: SnackBarService,
     private dataImportService: DataImportService,
-    private constantService: ConstantService,
-    public dialog: MatDialog) {
+    public constantService: ConstantService,
+    public dialog: MatDialog
+  ) {
     this.currentDate = new Date();
     this.inputDataObj = {
       searchText: '',
       srcType: 'all',
       srcTypeId: '0',
       billingPeriod: {
-        startDate: new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1),
-        endDate: new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0)
-      }
-    }
+        startDate: new Date(
+          this.currentDate.getFullYear(),
+          this.currentDate.getMonth(),
+          1
+        ),
+        endDate: new Date(
+          this.currentDate.getFullYear(),
+          this.currentDate.getMonth() + 1,
+          0
+        ),
+      },
+    };
     this.srcType = [];
     this.checkIsRecords = false;
+  }
+
+  initInputDataObj() {
+    this.currentDate = new Date();
+    this.inputDataObj = {
+      searchText: '',
+      srcType: 'all',
+      srcTypeId: '0',
+      billingPeriod: {
+        startDate: new Date(
+          this.currentDate.getFullYear(),
+          this.currentDate.getMonth(),
+          1
+        ),
+        endDate: new Date(
+          this.currentDate.getFullYear(),
+          this.currentDate.getMonth() + 1,
+          0
+        ),
+      },
+    };
+    this.srcType = [];
+    this.checkIsRecords = false;
+    this.dataList.data = [];
   }
 
   ngOnInit() {
@@ -45,63 +85,85 @@ export class DataImportComponent implements OnInit {
   }
 
   searchItems() {
-    this.dataImportService.getImportDataFiles(this.inputDataObj.searchText, this.inputDataObj.srcTypeId,
-      this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.startDate), this.constantService.getFormattedDate(this.inputDataObj.billingPeriod.endDate))
-      .subscribe((searchedResults) => {
-        this.dataList.data = searchedResults || [];
-        this.checkIsRecords = true;
-      }, (err: any) => {
-        this.checkIsRecords = true;
-        this.snackBService.error(err.error, '');
-      })
+    this.dataImportService
+      .getImportDataFiles(
+        this.inputDataObj.searchText,
+        this.inputDataObj.srcTypeId,
+        this.constantService.getFormattedDate(
+          this.inputDataObj.billingPeriod.startDate
+        ),
+        this.constantService.getFormattedDate(
+          this.inputDataObj.billingPeriod.endDate
+        )
+      )
+      .subscribe(
+        (searchedResults) => {
+          this.dataList.data = searchedResults || [];
+          this.checkIsRecords = true;
+        },
+        (err: any) => {
+          this.checkIsRecords = true;
+          this.snackBService.error(err.error, '');
+        }
+      );
   }
 
   getAllSourceTypes() {
-    this.dataImportService.getSourceTypes()
-      .subscribe((sourceTypes) => {
+    this.dataImportService.getSourceTypes().subscribe(
+      (sourceTypes) => {
         this.srcType = sourceTypes || [];
         this.searchItems();
-      }, (err: any) => {
+      },
+      (err: any) => {
         this.snackBService.error(err.error, '');
-      })
+      }
+    );
   }
 
-  openDialog(selectedData: { [key: string]: any; }) {
-    const dialogRef = this.dialog.open(ViewLogsDialogContentComponent,
-      {
-        data: {
-          modelData: selectedData
-        },
-        width: '600px',
-        height: '400px',
-      });
-
-    dialogRef.afterClosed().subscribe(result => {
+  openDialog(selectedData: { [key: string]: any }) {
+    const dialogRef = this.dialog.open(ViewLogsDialogContentComponent, {
+      data: {
+        modelData: selectedData,
+      },
+      width: '600px',
+      height: '400px',
     });
+
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
-  openLogs(selectedRow: { [key: string]: any; }) {
-    this.dataImportService.getViewLogsData(selectedRow.id, selectedRow.sourceId, selectedRow.periodId)
-      .subscribe((viewLogData) => {
-        this.openDialog(viewLogData);
-      }, err => {
-        this.snackBService.error(err.error, '');
-      })
+  openLogs(selectedRow: { [key: string]: any }) {
+    this.dataImportService
+      .getViewLogsData(
+        selectedRow.id,
+        selectedRow.sourceId,
+        selectedRow.periodId
+      )
+      .subscribe(
+        (viewLogData) => {
+          this.openDialog(viewLogData);
+        },
+        (err) => {
+          this.snackBService.error(err.error, '');
+        }
+      );
   }
-
+  
 }
 
 @Component({
   selector: 'app-viewlogs-dialog-content',
   templateUrl: 'viewlogs-dialog-content.html',
-  styleUrls: ['./data-import.component.scss']
+  styleUrls: ['./data-import.component.scss'],
 })
 export class ViewLogsDialogContentComponent {
   displayedColumns: string[];
   dataSource: Array<any>;
-  keyValues: { [key: string]: any; };
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { [key: string]: any; }) {
-    this.displayedColumns = this.data.modelData.logs[0] ? Object.keys(this.data.modelData.logs[0]) : [];
+  keyValues: { [key: string]: any };
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { [key: string]: any }) {
+    this.displayedColumns = this.data.modelData.logs[0]
+      ? Object.keys(this.data.modelData.logs[0])
+      : [];
     this.dataSource = this.data.modelData.logs;
     this.keyValues = {
       sourceDesc: this.data.modelData.sourceDesc || '',
@@ -115,8 +177,8 @@ export class ViewLogsDialogContentComponent {
       rowsImported: this.data.modelData.rowsImported || '',
       totalDollars: this.data.modelData.totalDollars || '',
       quantity: this.data.modelData.quantity || '',
-    }
+    };
   }
 
-
+  
 }

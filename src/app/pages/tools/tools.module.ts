@@ -6,8 +6,8 @@ import { AllFilesComponent } from './all-files/all-files.component';
 import { ToolsRoutingModule } from './tools.routing.module';
 import { DataImportComponent } from './data-import/data-import.component';
 import { ViewLogsDialogContentComponent } from './data-import/data-import.component';
+import { FormsModule } from '@angular/forms';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AllFilesComponent, DataImportComponent,ViewLogsDialogContentComponent],
   imports: [
@@ -17,7 +17,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ToolsRoutingModule,
     FormsModule,
     FormsModule,
-    ReactiveFormsModule,
     ToolsRoutingModule,
   ],
   exports: [],

@@ -36,21 +36,18 @@
             <mat-form-field fxFlex="grow" appearance="fill" class="mb-1">
               <mat-label>User Name</mat-label>
               <input matInput  name="textName" [(ngModel)]="userName" #textName="ngModel" required>
-              <button type="button" mat-icon-button matSuffix color="primary">
-                <mat-icon>person</mat-icon>
-              </button>
+              <mat-icon color="primary" matSuffix >person</mat-icon>
               <mat-error *ngIf="textName.errors?.required">
-                Please enter user name
+                Please enter valid user name
               </mat-error>
             </mat-form-field>
             <mat-form-field fxFlex="grow" appearance="fill" class="mb-1">
               <mat-label>Password</mat-label>
               <input matInput [type]="inputType" name="txtPassword" [(ngModel)]="password" #txtPassword="ngModel" required>
-              <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()" color="primary"
-                matTooltip="Toggle Visibility">
-                <mat-icon *ngIf="visible">visibility</mat-icon>
-                <mat-icon *ngIf="!visible">visibility_off</mat-icon>
-              </button>
+                <mat-icon mat-icon-button matSuffix (click)="toggleVisibility()" color="primary" class="cursor-pointer"
+                matTooltip="Toggle Visibility" *ngIf="visible">visibility</mat-icon>
+                <mat-icon mat-icon-button matSuffix (click)="toggleVisibility()" color="primary" class="cursor-pointer"
+                matTooltip="Toggle Visibility" *ngIf="!visible">visibility_off</mat-icon>
               <mat-hint>Click the eye to toggle visibility</mat-hint>
               <mat-error *ngIf="txtPassword.errors?.required">
                 Please enter password
@@ -58,9 +55,9 @@
             </mat-form-field>
 
           <button type="submit" mat-raised-button color="primary" [disabled]="loginFormGroup.invalid || isClickedOnce">
-            SIGN IN
+            LOGIN
           </button>
-          <mat-hint  class="mt-1">@2021 First American Financial Corporation.</mat-hint>
+          <mat-hint  class="mt-5 text-center">© 2021 First American Financial Corporation and/or its affiliates. <div>All rights reserved.</div> </mat-hint>
 
         </div>
         </form>

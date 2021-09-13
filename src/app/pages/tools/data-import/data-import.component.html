@@ -5,9 +5,9 @@
     <label for="inputForm" class="col-lg-2 col-md-2 my-auto text-center">Input From</label>
     <div class="col-lg-4 col-md-4">
       <mat-form-field class="full-width" id="inputForm" appearance="standard">
-        <input matInput placeholder="Enter value" [(ngModel)]="inputDataObj.searchText" value="">
+        <input matInput placeholder="Search" [(ngModel)]="inputDataObj.searchText" value="">
       </mat-form-field>
-      <mat-error *ngIf="inputDataObj.searchText.length > 50">
+      <mat-error *ngIf="inputDataObj.searchText.length>50">
         Text should not be longer than 50 characters
      </mat-error>
     </div>
@@ -30,7 +30,7 @@
     <label for="billingPeriod" class="col-lg-2 col-md-2 my-auto text-center">Billing Period</label>
     <div class="col-lg-4 col-md-4">
       <mat-form-field class="full-width" id="billingPeriod">
-        <mat-date-range-input [rangePicker]="picker" [max]="currentDate">
+        <mat-date-range-input [rangePicker]="picker" [max]="currentDate" (click)="picker.open()">
           <input readonly  matStartDate [(ngModel)]="inputDataObj.billingPeriod.startDate" placeholder="From Date">
           <input readonly  matEndDate [(ngModel)]="inputDataObj.billingPeriod.endDate" placeholder="To Date">
         </mat-date-range-input>
@@ -46,46 +46,47 @@
 
   <br>
   <div class="container">
-    <div class="row scroll-datatable mat-elevation-z8" *ngIf="dataList.data.length > 0">
+    <div class="row scroll-datatable mat-elevation-z8" *ngIf="dataList.data.length>0">
       <mat-table [dataSource]="dataList" class="">
         <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef > Id </mat-header-cell>
-          <mat-cell *matCellDef="let element" > {{element.id}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef class="mat-cell-content-center customWidthClass"> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="mat-cell-content-center customWidthClass"> {{element.id}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="fileName">
           <mat-header-cell *matHeaderCellDef> Source Name </mat-header-cell>
-          <mat-cell *matCellDef="let element" matTooltip={{element.fileName}}> {{element.fileName}} </mat-cell>
+          <mat-cell *matCellDef="let element"  matTooltip={{element.fileName}}> {{element.fileName}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="processedFileDate">
-          <mat-header-cell *matHeaderCellDef> Processed Date </mat-header-cell>
-          <mat-cell *matCellDef="let element" matTooltip={{element.processedFileDate}}> {{(element.processedFileDate | date: 'dd-MM-yyyy') || '-'}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef class="mat-cell-content-center"> Processed Date </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="mat-cell-content-center" matTooltip={{element.processedFileDate}}> {{(element.processedFileDate | date: 'dd-MM-yyyy') || '-'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="validateFileDate">
-          <mat-header-cell *matHeaderCellDef> Validated Date </mat-header-cell>
-          <mat-cell *matCellDef="let element" matTooltip={{element.validateFileDate}}> {{(element.validateFileDate | date: 'dd-MM-yyyy') || '-'}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef class="mat-cell-content-center"> Validated Date </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="mat-cell-content-center" matTooltip={{element.validateFileDate}}> {{(element.validateFileDate | date: 'dd-MM-yyyy') || '-'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="receivedFileDate">
-          <mat-header-cell *matHeaderCellDef> Received Date </mat-header-cell>
-          <mat-cell *matCellDef="let element" matTooltip={{element.receivedFileDate}}> {{(element.receivedFileDate | date: 'dd-MM-yyyy') || '-'}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef class="mat-cell-content-center"> Received Date </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="mat-cell-content-center" matTooltip={{element.receivedFileDate}}> {{(element.receivedFileDate | date: 'dd-MM-yyyy') || '-'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="validatedUserName">
-          <mat-header-cell *matHeaderCellDef> Validated By </mat-header-cell>
-          <mat-cell  *matCellDef="let element" class="anchor"> {{element.validatedUserName || '-'}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef class="mat-cell-content-center"> Validated By </mat-header-cell>
+          <mat-cell  *matCellDef="let element" class="mat-cell-content-center anchor"
+          > {{element.validatedUserName || '-'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="logs">
-          <mat-header-cell *matHeaderCellDef> View Logs </mat-header-cell>
-          <mat-cell *matCellDef="let element" class="anchor" (click)="openLogs(element)"> View Logs </mat-cell>
+          <mat-header-cell *matHeaderCellDef class="mat-cell-content-center"> Logs </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="anchor mat-cell-content-center"  (click)="openLogs(element)"> Logs </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>
-    <div class="align-center" *ngIf="!(dataList.data.length > 0) && checkIsRecords"> <b>{{WARNING_MESSAGES.NO_RECORDS}}</b></div>
+    <div class="align-center" *ngIf="!(dataList.data.length > 0) && checkIsRecords"> <b>{{constantService.NO_RECORDS}}</b></div>
   </div>

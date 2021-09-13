@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { PAGE } from 'src/app/constants/page';
 import { EventService } from '../../shared/event.service';
 import { Util } from '../../utils/util';
 
@@ -11,7 +12,7 @@ import { Util } from '../../utils/util';
 })
 export class BodyComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
-  constructor(private eventService: EventService, private router: Router){
+  constructor(private eventService: EventService, private router: Router) {
     this.isLoggedIn$ = new Observable;
   }
   ngOnInit() {
@@ -21,6 +22,6 @@ export class BodyComponent implements OnInit {
   onLogout() {
     Util.clearStorage();
     this.eventService.loggedIn.next(false);
-    this.router.navigate(['']);
+    this.router.navigate([PAGE.LOGIN]);
   }
 }

@@ -30,7 +30,6 @@ export class Util {
   public static isEmptyRoute(value: any): boolean {
     return value === "/" || value === "./";
   }
-
   public static isObject(value: any): boolean {
     return (
       value &&

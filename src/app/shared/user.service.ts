@@ -9,38 +9,39 @@ import { AuthenticationToken } from '../pages/auth/auth-token';
 import { Router } from '@angular/router';
 import { ConstantService } from './constant.service';
 import { SnackBarService } from './snack-bar.service';
+import { PAGE } from '../constants/page';
 
 @Injectable()
 export class UserService {
 
-  public tokenExpiration : any;
-  constructor(private httpClient: HttpClient, private router: Router, private constantService: ConstantService, private snackBService: SnackBarService) {}
+  public tokenExpiration: any;
+  constructor(private httpClient: HttpClient, private router: Router, private constantService: ConstantService, private snackBService: SnackBarService) { }
 
   public signIn(userName: string, password: string) {
-    return this.httpClient.post<AuthenticationToken>(environment.backendUrl + API_URL.AUTH.LOGIN, { userName, password } );
+    return this.httpClient.post<AuthenticationToken>(environment.backendUrl + API_URL.AUTH.LOGIN, { userName, password });
   }
 
   public getUserDetails() {
     const currentToken = Util.getStorage(LOCAL_STORAGE_KEY.TOKEN);
-    return this.httpClient.get(environment.backendUrl + API_URL.AUTH.USERNAME + '?token=' + currentToken );
+    return this.httpClient.get(environment.backendUrl + API_URL.AUTH.USERNAME + '?token=' + currentToken);
   }
- public isLoggedInActive(): boolean {
-   
+  public isLoggedInActive(): boolean {
+
     const currentToken = Util.getStorage(LOCAL_STORAGE_KEY.TOKEN);
 
-     // before token expiry check ( 5 min early) to make regenerate token call
-     this.tokenExpiration = Util.getStorage(LOCAL_STORAGE_KEY.TOKENEXPIRATION);
-     const expiryTime = new Date(this.tokenExpiration).getTime();
-     const currentTime =new Date(this.constantService.currentUTCFormattedDate()).getTime();
-     const diff = ((currentTime/1000) - (expiryTime/ 1000));
+    // before token expiry check ( 15 min early) to make regenerate token call. If session already inactive do logout
+    this.tokenExpiration = Util.getStorage(LOCAL_STORAGE_KEY.TOKENEXPIRATION);
+    const expiryTime = new Date(this.tokenExpiration).getTime();
+    const currentTime = new Date(this.constantService.currentUTCFormattedDate()).getTime();
+    const diff = ((currentTime / 1000) - (expiryTime / 1000));
 
 
-     if (currentToken && expiryTime && diff <=-900) {
-         return true;
-     }
-     else if (currentToken &&  expiryTime && diff >=-900)  {
-       // call regenerate api
-      this.httpClient.post<AuthenticationToken>(environment.backendUrl + API_URL.AUTH.REGENERATETOKEN + '?token=' +  currentToken,{})
+    if (currentToken && expiryTime && diff <= -900) {
+      return true;
+    }
+    else if (currentToken && expiryTime && (diff > -900 && diff <= -300)) {
+      // call regenerate api
+      this.httpClient.post<AuthenticationToken>(environment.backendUrl + API_URL.AUTH.REGENERATETOKEN, {"accessToken": currentToken})
         .subscribe((res) => {
           if (res) {
             Util.setStorage(LOCAL_STORAGE_KEY.TOKEN, res.token);
@@ -48,11 +49,15 @@ export class UserService {
           }
         }, (error) => {
           this.snackBService.error('Regenerate token call request error');
-          this.router.navigate(['./login']);
-      });
+          this.router.navigate([PAGE.LOGIN]);
+        });
       return true;
-     }
-     return false; 
     }
+    else if (currentToken && expiryTime && diff > -300) {
+      this.snackBService.error('Token expired');
+      this.router.navigate([PAGE.LOGIN]);
+    }
+    return false;
+  }
 
 }

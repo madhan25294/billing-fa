@@ -3,7 +3,7 @@
 @include mat-core();
 
 $theme-primary-hue: 700;
-$theme-accent-hue: 500;
+$theme-accent-hue: 700;
 $theme-warn-hue: 500;
 
 $theme-primary: mat-palette($mat-blue, $theme-primary-hue);

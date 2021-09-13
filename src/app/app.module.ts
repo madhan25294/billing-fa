@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from "./shared/auth-interceptor.service";
 import { LayoutModule } from "./layout/layout.module";
 import { AppRoutingModule } from './app.routing.module';
@@ -23,10 +23,9 @@ import { UserService } from './shared/user.service';
     BrowserAnimationsModule,
     HammerModule,
     RouterModule,
-    LayoutModule,   
+    LayoutModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
     MatNativeDateModule,
     AuthModule,
     ToolsModule,

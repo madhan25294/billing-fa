@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material-component.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { BodyComponent } from './body/body.component';
 
 
@@ -12,8 +12,7 @@ import { BodyComponent } from './body/body.component';
     CommonModule,
     RouterModule,
     MaterialModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   exports: [
     BodyComponent

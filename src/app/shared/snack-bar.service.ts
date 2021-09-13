@@ -15,19 +15,19 @@ export class SnackBarService {
   
     success(message: string, action: string='close') {
       this.snackBar.open(message, action, {
-         duration: 2000,
+         duration: 3000,
          verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
          horizontalPosition: 'right', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
-         panelClass: ['snackbar-success']
+        // panelClass: ['snackbar-success']
       });
     }
 
     error(message: string, action: string='close') {
       this.snackBar.open(message, action, {
-         duration: 2000,
+         duration: 3000,
          verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
          horizontalPosition: 'right', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
-         panelClass: ['snackbar-error']
+         // panelClass: ['snackbar-error']
       });
     }
 }

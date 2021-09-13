@@ -39,7 +39,7 @@ export class AllFilesComponent implements OnInit {
 
   public updateFileStatus(element: any) {
     const userName = Util.getStorage(LOCAL_STORAGE_KEY.USERNAME) || '';
-    if(Util.isDefinedAndNotNull(userName)) {
+    if (Util.isDefinedAndNotNull(userName)) {
 
       const userAction = (element.fileProcessStatus === 0 ? 'R' : (element.fileProcessStatus === 2 ? 'V' : 'P'));
       const fileData = { fileID: element.id, userAction: userAction, userName: userName };
