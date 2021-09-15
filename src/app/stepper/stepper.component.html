@@ -1,59 +1,4 @@
-<!-- <mat-stepper orientation="vertical" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel class="mainTitle">Customer Information</ng-template>
-      <p class="title">Primary Info</p>
-      <div class="blocks">
-        <mat-form-field appearance="fill" class="cmpName">
-          <mat-label>Company Name</mat-label>
-          <input matInput placeholder="Company Name" formControlName="cmpName" required>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="accNum">
-          <mat-label>Account Number</mat-label>
-          <input matInput placeholder="Account Number" formControlName="accNum" required>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="branchCode">
-          <mat-label>Branch Code</mat-label>
-          <input matInput placeholder="Account Number" formControlName="branchCode" required>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="industry">
-          <mat-label>Select</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="btnSection">
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-stepper> -->
-
-
-<mat-stepper orientation="vertical">
+<mat-vertical-stepper orientation="vertical">
   <mat-step>
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel class="mainTitle">Customer Information</ng-template>
@@ -148,4 +93,4 @@
     <p>This content was rendered eagerly</p>
     <button mat-button matStepperPrevious>Back</button>
   </mat-step>
-</mat-stepper>
+</mat-vertical-stepper>
