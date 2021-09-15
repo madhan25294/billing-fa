@@ -76,12 +76,12 @@
         </div>
       </div>
       <div class="btnSection">
-        <button mat-button matStepperNext>Next</button>
+        <button mat-stroked-button class="nextBtn">Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Step 2</ng-template>
+    <ng-template matStepLabel>Oracle Setup</ng-template>
     <ng-template matStepContent>
       <p>This content was also rendered lazily</p>
       <button mat-button matStepperPrevious>Back</button>
@@ -89,7 +89,15 @@
     </ng-template>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Step 3</ng-template>
+    <ng-template matStepLabel>Contract Information</ng-template>
+    <ng-template matStepContent>
+      <p>This content was also rendered lazily</p>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Finish</ng-template>
     <p>This content was rendered eagerly</p>
     <button mat-button matStepperPrevious>Back</button>
   </mat-step>
