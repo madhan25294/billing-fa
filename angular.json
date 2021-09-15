@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "stepper"
+  "defaultProject": "stepper",
+  "cli": {
+    "analytics": false
+  }
 }

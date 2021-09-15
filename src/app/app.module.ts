@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StepperComponent } from './stepper/stepper.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatStepperModule} from '@angular/material/stepper';
-
+//
+import { MaterialModule } from './material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +18,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule, ReactiveFormsModule,
-    MatStepperModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
