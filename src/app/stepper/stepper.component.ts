@@ -7,7 +7,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent implements OnInit {
-  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 

@@ -5,3 +5,59 @@
 .mat-form-field {
   margin-top: 16px;
 }
+mat-vertical-stepper {
+  .mainTitle {
+    font: {
+      family: "Roboto";
+      size: 24px;
+      weight: 300;
+    }
+    line-height: 24px;
+    letter-spacing: 0.18px;
+    color: #000000DE;
+    margin: {
+      bottom: 16px;
+    }
+  }
+  .title {
+    float: left;
+    font: {
+      family: "Roboto";
+      size: 18px;
+      weight: 500;
+    }
+    text-transform: uppercase;
+    letter-spacing: 2.7px;
+    color: #205c9e;
+    position: relative;
+    padding: {
+      bottom: 5px;
+    }
+    margin: {
+      bottom: 16px;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 32px;
+      height: 4px;
+      background: {
+        color: #fccf45;
+      }
+    }
+  }
+  .blocks {
+    float: left;
+    width: 100%;
+    > mat-form-field {
+      margin: {
+        top: 0;
+      }
+    }
+  }
+  .btnSection {
+    float: left;
+  }
+}

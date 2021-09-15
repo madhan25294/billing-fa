@@ -1,15 +1,19 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
-<mat-vertical-stepper orientation="vertical" [linear]="isLinear" #stepper>
+<mat-vertical-stepper orientation="vertical" #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
+      <ng-template matStepLabel class="mainTitle">Customer Information</ng-template>
+      <p class="title">Primary Info</p>
+      <div class="blocks">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Company Name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field>
+      </div>
+      <div class="btnSection">
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
@@ -19,8 +23,7 @@
       <ng-template matStepLabel>Fill out your address</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
