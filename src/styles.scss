@@ -1,4 +1,38 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-checkbox-inner-container {
+  width: 30px !important;
+  height: 30px !important;
+}
+.mat-checkbox-label {
+  margin: {
+    top: 3px;
+  }
+  font: {
+    family: "Roboto";
+    size: 16px;
+    weight: 400;
+  }
+  letter-spacing: 0.5px;
+  color: rgba(0, 0, 0, 0.87);
+}
+.addContactBtn {
+  float: left;
+  > span.mat-button-wrapper {
+    font: {
+      family: "Roboto";
+      size: 14px;
+      weight: 500;
+    }
+    color: rgba(0, 0, 0, 0.3);
+  }
+}

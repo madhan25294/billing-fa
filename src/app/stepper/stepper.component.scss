@@ -5,7 +5,7 @@
 .mat-form-field {
   margin-top: 16px;
 }
-mat-vertical-stepper {
+mat-stepper {
   .mainTitle {
     font: {
       family: "Roboto";
@@ -14,21 +14,30 @@ mat-vertical-stepper {
     }
     line-height: 24px;
     letter-spacing: 0.18px;
-    color: #000000DE;
+    color: #000000de;
     margin: {
       bottom: 16px;
+    }
+  }
+  .cusInfoblock {
+    width: 100%;
+    float: left;
+    &:not(:first-child) {
+      margin: {
+        top: 24px;
+      }
     }
   }
   .title {
     float: left;
     font: {
       family: "Roboto";
-      size: 18px;
-      weight: 500;
+      size: 16px;
+      weight: 400;
     }
     text-transform: uppercase;
     letter-spacing: 2.7px;
-    color: #205c9e;
+    color: rgba(0, 0, 0, 0.6);
     position: relative;
     padding: {
       bottom: 5px;
@@ -44,20 +53,92 @@ mat-vertical-stepper {
       width: 32px;
       height: 4px;
       background: {
-        color: #fccf45;
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+    &.active {
+      font: {
+        family: "Roboto";
+        size: 18px;
+        weight: 500;
+      }
+      color: rgba(32, 92, 158, 1);
+      &:after {
+        background: {
+          color: #fccf45;
+        }
       }
     }
   }
   .blocks {
     float: left;
     width: 100%;
-    > mat-form-field {
+    > mat-form-field,
+    * {
+      float: left;
       margin: {
         top: 0;
+      }
+      margin: {
+        right: 2.325581395%;
+      }
+      &.cmpName {
+        width: 28.165374677%;
+      }
+      &.accNum,
+      &.branchCode,
+      &.industry {
+        width: 12.919896641%;
+      }
+      &.status {
+        width: 6.136950904%;
+        margin: {
+          top: 13px;
+        }
+      }
+      &.contactAttention,
+      &.contactCon {
+        width: 28.165374677%;
+      }
+      &.contactPhone,
+      &.contactFax {
+        width: 15.503875969%;
+      }
+      &.contactExt {
+        width: 10.335917313%;
+      }
+      &.emailInvoice {
+        width: 10.288065844%;
+        margin: {
+          top: 13px;
+        }
+      }
+      &.contactEmail {
+        width: 58.656330749%;
+      }
+    }
+    &.addContactBtn {
+      float: left;
+      img {
+        float: left;
+        width: 24px;
+        height: 24px;
+        margin: {
+          right: 5px;
+        }
+      }
+      > span.mat-button-wrapper {
+        font: {
+          family: "Roboto";
+          size: 14px;
+          weight: 300;
+        }
+        color: rgba(0, 0, 0, 0.3);
       }
     }
   }
   .btnSection {
+    width: 100%;
     float: left;
   }
 }
