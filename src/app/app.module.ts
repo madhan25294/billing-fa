@@ -1,43 +1,26 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserModule, HammerModule } from '@angular/platform-browser';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
-import { FormsModule } from '@angular/forms';
-import { AuthInterceptor } from "./shared/auth-interceptor.service";
-import { LayoutModule } from "./layout/layout.module";
-import { AppRoutingModule } from './app.routing.module';
-import { ToolsModule } from './pages/tools/tools.module';
-import { AuthModule } from './pages/auth/auth.module';
-import { AuthGuard } from './shared/auth-guard.service';
-import { EventService } from './shared/event.service';
-import { RouterModule } from '@angular/router';
-import { UserService } from './shared/user.service';
+import { StepperComponent } from './stepper/stepper.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    StepperComponent
+  ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    HammerModule,
-    RouterModule,
-    LayoutModule,
-    HttpClientModule,
-    FormsModule,
-    MatNativeDateModule,
-    AuthModule,
-    ToolsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule, ReactiveFormsModule,
+    MatStepperModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    AuthGuard,
-    EventService,
-    UserService,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
