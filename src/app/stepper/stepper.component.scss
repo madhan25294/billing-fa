@@ -5,6 +5,27 @@
 .mat-form-field {
   margin-top: 16px;
 }
+
+$formFieldSizeXXL: 58.656330749%;
+$formFieldSizeXL: 28.165374677%;
+$formFieldSizeL: 15.503875969%;
+$formFieldSizeN: 12.919896641%;
+
+.formFieldSizeXXL {
+  width: $formFieldSizeXXL;
+}
+.formFieldSizeXL {
+  width: $formFieldSizeXL;
+}
+.formFieldSizeL {
+  width: $formFieldSizeL;
+}
+.formFieldSizeN {
+  width: $formFieldSizeN;
+}
+
+$mat-primary-color: #3f51b5;
+
 mat-vertical-stepper {
   .mainTitle {
     font: {
@@ -25,6 +46,102 @@ mat-vertical-stepper {
     &:not(:first-child) {
       margin: {
         top: 24px;
+      }
+    }
+    &.addedContact {
+      width: 89.276485788%;
+      float: left;
+      padding: {
+        top: 19px;
+        right: 1.937984496%;
+        bottom: 32px;
+        left: 1.61498708%;
+      }
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      margin: {
+        left: 0;
+        bottom: 24px;
+      }
+      > .title {
+        font: {
+          family: "Roboto";
+          size: 20px;
+          weight: 500;
+        }
+        text-transform: capitalize;
+        letter-spacing: 0.15px;
+        color: rgba(32, 92, 158, 1);
+        &:after {
+          width: 0;
+          height: 0;
+        }
+      }
+      > .blocks {
+        > .addedContact {
+          width: $formFieldSizeL;
+        }
+        > .addedPhone,
+        > .addedExtension,
+        > .addedFax {
+          width: $formFieldSizeN;
+        }
+        > .addedEmail {
+          width: $formFieldSizeXXL;
+          position: relative;
+          > mat-form-field {
+            width: 100%;
+          }
+          > .note {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            font: {
+              family: "Roboto";
+              size: 12px;
+              weight: 500;
+            }
+            line-height: 16px;
+            text-transform: capitalize;
+            letter-spacing: 0.4px;
+            color: rgba(0, 0, 0, 0.3);
+          }
+        }
+        > .btnSection {
+          width: 100%;
+          float: left;
+          margin: {
+            top: 24px;
+          }
+        }
+      }
+    }
+    > .blocks {
+      > .oracleSetup {
+        width: 100%;
+        > .locationNote {
+          width: 100%;
+          float: left;
+          margin: {
+            top: -12px;
+          }
+          color: rgba(214, 179, 69, 1);
+          font: {
+            family: "Roboto";
+            size: 12px;
+            weight: 300;
+          }
+          > span {
+            float: left;
+            &:not(:last-child) {
+              font: {
+                weight: bold;
+              }
+              margin: {
+                right: 5px;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -83,12 +200,12 @@ mat-vertical-stepper {
         right: 2.325581395%;
       }
       &.cmpName {
-        width: 28.165374677%;
+        width: $formFieldSizeXL;
       }
       &.accNum,
       &.branchCode,
       &.industry {
-        width: 12.919896641%;
+        width: $formFieldSizeN;
       }
       &.status {
         width: 6.136950904%;
@@ -98,11 +215,11 @@ mat-vertical-stepper {
       }
       &.contactAttention,
       &.contactCon {
-        width: 28.165374677%;
+        width: $formFieldSizeXL;
       }
       &.contactPhone,
       &.contactFax {
-        width: 15.503875969%;
+        width: $formFieldSizeL;
       }
       &.contactExt {
         width: 10.335917313%;
@@ -114,7 +231,18 @@ mat-vertical-stepper {
         }
       }
       &.contactEmail {
-        width: 58.656330749%;
+        width: $formFieldSizeXXL;
+      }
+      &.billingAddress {
+        width: $formFieldSizeXL;
+      }
+      &.billingCity,
+      &.billingState,
+      &.billingZip {
+        width: $formFieldSizeL;
+      }
+      &.oracleLocation {
+        width: 100%;
       }
     }
     &.addContactBtn {
@@ -133,7 +261,6 @@ mat-vertical-stepper {
           size: 14px;
           weight: 300;
         }
-        color: rgba(0, 0, 0, 0.3);
       }
     }
   }
@@ -143,5 +270,13 @@ mat-vertical-stepper {
     margin: {
       top: 34px;
     }
+  }
+}
+button {
+  margin: {
+    right: 2.325581395%;
+  }
+  &.mat-primary {
+    border-color: $mat-primary-color;
   }
 }
