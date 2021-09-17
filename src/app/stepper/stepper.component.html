@@ -2,22 +2,22 @@
   <mat-step>
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel class="mainTitle">Customer Information</ng-template>
-      <div class="cusInfoblock">
+      <div class="cusInfoblock w-100">
         <p class="title active">Primary Info</p>
-        <div class="blocks">
-          <mat-form-field appearance="fill" class="cmpName">
+        <div class="blocks w-100">
+          <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Company Name</mat-label>
             <input matInput placeholder="Company Name" formControlName="cmpName" required>
           </mat-form-field>
-          <mat-form-field appearance="fill" class="accNum">
+          <mat-form-field appearance="fill" class="formFieldSizeN">
             <mat-label>Account Number</mat-label>
             <input matInput placeholder="Account Number" formControlName="accNum" required>
           </mat-form-field>
-          <mat-form-field appearance="fill" class="branchCode">
+          <mat-form-field appearance="fill" class="formFieldSizeN">
             <mat-label>Branch Code</mat-label>
             <input matInput placeholder="Account Number" formControlName="branchCode" required>
           </mat-form-field>
-          <mat-form-field appearance="fill" class="industry">
+          <mat-form-field appearance="fill" class="formFieldSizeN">
             <mat-label>Select</mat-label>
             <mat-select>
               <mat-option value="one">First option</mat-option>
@@ -27,7 +27,7 @@
           <section class="example-section" class="status">
             <mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
           </section>
-          <mat-form-field appearance="fill" class="cmpName">
+          <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Company Name</mat-label>
             <input matInput placeholder="Company Name" formControlName="cmpName">
           </mat-form-field>
@@ -39,18 +39,18 @@
           </section>
         </div>
       </div>
-      <div class="cusInfoblock">
+      <div class="cusInfoblock w-100">
         <p class="title">Contact Information</p>
-        <div class="blocks">
-          <mat-form-field appearance="fill" class="contactAttention">
+        <div class="blocks w-100">
+          <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Attention</mat-label>
             <input matInput placeholder="Attention" formControlName="contactAttention">
           </mat-form-field>
-          <mat-form-field appearance="fill" class="contactCon">
+          <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Contact</mat-label>
             <input matInput placeholder="Contact" formControlName="contactCon">
           </mat-form-field>
-          <mat-form-field appearance="fill" class="contactPhone">
+          <mat-form-field appearance="fill" class="formFieldSizeL">
             <mat-label>Phone</mat-label>
             <input matInput placeholder="Phone" formControlName="contactPhone">
           </mat-form-field>
@@ -58,22 +58,22 @@
             <mat-label>Contact</mat-label>
             <input matInput placeholder="Extension" formControlName="contactExt">
           </mat-form-field>
-          <mat-form-field appearance="fill" class="contactFax">
+          <mat-form-field appearance="fill" class="formFieldSizeL">
             <mat-label>Contact</mat-label>
             <input matInput placeholder="Fax" formControlName="contactFax">
           </mat-form-field>
           <section class="example-section" class="emailInvoice">
             <mat-checkbox class="example-margin">Email Invoice</mat-checkbox>
           </section>
-          <mat-form-field appearance="fill" class="contactEmail">
+          <mat-form-field appearance="fill" class="formFieldSizeXXL">
             <mat-label>Email</mat-label>
             <input matInput placeholder="Email" formControlName="contactEmail" required>
           </mat-form-field>
         </div>
       </div>
-      <div class="cusInfoblock addedContact">
+      <div class="cusInfoblock w-100 addedContact">
         <p class="title">Contact 1</p>
-        <div class="blocks">
+        <div class="blocks w-100">
           <mat-form-field appearance="fill" class="addedContact">
             <mat-label>Contact</mat-label>
             <input matInput placeholder="contact">
@@ -94,13 +94,13 @@
             <mat-checkbox class="example-margin">Email Invoice</mat-checkbox>
           </section>
           <div class="addedEmail">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="w-100">
               <mat-label>Email</mat-label>
               <input matInput placeholder="Email" formControlName="contactEmail" required>
             </mat-form-field>
             <div class="note">You can separate up to 4 email addresses with semi-colons</div>
           </div>
-          <div class="btnSection">
+          <div class="btnSection w-100">
             <button mat-stroked-button color="primary">Delete Contact</button>
             <button mat-stroked-button disabled>Reset</button>
           </div>
@@ -114,32 +114,32 @@
         <img src="../../assets/images/plusIcn.svg" alt="add contact" />
         <span>Add Contact</span>
       </button>
-      <div class="cusInfoblock">
+      <div class="cusInfoblock w-100">
         <p class="title">Billing Address</p>
-        <div class="blocks">
-          <mat-form-field appearance="fill" class="billingAddress">
+        <div class="blocks w-100">
+          <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Address 1</mat-label>
             <input matInput placeholder="Address 1">
           </mat-form-field>
-          <mat-form-field appearance="fill" class="billingAddress">
+          <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Address 2</mat-label>
             <input matInput placeholder="Address 2">
           </mat-form-field>
-          <mat-form-field appearance="fill" class="billingCity">
+          <mat-form-field appearance="fill" class="formFieldSizeL">
             <mat-label>City</mat-label>
             <input matInput placeholder="City">
           </mat-form-field>
-          <mat-form-field appearance="fill" class="billingState">
+          <mat-form-field appearance="fill" class="formFieldSizeL">
             <mat-label>State</mat-label>
             <input matInput placeholder="State">
           </mat-form-field>
-          <mat-form-field appearance="fill" class="billingZip">
+          <mat-form-field appearance="fill" class="formFieldSizeL">
             <mat-label>Zip</mat-label>
             <input matInput placeholder="Zip">
           </mat-form-field>
         </div>
       </div>
-      <div class="btnSection">
+      <div class="btnSection w-100">
         <button mat-stroked-button color="primary">Reset</button>
         <button mat-stroked-button disabled>Next</button>
       </div>
@@ -148,9 +148,9 @@
   <mat-step>
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Oracle Setup</ng-template>
-      <div class="cusInfoblock">
+      <div class="cusInfoblock w-100">
         <p class="title active">Oracle Setup</p>
-        <div class="blocks">
+        <div class="blocks w-100">
           <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Country</mat-label>
             <input matInput placeholder="Company Name" formControlName="cmpName" required>
@@ -187,14 +187,14 @@
             <mat-label>Customer Number</mat-label>
             <input matInput placeholder="Customer Number" formControlName="cmpName" required>
           </mat-form-field>
-          <div class="oracleSetup">
-            <div class="oracleLocation">
+          <div class="oracleSetup w-100">
+            <div class="oracleLocation w-100">
               <mat-form-field appearance="fill" class="formFieldSizeXL">
                 <mat-label>Location Number</mat-label>
                 <input matInput placeholder="Customer Number">
               </mat-form-field>
             </div>
-            <div class="locationNote">
+            <div class="locationNote w-100">
               <span>Note:</span>
               <span>Except for Texas Tax customers, the Oracle customer and location numbers are generated automatically
                 when the customer is added.</span>
@@ -202,9 +202,9 @@
           </div>
         </div>
       </div>
-      <div class="cusInfoblock">
+      <div class="cusInfoblock w-100">
         <p class="title">Parent</p>
-        <div class="blocks">
+        <div class="blocks w-100">
           <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Company</mat-label>
             <mat-select>
@@ -225,7 +225,7 @@
           </mat-form-field>
         </div>
       </div>
-      <div class="btnSection">
+      <div class="btnSection w-100">
         <button mat-stroked-button disabled>Reset</button>
         <button mat-stroked-button color="primary">Previous</button>
         <button mat-stroked-button disabled>Next</button>

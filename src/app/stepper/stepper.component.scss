@@ -23,6 +23,9 @@ $formFieldSizeN: 12.919896641%;
 .formFieldSizeN {
   width: $formFieldSizeN;
 }
+.w-100 {
+  width: 100%;
+}
 
 $mat-primary-color: #3f51b5;
 
@@ -41,7 +44,6 @@ mat-vertical-stepper {
     }
   }
   .cusInfoblock {
-    width: 100%;
     float: left;
     &:not(:first-child) {
       margin: {
@@ -88,9 +90,6 @@ mat-vertical-stepper {
         > .addedEmail {
           width: $formFieldSizeXXL;
           position: relative;
-          > mat-form-field {
-            width: 100%;
-          }
           > .note {
             position: absolute;
             left: 0;
@@ -107,7 +106,6 @@ mat-vertical-stepper {
           }
         }
         > .btnSection {
-          width: 100%;
           float: left;
           margin: {
             top: 24px;
@@ -117,9 +115,7 @@ mat-vertical-stepper {
     }
     > .blocks {
       > .oracleSetup {
-        width: 100%;
         > .locationNote {
-          width: 100%;
           float: left;
           margin: {
             top: -12px;
@@ -189,7 +185,6 @@ mat-vertical-stepper {
   }
   .blocks {
     float: left;
-    width: 100%;
     > mat-form-field,
     * {
       float: left;
@@ -199,27 +194,11 @@ mat-vertical-stepper {
       margin: {
         right: 2.325581395%;
       }
-      &.cmpName {
-        width: $formFieldSizeXL;
-      }
-      &.accNum,
-      &.branchCode,
-      &.industry {
-        width: $formFieldSizeN;
-      }
       &.status {
         width: 6.136950904%;
         margin: {
           top: 13px;
         }
-      }
-      &.contactAttention,
-      &.contactCon {
-        width: $formFieldSizeXL;
-      }
-      &.contactPhone,
-      &.contactFax {
-        width: $formFieldSizeL;
       }
       &.contactExt {
         width: 10.335917313%;
@@ -229,20 +208,6 @@ mat-vertical-stepper {
         margin: {
           top: 13px;
         }
-      }
-      &.contactEmail {
-        width: $formFieldSizeXXL;
-      }
-      &.billingAddress {
-        width: $formFieldSizeXL;
-      }
-      &.billingCity,
-      &.billingState,
-      &.billingZip {
-        width: $formFieldSizeL;
-      }
-      &.oracleLocation {
-        width: 100%;
       }
     }
     &.addContactBtn {
@@ -265,7 +230,6 @@ mat-vertical-stepper {
     }
   }
   .btnSection {
-    width: 100%;
     float: left;
     margin: {
       top: 34px;
