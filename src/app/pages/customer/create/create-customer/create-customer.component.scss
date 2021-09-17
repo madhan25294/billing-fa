@@ -6,10 +6,12 @@
   margin-top: 16px;
 }
 
-$formFieldSizeXXL: 58.656330749%;
-$formFieldSizeXL: 28.165374677%;
-$formFieldSizeL: 15.503875969%;
-$formFieldSizeN: 12.919896641%;
+$formFieldSizeXXL: 58.656330749%; // 938
+$formFieldSize672: 43.410852713%; // 672
+$formFieldSizeXL: 28.165374677%; // 436
+$formFieldSize323: 20.865633075%; // 323
+$formFieldSizeL: 15.503875969%; // 240
+$formFieldSizeN: 12.919896641%; // 200
 
 .formFieldSizeXXL {
   width: $formFieldSizeXXL;
@@ -23,8 +25,17 @@ $formFieldSizeN: 12.919896641%;
 .formFieldSizeN {
   width: $formFieldSizeN;
 }
+.formFieldSize672 {
+  width: $formFieldSize672;
+}
+.formFieldSize323 {
+  width: $formFieldSize323;
+}
 .w-100 {
   width: 100%;
+}
+.float-left {
+  float: left;
 }
 
 $mat-primary-color: #3f51b5;
@@ -234,6 +245,41 @@ mat-vertical-stepper {
     margin: {
       top: 34px;
     }
+  }
+}
+.contractInfobtns {
+  > div {
+    &:first-child {
+      float: left;
+      margin: {
+        bottom: 14px;
+      }
+    }
+    + {
+      .note {
+        font: {
+          family: "Roboto";
+          size: 16px;
+          weight: 300;
+        }
+        color: #d6b345;
+      }
+    }
+  }
+  > .btnSection {
+  }
+}
+.contractInfo {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 19px;
+}
+.sow {
+  > .sowContent {
+    margin: {
+      top: 15px;
+    }
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 19px;
   }
 }
 button {
