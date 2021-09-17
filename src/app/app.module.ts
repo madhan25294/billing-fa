@@ -10,6 +10,7 @@ import { AuthInterceptor } from "./shared/auth-interceptor.service";
 import { LayoutModule } from "./layout/layout.module";
 import { AppRoutingModule } from './app.routing.module';
 import { ToolsModule } from './pages/tools/tools.module';
+import { CustomerModule } from './pages/customer/customer.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { AuthGuard } from './shared/auth-guard.service';
 import { EventService } from './shared/event.service';
@@ -29,6 +30,7 @@ import { UserService } from './shared/user.service';
     MatNativeDateModule,
     AuthModule,
     ToolsModule,
+    CustomerModule,
     AppRoutingModule,
   ],
   providers: [

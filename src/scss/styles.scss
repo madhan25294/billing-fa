@@ -52,3 +52,56 @@ body {
 .background-white {
   background: $color-white;
 }
+
+
+
+
+// create customer css start
+.mat-checkbox-inner-container {
+  width: 30px !important;
+  height: 30px !important;
+}
+.mat-checkbox-label {
+  margin: {
+    top: 3px;
+  }
+  font: {
+    family: "Roboto";
+    size: 16px;
+    weight: 400;
+  }
+  letter-spacing: 0.5px;
+  color: rgba(0, 0, 0, 0.87);
+}
+.addContactBtn {
+  width: 11.836762689%;
+  float: left;
+  > span.mat-button-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    img {
+      float: left;
+      width: 24px;
+      height: 24px;
+      margin: {
+        right: 5px;
+      }
+    }
+    font: {
+      family: "Roboto";
+      size: 14px;
+      weight: 500;
+    }
+  }
+}
+.nextBtn {
+  > span {
+    font: {
+      family: "Roboto";
+      size: 14px;
+      weight: 500;
+    }
+  }
+}
+// create customer css end

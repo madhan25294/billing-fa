@@ -10,6 +10,7 @@
     <button mat-menu-item routerLink="tools/files" routerLinkActive="active">Files</button>
   </mat-menu>
   <button mat-button routerLink="data/dataimport">Data Import</button>
+  <button mat-button routerLink="customer/create">Create Customer</button>
   <button mat-button [matMenuTriggerFor]="settingsMenu">Settings</button>
   <mat-menu #settingsMenu="matMenu">
     <button mat-menu-item (click)="onLogout()">Logout</button>
