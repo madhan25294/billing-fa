@@ -12,18 +12,20 @@ export class CreateCustomerComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.firstFormGroup = this.formBuilder.group({
-      cmpName: ['', Validators.required],
-      accNum: ['', Validators.required],
-      branchCode: ['', Validators.required],
-      contactAttention: ['', Validators.required],
-      contactCon: ['', Validators.required],
-      contactPhone: ['', Validators.required],
-      contactExt: ['', Validators.required],
-      contactFax: ['', Validators.required],
-      contactEmail: ['', Validators.required]
+      cmpName: ['', [Validators.required]],
+      accNum: ['', [Validators.required]],
+      branchCode: ['', [Validators.required]],
+      industry: ['', [Validators.required]],
+      active: [false, [Validators.required]],
+      contactAttention: ['', [Validators.required]],
+      contactCon: ['', [Validators.required]],
+      contactPhone: ['', [Validators.required]],
+      contactExt: ['', [Validators.required]],
+      contactFax: ['', [Validators.required]],
+      contactEmail: ['', [Validators.required]]
     });
     this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      secondCtrl: ['', [Validators.required]]
     });
   }
 
