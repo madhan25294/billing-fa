@@ -1,6 +1,6 @@
 <mat-vertical-stepper orientation="vertical">
   <mat-step>
-    <form [formGroup]="firstFormGroup">
+    <form [formGroup]="customerInfoFormGroup">
       <ng-template matStepLabel class="mainTitle">Customer Information</ng-template>
       <div class="cusInfoblock w-100">
         <p class="title active">Primary Info</p>
@@ -20,7 +20,7 @@
           <mat-form-field appearance="fill" class="formFieldSizeN">
             <mat-label>Industry</mat-label>
             <mat-select formControlName="industry">
-              <mat-option value="one">First option</mat-option>
+              <mat-option value="{{industry.id}}" *ngFor="let industry of industryList">{{industry.industry}}</mat-option>
               <mat-option value="two">Second option</mat-option>
             </mat-select>
           </mat-form-field>
@@ -55,11 +55,11 @@
             <input matInput placeholder="Phone" formControlName="contactPhone">
           </mat-form-field>
           <mat-form-field appearance="fill" class="contactExt">
-            <mat-label>Contact</mat-label>
+            <mat-label>Extension</mat-label>
             <input matInput placeholder="Extension" formControlName="contactExt">
           </mat-form-field>
           <mat-form-field appearance="fill" class="formFieldSizeL">
-            <mat-label>Contact</mat-label>
+            <mat-label>FAX</mat-label>
             <input matInput placeholder="Fax" formControlName="contactFax">
           </mat-form-field>
           <section class="example-section" class="emailInvoice">
@@ -146,7 +146,7 @@
     </form>
   </mat-step>
   <mat-step>
-    <form [formGroup]="firstFormGroup">
+    <form [formGroup]="customerInfoFormGroup">
       <ng-template matStepLabel>Oracle Setup</ng-template>
       <div class="cusInfoblock w-100">
         <p class="title active">Oracle Setup</p>
@@ -158,29 +158,25 @@
           <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Sales Person</mat-label>
             <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option value="{{salesperson.id}}" *ngFor="let salesperson of salesPersonsList">{{salesperson.name}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Customer Type</mat-label>
             <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option value="{{customer.id}}" *ngFor="let customer of customerTypes">{{customer.profile}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Category</mat-label>
             <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option value="{{cat.id}}" *ngFor="let cat of productCategoryList">{{cat.category}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Classification</mat-label>
             <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option value="{{classification.id}}" *ngFor="let classification of classificationsList">{{classification.name}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill" class="formFieldSizeXL">
@@ -208,20 +204,20 @@
           <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Company</mat-label>
             <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option value="{{cmpny.parentId}}" *ngFor="let cmpny of parentCompaniesList">{{cmpny.company}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Account Manager</mat-label>
             <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option value="{{manager.id}}" *ngFor="let manager of managersList">{{manager.name}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill" class="formFieldSizeXL">
             <mat-label>Collector</mat-label>
-            <input matInput placeholder="Collector" formControlName="cmpName" required>
+            <mat-select>
+              <mat-option value="{{collector.collectorId}}" *ngFor="let collector of collectorsDataList">{{collector.collectorName}}</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
