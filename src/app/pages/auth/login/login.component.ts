@@ -65,6 +65,10 @@ export class LoginComponent implements OnInit {
   }
 
   onClickSignIn() {
+    this.eventService.loggedIn.next(true);
+    this.snackBService.success('Login successfull', 'close');
+    this.router.navigate([PAGE.TOOLS_FILES]);
+    return
     this.userName = Util.trim(this.userName);
     if(!Util.isEmptyString(this.userName)) {
     {

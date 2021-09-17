@@ -28,6 +28,10 @@ export class CreateCustomerComponent implements OnInit {
   parentCompaniesList: Array<ParentData>;
   managersList: Array<AccountManagers>
   collectorsDataList: Array<CollectorData>;
+
+
+  // contract information
+  contractInfoFormGroup: FormGroup;
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
@@ -68,6 +72,13 @@ export class CreateCustomerComponent implements OnInit {
     this.fetchManagersList();
     this.collectorsDataList = [];
     this.fetchCollectorsData();
+
+
+
+    // contract information
+    this.contractInfoFormGroup = this.formBuilder.group({
+      sample: ['', [Validators.required]]
+    });
   }
 
   ngOnInit() {

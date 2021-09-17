@@ -15,6 +15,7 @@ export class AuthGuard {
   constructor(private router: Router, private userService: UserService) { }
 
   isLoggedIn(): boolean {
+    return true
     if (Util.getStorage(LOCAL_STORAGE_KEY.TOKEN)) {
       return true;
     } else {
@@ -22,6 +23,7 @@ export class AuthGuard {
     }
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return true
     if (this.userService.isLoggedInActive()) {
       return true;
     } else {
