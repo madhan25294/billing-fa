@@ -55,8 +55,8 @@ body {
 
 // create customer css start
 .mat-checkbox-inner-container {
-  width: 30px !important;
-  height: 30px !important;
+  width: 22px !important;
+  height: 22px !important;
   float: left;
 }
 .mat-checkbox-label {
@@ -205,12 +205,18 @@ mat-vertical-stepper {
           margin: {
             top: 24px;
           }
+          > button {
+            text-transform: uppercase;
+            margin: {
+              right: 1.550387597%;
+            }
+          }
         }
       }
     }
     > .blocks {
-      > .oracleSetup {
-        > .locationNote {
+      .oracleSetup {
+        .locationNote {
           float: left;
           margin: {
             top: -12px;
@@ -327,6 +333,12 @@ mat-vertical-stepper {
     float: left;
     margin: {
       top: 34px;
+    }
+    > button {
+      text-transform: uppercase;
+      margin: {
+        right: 1.550387597%;
+      }
     }
   }
 }
