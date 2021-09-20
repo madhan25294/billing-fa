@@ -81,7 +81,7 @@ section {
   }
 }
 .addContactBtn {
-  width: 11.836762689%;
+  // width: 11.836762689%;
   float: left;
   > span.mat-button-wrapper {
     width: 100%;
@@ -212,6 +212,9 @@ mat-vertical-stepper {
             }
           }
         }
+        > p {
+          display: inline-block;
+        }
       }
     }
     > .blocks {
@@ -287,12 +290,8 @@ mat-vertical-stepper {
   .blocks {
     float: left;
     > mat-form-field {
-      // float: left;
       margin: {
         top: 0;
-      }
-      margin: {
-        right: 2.325581395%;
       }
       &.status {
         width: 6.136950904%;
@@ -328,6 +327,12 @@ mat-vertical-stepper {
         }
       }
     }
+    p {
+      display: inline-block;
+      margin: {
+        right: 2.325581395%;
+      }
+    }
   }
   .btnSection {
     float: left;
@@ -340,6 +345,19 @@ mat-vertical-stepper {
         right: 1.550387597%;
       }
     }
+  }
+}
+.mat-step-header {
+  .mat-step-label.mat-step-label-active {
+    font: {
+      family: "roboto" !important;
+      size: 24px !important;
+      weight: normal !important;
+    }
+    color: rgba(0,0,0,0.87);
+  }
+  .mat-step-label.mat-step-label-active.mat-step-label-selected {
+    color: $color-black !important;
   }
 }
 .contractInfobtns {
@@ -387,5 +405,17 @@ section.example-section {
   display: inline-block;
   margin: {
     right: 2.325581395%;
+  }
+}
+
+mat-form-field {
+  margin: {
+    right: 2.325581395%;
+  }
+}
+button {
+  text-transform: uppercase !important;
+  margin: {
+    right: 1.550387597% !important;
   }
 }
