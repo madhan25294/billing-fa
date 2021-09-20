@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
 import { CreateCustomerService } from '../../services/create-customer-api.service';
 // models
-import {
-  GetIndustries, CustomerType, GetSalesPerson, ProductCategory,
-  Classification, ParentData, AccountManagers, CollectorData
-} from '../../models/create-customer.model';
+
 
 @Component({
   selector: 'app-customer-finish',
   templateUrl: './customer-finish.component.html',
   styleUrls: ['./customer-finish.component.scss']
 })
-export class CustomerFinishComponent implements OnInit {
+export class CustomerFinishComponent {
   customerFinishFormGroup: FormGroup;
   constructor(
     private snackBService: SnackBarService,
@@ -24,9 +21,6 @@ export class CustomerFinishComponent implements OnInit {
     this.customerFinishFormGroup = this.formBuilder.group({
 
     });
-  }
-
-  ngOnInit(): void {
   }
 
 }

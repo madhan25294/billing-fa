@@ -1,13 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
 import { CreateCustomerService } from '../../services/create-customer-api.service';
 // models
-import {
-  GetIndustries, CustomerType, GetSalesPerson, ProductCategory,
-  Classification, ParentData, AccountManagers, CollectorData
-} from '../../models/create-customer.model';
+
 // components
 import { CustomerInfoComponent } from '../customer-info/customer-info.component';
 import { OracleSetupComponent } from '../oracle-setup/oracle-setup.component';
@@ -18,7 +15,7 @@ import { CustomerFinishComponent } from '../customer-finish/customer-finish.comp
   templateUrl: './create-customer.component.html',
   styleUrls: ['./create-customer.component.scss']
 })
-export class CreateCustomerComponent implements OnInit, AfterViewInit {
+export class CreateCustomerComponent implements AfterViewInit {
   form1: FormGroup;
   @ViewChild('stepOne') customerInfoComponent: CustomerInfoComponent;
   form2: FormGroup;
@@ -43,10 +40,6 @@ export class CreateCustomerComponent implements OnInit, AfterViewInit {
     this.form3 = this.contractInfoComponent.contractInfoFormGroup;
     this.form4 = this.customerFinishComponent.customerFinishFormGroup;
     this.cdr.detectChanges();
-  }
-
-  ngOnInit() {
-
   }
 
 }
