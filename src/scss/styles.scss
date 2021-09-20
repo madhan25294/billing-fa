@@ -419,3 +419,8 @@ button {
     right: 1.550387597% !important;
   }
 }
+.mat-step-icon {
+  &.mat-step-icon-state-edit {
+    color: rgba(252,207,69,1);
+  }
+}
