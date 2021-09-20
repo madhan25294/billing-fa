@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild , AfterViewInit, ChangeDetectorRef, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
@@ -8,12 +8,17 @@ import {
   GetIndustries, CustomerType, GetSalesPerson, ProductCategory,
   Classification, ParentData, AccountManagers, CollectorData
 } from '../../models/create-customer.model';
+// components
+import { CustomerInfoComponent } from '../customer-info/customer-info.component';
 @Component({
   selector: 'app-create-customer',
   templateUrl: './create-customer.component.html',
   styleUrls: ['./create-customer.component.scss']
 })
-export class CreateCustomerComponent implements OnInit {
+export class CreateCustomerComponent implements OnInit , AfterViewInit{
+  form1: FormGroup;
+  @ViewChild('stepOne') customerInfoComponent: CustomerInfoComponent;
+
   // customer information
   customerInfoFormGroup: FormGroup;
   industryList: Array<GetIndustries>;
@@ -35,7 +40,8 @@ export class CreateCustomerComponent implements OnInit {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private createCustomerSvc: CreateCustomerService) {
+    private createCustomerSvc: CreateCustomerService,
+    private cdr :ChangeDetectorRef) {
     // customer information
     this.customerInfoFormGroup = this.formBuilder.group({
       cmpName: ['', [Validators.required]],
@@ -79,6 +85,11 @@ export class CreateCustomerComponent implements OnInit {
     this.contractInfoFormGroup = this.formBuilder.group({
       sample: ['', [Validators.required]]
     });
+  }
+
+  ngAfterViewInit(){
+    this.form1 = this.customerInfoComponent.customerInfoGroup;
+    this.cdr.detectChanges();
   }
 
   ngOnInit() {

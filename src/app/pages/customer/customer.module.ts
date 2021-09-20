@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CustomerRoutingModule } from './customer.routing.module';
 import { MaterialModule } from '../../layout/material-component.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // components
 import { CustomerComponent } from './customer.component';
 import { CreateCustomerComponent } from './create/create-customer/create-customer.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerInfoComponent } from './create/customer-info/customer-info.component';
 // serives
 import { CreateCustomerService } from './services/create-customer-api.service';
 @NgModule({
   declarations: [
     CustomerComponent,
-    CreateCustomerComponent
+    CreateCustomerComponent,
+    CustomerInfoComponent
   ],
   imports: [
     CommonModule,
