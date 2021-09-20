@@ -53,13 +53,11 @@ body {
   background: $color-white;
 }
 
-
-
-
 // create customer css start
 .mat-checkbox-inner-container {
   width: 30px !important;
   height: 30px !important;
+  float: left;
 }
 .mat-checkbox-label {
   margin: {
@@ -72,6 +70,15 @@ body {
   }
   letter-spacing: 0.5px;
   color: rgba(0, 0, 0, 0.87);
+}
+section {
+  > mat-checkbox {
+    font: {
+      family: "Roboto";
+      size: 16px;
+      weight: 400;
+    }
+  }
 }
 .addContactBtn {
   width: 11.836762689%;
@@ -105,3 +112,268 @@ body {
   }
 }
 // create customer css end
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+mat-vertical-stepper {
+  background: {
+    color: #fff;
+  }
+  .mainTitle {
+    font: {
+      family: "Roboto";
+      size: 24px;
+      weight: 300;
+    }
+    line-height: 24px;
+    letter-spacing: 0.18px;
+    color: #000000de;
+    margin: {
+      bottom: 16px;
+    }
+  }
+  .cusInfoblock {
+    float: left;
+    &:not(:first-child) {
+      margin: {
+        top: 24px;
+      }
+    }
+    &.addedContact {
+      width: 89.276485788%;
+      float: left;
+      padding: {
+        top: 19px;
+        right: 1.937984496%;
+        bottom: 32px;
+        left: 1.61498708%;
+      }
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      margin: {
+        left: 0;
+        bottom: 24px;
+      }
+      > .title {
+        font: {
+          family: "Roboto";
+          size: 20px;
+          weight: 500;
+        }
+        text-transform: capitalize;
+        letter-spacing: 0.15px;
+        color: rgba(32, 92, 158, 1);
+        &:after {
+          width: 0;
+          height: 0;
+        }
+      }
+      > .blocks {
+        > .addedContact {
+          width: $formFieldSizeL;
+        }
+        > .addedPhone,
+        > .addedExtension,
+        > .addedFax {
+          width: $formFieldSizeN;
+        }
+        > .addedEmail {
+          width: $formFieldSizeXXL;
+          position: relative;
+          > .note {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            font: {
+              family: "Roboto";
+              size: 12px;
+              weight: 500;
+            }
+            line-height: 16px;
+            text-transform: capitalize;
+            letter-spacing: 0.4px;
+            color: rgba(0, 0, 0, 0.3);
+          }
+        }
+        > .btnSection {
+          float: left;
+          margin: {
+            top: 24px;
+          }
+        }
+      }
+    }
+    > .blocks {
+      > .oracleSetup {
+        > .locationNote {
+          float: left;
+          margin: {
+            top: -12px;
+          }
+          color: rgba(214, 179, 69, 1);
+          font: {
+            family: "Roboto";
+            size: 12px;
+            weight: 300;
+          }
+          > span {
+            float: left;
+            &:not(:last-child) {
+              font: {
+                weight: bold;
+              }
+              margin: {
+                right: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .title {
+    float: left;
+    font: {
+      family: "Roboto";
+      size: 16px;
+      weight: 400;
+    }
+    text-transform: uppercase;
+    letter-spacing: 2.7px;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    padding: {
+      bottom: 5px;
+    }
+    margin: {
+      bottom: 16px;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 32px;
+      height: 4px;
+      background: {
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+    &.active {
+      font: {
+        family: "Roboto";
+        size: 18px;
+        weight: 500;
+      }
+      color: rgba(32, 92, 158, 1);
+      &:after {
+        background: {
+          color: #fccf45;
+        }
+      }
+    }
+  }
+  .blocks {
+    float: left;
+    > mat-form-field {
+      // float: left;
+      margin: {
+        top: 0;
+      }
+      margin: {
+        right: 2.325581395%;
+      }
+      &.status {
+        width: 6.136950904%;
+        margin: {
+          top: 13px;
+        }
+      }
+      &.contactExt {
+        width: 10.335917313%;
+      }
+      &.emailInvoice {
+        width: 10.288065844%;
+        margin: {
+          top: 13px;
+        }
+      }
+    }
+    &.addContactBtn {
+      float: left;
+      img {
+        float: left;
+        width: 24px;
+        height: 24px;
+        margin: {
+          right: 5px;
+        }
+      }
+      > span.mat-button-wrapper {
+        font: {
+          family: "Roboto";
+          size: 14px;
+          weight: 300;
+        }
+      }
+    }
+  }
+  .btnSection {
+    float: left;
+    margin: {
+      top: 34px;
+    }
+  }
+}
+.contractInfobtns {
+  > div {
+    &:first-child {
+      float: left;
+      margin: {
+        bottom: 14px;
+      }
+    }
+    + {
+      .note {
+        font: {
+          family: "Roboto";
+          size: 16px;
+          weight: 300;
+        }
+        color: #d6b345;
+      }
+    }
+  }
+}
+.contractInfo {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 19px;
+}
+.sow {
+  > .sowContent {
+    margin: {
+      top: 15px;
+    }
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 19px;
+  }
+}
+button {
+  margin: {
+    right: 2.325581395%;
+  }
+  &.mat-primary {
+    border-color: $mat-primary-color;
+  }
+}
+section.example-section {
+  display: inline-block;
+  margin: {
+    right: 2.325581395%;
+  }
+}

@@ -5,6 +5,7 @@ import { CustomerRoutingModule } from './customer.routing.module';
 import { MaterialModule } from '../../layout/material-component.module';
 // components
 import { CustomerComponent } from './customer.component';
+import { CustomerInfoComponent } from './create/customer-info/customer-info.component';
 import { CreateCustomerComponent } from './create/create-customer/create-customer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // serives
@@ -12,7 +13,8 @@ import { CreateCustomerService } from './services/create-customer-api.service';
 @NgModule({
   declarations: [
     CustomerComponent,
-    CreateCustomerComponent
+    CreateCustomerComponent,
+    CustomerInfoComponent
   ],
   imports: [
     CommonModule,
