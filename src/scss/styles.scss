@@ -210,6 +210,11 @@ mat-vertical-stepper {
             margin: {
               right: 1.550387597%;
             }
+            mat-icon {
+              margin: {
+                right: 15px !important;
+              }
+            }
           }
         }
         > p {
@@ -354,7 +359,7 @@ mat-vertical-stepper {
       size: 24px !important;
       weight: normal !important;
     }
-    color: rgba(0,0,0,0.87);
+    color: rgba(0, 0, 0, 0.87);
   }
   .mat-step-label.mat-step-label-active.mat-step-label-selected {
     color: $color-black !important;
@@ -418,9 +423,14 @@ button {
   margin: {
     right: 1.550387597% !important;
   }
+  mat-icon {
+    margin: {
+      right: 8px !important;
+    }
+  }
 }
 .mat-step-icon {
   &.mat-step-icon-state-edit {
-    color: rgba(252,207,69,1);
+    color: rgba(252, 207, 69, 1);
   }
 }

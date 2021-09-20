@@ -1,0 +1,21 @@
+@import '../../../../../scss/variables';
+.cusInfoblock {
+    .numsBlock {
+        width: 200px;
+        > span{
+            font: {
+                family: "roboto";
+                size: 20px;
+                weight: medium;
+            }
+            color: $color-black;
+            line-height: 20px;
+            margin: {
+                bottom: 5px;
+            }
+            &:last-child {
+                color: $mat-primary-color;
+            }
+        }
+    }
+}
