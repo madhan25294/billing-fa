@@ -5,17 +5,16 @@ import { CustomerRoutingModule } from './customer.routing.module';
 import { MaterialModule } from '../../layout/material-component.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // components
-import { CustomerComponent } from './customer.component';
-import { CreateCustomerComponent } from './create/create-customer/create-customer.component';
-import { CustomerInfoComponent } from './create/customer-info/customer-info.component';
-import { OracleSetupComponent } from './create/oracle-setup/oracle-setup.component';
-import { ContractInfoComponent } from './create/contract-info/contract-info.component';
-import { CustomerFinishComponent } from './create/customer-finish/customer-finish.component';
+// import { CreateCustomerComponent } from './customer-wizard/create-customer/create-customer.component';
+import { CustomerInfoComponent } from './customer-wizard/customer-info/customer-info.component';
+import { OracleSetupComponent } from './customer-wizard/oracle-setup/oracle-setup.component';
+import { ContractInfoComponent } from './customer-wizard/contract-info/contract-info.component';
+import { CustomerFinishComponent } from './customer-wizard/customer-finish/customer-finish.component';
+import { CreateCustomerComponent } from './customer-wizard/customer-wizard.component';
 // serives
-import { CreateCustomerService } from './services/create-customer-api.service';
+import { CustomerService } from './customer.service';
 @NgModule({
   declarations: [
-    CustomerComponent,
     CreateCustomerComponent,
     CustomerInfoComponent,
     OracleSetupComponent,
@@ -31,7 +30,7 @@ import { CreateCustomerService } from './services/create-customer-api.service';
     ReactiveFormsModule
   ],
   providers: [
-    CreateCustomerService
+    CustomerService
   ],
   exports: [],
   entryComponents: [],

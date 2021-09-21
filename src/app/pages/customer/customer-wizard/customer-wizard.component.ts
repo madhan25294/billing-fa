@@ -1,19 +1,19 @@
 import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 // service
-import { SnackBarService } from '../../../../shared/snack-bar.service';
-import { CreateCustomerService } from '../../services/create-customer-api.service';
+import { SnackBarService } from '../../../shared/snack-bar.service';
+import { CustomerService } from '../customer.service';
 // models
 
 // components
-import { CustomerInfoComponent } from '../customer-info/customer-info.component';
-import { OracleSetupComponent } from '../oracle-setup/oracle-setup.component';
-import { ContractInfoComponent } from '../contract-info/contract-info.component';
-import { CustomerFinishComponent } from '../customer-finish/customer-finish.component';
+import { CustomerInfoComponent } from './customer-info/customer-info.component';
+import { OracleSetupComponent } from './oracle-setup/oracle-setup.component';
+import { ContractInfoComponent } from './contract-info/contract-info.component';
+import { CustomerFinishComponent } from './customer-finish/customer-finish.component';
 @Component({
   selector: 'app-create-customer',
-  templateUrl: './create-customer.component.html',
-  styleUrls: ['./create-customer.component.scss']
+  templateUrl: './customer-wizard.html',
+  styleUrls: ['./customer-wizard.scss']
 })
 export class CreateCustomerComponent implements AfterViewInit {
   form1: FormGroup;
@@ -29,7 +29,7 @@ export class CreateCustomerComponent implements AfterViewInit {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private createCustomerSvc: CreateCustomerService,
+    private customerSvc: CustomerService,
     private cdr: ChangeDetectorRef) {
 
   }

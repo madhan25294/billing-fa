@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
-import { CreateCustomerService } from '../../services/create-customer-api.service';
+import { CustomerService } from '../../customer.service';
 // models
 import {
   CustomerType, GetSalesPerson, ProductCategory,
   Classification, ParentData, AccountManagers, CollectorData
-} from '../../models/create-customer.model';
+} from '../../customer.model';
 
 @Component({
   selector: 'app-oracle-setup',
@@ -29,7 +29,7 @@ export class OracleSetupComponent {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private createCustomerSvc: CreateCustomerService
+    private customerSvc: CustomerService
   ) {
 
     this.oracleSetupFormGroup = this.formBuilder.group({

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
-import { CreateCustomerService } from '../../services/create-customer-api.service';
+import { CustomerService } from '../../customer.service';
 // models
 
 
@@ -16,7 +16,7 @@ export class CustomerFinishComponent {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private createCustomerSvc: CreateCustomerService
+    private customerService: CustomerService
   ) {
     this.customerFinishFormGroup = this.formBuilder.group({
 

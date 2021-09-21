@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_URL } from '../../../constants/api-url';
-import { environment } from '../../../../environments/environment';
+import { API_URL } from '../../constants/api-url';
+import { environment } from '../../../environments/environment';
 // model
 import {
   GetIndustries, CustomerType, GetSalesPerson, ProductCategory,
   Classification, ParentData, AccountManagers, CollectorData
-} from '../models/create-customer.model';
+} from './customer.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CreateCustomerService {
+export class CustomerService {
 
   constructor(private httpClient: HttpClient) { }
 
