@@ -1,0 +1,19 @@
+<div class="title">Create Customer</div>
+<mat-vertical-stepper orientation="vertical">
+  <mat-step [stepControl]="form1">
+    <ng-template matStepLabel class="mainTitle">Customer Information</ng-template>
+    <app-customer-info #stepOne></app-customer-info>
+  </mat-step>
+  <mat-step [stepControl]="form2">
+    <ng-template matStepLabel>Oracle Setup</ng-template>
+    <app-oracle-setup #stepTwo></app-oracle-setup>
+  </mat-step>
+  <mat-step [stepControl]="form3">
+    <ng-template matStepLabel>Contract Information</ng-template>
+    <app-contract-info #stepThree></app-contract-info>
+  </mat-step>
+  <mat-step [stepControl]="form4">
+    <ng-template matStepLabel>Finish</ng-template>
+    <app-customer-finish #stepFour></app-customer-finish>
+  </mat-step>
+</mat-vertical-stepper>
