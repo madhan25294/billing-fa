@@ -5,6 +5,9 @@
 html,
 body {
   height: 100%;
+  font: {
+    family: "Roboto";
+  }
 }
 
 .w-10 {
@@ -64,7 +67,6 @@ body {
     top: 3px;
   }
   font: {
-    family: "Roboto";
     size: 16px;
     weight: 400;
   }
@@ -74,7 +76,6 @@ body {
 section {
   > mat-checkbox {
     font: {
-      family: "Roboto";
       size: 16px;
       weight: 400;
     }
@@ -96,7 +97,6 @@ section {
       }
     }
     font: {
-      family: "Roboto";
       size: 14px;
       weight: 500;
     }
@@ -105,7 +105,6 @@ section {
 .nextBtn {
   > span {
     font: {
-      family: "Roboto";
       size: 14px;
       weight: 500;
     }
@@ -124,19 +123,6 @@ section {
 mat-vertical-stepper {
   background: {
     color: #fff;
-  }
-  .mainTitle {
-    font: {
-      family: "Roboto";
-      size: 24px;
-      weight: 300;
-    }
-    line-height: 24px;
-    letter-spacing: 0.18px;
-    color: #000000de;
-    margin: {
-      bottom: 16px;
-    }
   }
   .cusInfoblock {
     float: left;
@@ -161,7 +147,6 @@ mat-vertical-stepper {
       }
       > .title {
         font: {
-          family: "Roboto";
           size: 20px;
           weight: 500;
         }
@@ -190,7 +175,6 @@ mat-vertical-stepper {
             left: 0;
             bottom: 0;
             font: {
-              family: "Roboto";
               size: 12px;
               weight: 500;
             }
@@ -231,7 +215,6 @@ mat-vertical-stepper {
           }
           color: rgba(214, 179, 69, 1);
           font: {
-            family: "Roboto";
             size: 12px;
             weight: 300;
           }
@@ -253,7 +236,6 @@ mat-vertical-stepper {
   .title {
     float: left;
     font: {
-      family: "Roboto";
       size: 16px;
       weight: 400;
     }
@@ -280,7 +262,6 @@ mat-vertical-stepper {
     }
     &.active {
       font: {
-        family: "Roboto";
         size: 18px;
         weight: 500;
       }
@@ -326,7 +307,6 @@ mat-vertical-stepper {
       }
       > span.mat-button-wrapper {
         font: {
-          family: "Roboto";
           size: 14px;
           weight: 300;
         }
@@ -376,7 +356,6 @@ mat-vertical-stepper {
     + {
       .note {
         font: {
-          family: "Roboto";
           size: 16px;
           weight: 300;
         }
@@ -470,7 +449,6 @@ button {
     > .title {
       text-align: center;
       font: {
-        family: "roboto";
         size: 24px;
         weight: 400;
       }
@@ -480,7 +458,6 @@ button {
     > .content {
       p {
         font: {
-          family: "roboto";
           size: 14px;
           weight: 400;
         }
@@ -511,7 +488,6 @@ button {
             right: 14px;
           }
           font: {
-            family: "roboto";
             size: 14px;
             weight: 600;
           }

@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../../shared/auth-guard.service';
 // components
-import { CustomerComponent } from './customer.component';
-import { CreateCustomerComponent } from './create/create-customer/create-customer.component';
+import { CreateCustomerComponent } from './customer-wizard/customer-wizard.component';
 
 const routes: Routes = [
   {

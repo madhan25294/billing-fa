@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     public constantService: ConstantService,
     private userService: UserService,
     private snackBService: SnackBarService,
-    private eventService: EventService, private cd: ChangeDetectorRef,) {
+    private eventService: EventService, private cd: ChangeDetectorRef) {
     this.isClickedOnce = false;
     this.eventService.loggedIn.next(false);
   }
@@ -70,35 +70,35 @@ export class LoginComponent implements OnInit {
     this.router.navigate([PAGE.TOOLS_FILES]);
     return
     this.userName = Util.trim(this.userName);
-    if(!Util.isEmptyString(this.userName)) {
-    {
-    this.isClickedOnce = true;
-    const usersName = this.userName.replace("\\\\", "\\");
-    this.userService.signIn(usersName, this.password)
-      .pipe(
-        finalize(() => {
-          this.isClickedOnce = false;
-        })
-      ).subscribe((res: AuthenticationToken) => {
-        Util.setStorage(LOCAL_STORAGE_KEY.TOKEN, res.token);
-        Util.setStorage(LOCAL_STORAGE_KEY.TOKENEXPIRATION, res.tokenExpiration);
-        Promise.all([this.getUserDetails()]).then((data) => {
-          this.eventService.loggedIn.next(true);
-          this.snackBService.success('Login successfull', 'close');
-          this.router.navigate([PAGE.TOOLS_FILES]);
+    if (!Util.isEmptyString(this.userName)) {
+      {
+        this.isClickedOnce = true;
+        const usersName = this.userName.replace("\\\\", "\\");
+        this.userService.signIn(usersName, this.password)
+          .pipe(
+            finalize(() => {
+              this.isClickedOnce = false;
+            })
+          ).subscribe((res: AuthenticationToken) => {
+            Util.setStorage(LOCAL_STORAGE_KEY.TOKEN, res.token);
+            Util.setStorage(LOCAL_STORAGE_KEY.TOKENEXPIRATION, res.tokenExpiration);
+            Promise.all([this.getUserDetails()]).then((data) => {
+              this.eventService.loggedIn.next(true);
+              this.snackBService.success('Login successfull', 'close');
+              this.router.navigate([PAGE.TOOLS_FILES]);
 
-        }).catch((error) => {
-          this.snackBService.error('Error while getting user details');
-        });
+            }).catch((error) => {
+              this.snackBService.error('Error while getting user details');
+            });
 
-      },
-        (error: HttpErrorResponse) => {
-          if (error.status === 401) {
-            this.snackBService.error(error.error || 'The user name or password is incorrect.');
-          } else {
-            this.snackBService.error(error?.error || 'Internal Server Error for Login');
-          }
-        });
+          },
+            (error: HttpErrorResponse) => {
+              if (error.status === 401) {
+                this.snackBService.error(error.error || 'The user name or password is incorrect.');
+              } else {
+                this.snackBService.error(error?.error || 'Internal Server Error for Login');
+              }
+            });
 
       }
     }
