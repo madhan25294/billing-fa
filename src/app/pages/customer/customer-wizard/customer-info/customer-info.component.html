@@ -6,7 +6,8 @@
         <mat-label>Company Name</mat-label>
         <input matInput placeholder="Company Name" formControlName="cmpName" required>
         <mat-error *ngIf="customerInfoGroup.controls['cmpName'].errors?.required">This field is mandatory.</mat-error>
-        <mat-error *ngIf="customerInfoGroup.controls['cmpName'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
+        <mat-error *ngIf="customerInfoGroup.controls['cmpName'].errors?.minlength">Minimum 8 charactors needed.
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill" class="formFieldSizeN">
         <mat-label>Account Number</mat-label>
@@ -107,9 +108,11 @@
       </div>
     </div>
   </div>
-  <button mat-stroked-button (click)="addContact()">
-    <mat-icon>add</mat-icon>Add Contact
-  </button>
+  <div class="btnSection w-100">
+    <button mat-stroked-button (click)="addContact()">
+      <mat-icon>add</mat-icon>Add Contact
+    </button>
+  </div>
   <div class="cusInfoblock w-100">
     <p class="title">Billing Address</p>
     <div class="blocks w-100" formGroupName="billingAddress">
