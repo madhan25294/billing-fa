@@ -21,40 +21,14 @@ export class ContractInfoComponent {
   ) {
     this.contractInfoFormGroup = this.formBuilder.group({
       contract: this.formBuilder.array([
-        this.formBuilder.group({
-          agreement: ['', [Validators.required]],
-          startDate: ['', [Validators.required]],
-          endDate: ['', [Validators.required]],
-          term: ['', [Validators.required]],
-          renewalterm: ['', [Validators.required]],
-          notification: ['', [Validators.required]],
-          contractNumber: ['', [Validators.required]],
-          unlimitedAutoRenew: [false, [Validators.required]],
-          contractLink: ['', [Validators.required]],
-          // sow
-          sows: this.formBuilder.array([
-            this.formBuilder.group({
-              cpi: [false, [Validators.required]],
-              cpiCap: ['', [Validators.required]],
-              sowNo: ['', [Validators.required]],
-              sowDate: ['', [Validators.required]],
-              amendmentNo: ['', [Validators.required]],
-              amendmentDates: this.formBuilder.array([
-                this.formBuilder.group({
-                  amendmentDate: ['', [Validators.required]]
-                })
-              ])
-            })
-          ])
-        })
+        this.newContract()
       ]),
       address: ['', [Validators.required]]
     });
   }
 
-  addContract() {
-    let contacts = this.contractInfoFormGroup.get('contract') as FormArray;
-    contacts.push(this.formBuilder.group({
+  newContract(): FormGroup {
+    return this.formBuilder.group({
       agreement: ['', [Validators.required]],
       startDate: ['', [Validators.required]],
       endDate: ['', [Validators.required]],
@@ -64,17 +38,15 @@ export class ContractInfoComponent {
       contractNumber: ['', [Validators.required]],
       unlimitedAutoRenew: [false, [Validators.required]],
       contractLink: ['', [Validators.required]],
-    }));
+      // sow
+      sows: this.formBuilder.array([
+        this.newSow()
+      ])
+    });
   }
 
-  deleteContract(ind: number) {
-    let contracts = this.contractInfoFormGroup.get('contract') as FormArray;
-    contracts.removeAt(ind);
-  }
-
-  addSow(selectedContract: any) {
-    let sows = selectedContract.get('sows') as FormArray;
-    sows.push(this.formBuilder.group({
+  newSow(): FormGroup {
+    return this.formBuilder.group({
       cpi: [false, [Validators.required]],
       cpiCap: ['', [Validators.required]],
       sowNo: ['', [Validators.required]],
@@ -85,7 +57,23 @@ export class ContractInfoComponent {
           amendmentDate: ['', [Validators.required]]
         })
       ])
-    }));
+    })
+  }
+
+
+  addContract() {
+    let contacts = this.contractInfoFormGroup.get('contract') as FormArray;
+    contacts.push(this.newContract());
+  }
+
+  deleteContract(ind: number) {
+    let contracts = this.contractInfoFormGroup.get('contract') as FormArray;
+    contracts.removeAt(ind);
+  }
+
+  addSow(selectedContract: any) {
+    let sows = selectedContract.get('sows') as FormArray;
+    sows.push(this.newSow());
   }
 
   deleteSow(selectedContract: any, ind: number) {
