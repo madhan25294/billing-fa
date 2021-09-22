@@ -8,8 +8,9 @@
   <button mat-button [matMenuTriggerFor]="toolsMenu">Tools</button>
   <mat-menu #toolsMenu="matMenu">
     <button mat-menu-item routerLink="tools/files" routerLinkActive="active">Files</button>
+    <button mat-menu-item routerLink="tools/dataimport">Data Import</button>
   </mat-menu>
-  <button mat-button routerLink="data/dataimport">Data Import</button>
+  <button mat-button routerLink="pending">Data Management</button>
   <button mat-button routerLink="customer/create">Create Customer</button>
   <button mat-button [matMenuTriggerFor]="settingsMenu">Settings</button>
   <mat-menu #settingsMenu="matMenu">

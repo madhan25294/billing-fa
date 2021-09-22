@@ -1,0 +1,13 @@
+<h1>Data Management</h1>
+
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="/pending" routerLinkActive #pel="routerLinkActive"
+      [active]="pel.isActive">
+      PENDING
+    </a>
+    <a mat-tab-link routerLink="/processed" routerLinkActive #prl="routerLinkActive"
+      [active]="prl.isActive">
+      PROCESSED
+    </a>
+  </nav>
+<router-outlet></router-outlet>

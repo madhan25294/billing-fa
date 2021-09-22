@@ -91,11 +91,17 @@ export class CustomerInfoComponent {
           .subscribe((zipcodeResp: any) => {
             if (zipcodeResp && zipcodeResp.city) {
               this.customerInfoGroup['controls'].billingAddress['controls'].city.setValue(zipcodeResp.city)
+            }else{
+              this.customerInfoGroup['controls'].billingAddress['controls'].city.setValue("")
             }
             if (zipcodeResp && zipcodeResp.state) {
               this.customerInfoGroup['controls'].billingAddress['controls'].state.setValue(zipcodeResp.state)
+            }else{
+              this.customerInfoGroup['controls'].billingAddress['controls'].state.setValue("")
             }
           }, (err: any) => {
+            this.customerInfoGroup['controls'].billingAddress['controls'].state.setValue("")
+            this.customerInfoGroup['controls'].billingAddress['controls'].city.setValue("")
             this.snackBService.error(err.error, '');
           })
       });

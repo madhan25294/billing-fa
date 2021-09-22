@@ -7,19 +7,18 @@ import { ToolsRoutingModule } from './tools.routing.module';
 import { DataImportComponent } from './data-import/data-import.component';
 import { ViewLogsDialogContentComponent } from './data-import/data-import.component';
 import { FormsModule } from '@angular/forms';
+import { ToolsComponent } from './tools.component';
 
 @NgModule({
-  declarations: [AllFilesComponent, DataImportComponent,ViewLogsDialogContentComponent],
+  declarations: [ToolsComponent,AllFilesComponent, DataImportComponent,ViewLogsDialogContentComponent],
   imports: [
     CommonModule,
     RouterModule,
     MaterialModule,
     ToolsRoutingModule,
-    FormsModule,
-    FormsModule,
-    ToolsRoutingModule,
+    FormsModule
   ],
   exports: [],
-  entryComponents: [AllFilesComponent],
+  entryComponents: [ToolsComponent],
 })
 export class ToolsModule {}

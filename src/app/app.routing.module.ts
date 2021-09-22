@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from '@angular/router';
-
 import { NgModule } from '@angular/core';
 
 
@@ -11,7 +10,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabled',
-      // preloadingStrategy: PreloadAllModules,
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled'
     })
