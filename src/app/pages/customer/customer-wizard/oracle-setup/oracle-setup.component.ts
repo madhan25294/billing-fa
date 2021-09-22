@@ -16,7 +16,6 @@ import {
 })
 export class OracleSetupComponent {
   @Input() metaData: any;
-  // oracle setup
   oracleSetupFormGroup: FormGroup;
 
   constructor(

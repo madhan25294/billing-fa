@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
 import { CustomerService } from '../../customer.service';
 // models
 import {
-  GetIndustries
+  PostaCodeData
 } from '../../customer.model';
 @Component({
   selector: 'app-customer-info',
@@ -15,7 +16,6 @@ import {
 export class CustomerInfoComponent {
   @Input() metaData: any;
   customerInfoGroup: FormGroup;
-  // industryList: Array<GetIndustries>;
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
@@ -59,7 +59,7 @@ export class CustomerInfoComponent {
         zipcode: ['', [Validators.required]]
       })
     });
-    // this.industryList = [];
+    this.onZipcodeType();
   }
 
   getContactControls() {
@@ -81,6 +81,25 @@ export class CustomerInfoComponent {
   deleteContact(ind: number) {
     let contacts = this.customerInfoGroup.get('secondaryContact') as FormArray;
     contacts.removeAt(ind);
+  }
+
+  onZipcodeType() {
+    this.customerInfoGroup['controls'].billingAddress.get('zipcode').valueChanges
+      .pipe(debounceTime(500))
+      .subscribe((val: string) => {
+        this.customerSvc.getPostalCodeData(val)
+          .subscribe((zipcodeResp: any) => {
+            if (zipcodeResp && zipcodeResp.city) {
+              this.customerInfoGroup['controls'].billingAddress['controls'].city.setValue(zipcodeResp.city)
+            }
+            if (zipcodeResp && zipcodeResp.state) {
+              this.customerInfoGroup['controls'].billingAddress['controls'].state.setValue(zipcodeResp.state)
+            }
+          }, (err: any) => {
+            this.snackBService.error(err.error, '');
+          })
+      });
+
   }
 
 }

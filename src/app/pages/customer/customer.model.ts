@@ -43,6 +43,13 @@ export class AgreementData {
   "agreement": string | null;
 }
 
+export class PostaCodeData {
+  "zipCode": string | null;
+  "county": string | null;
+  "state": string | null;
+  "city": string | null;
+}
+
 
 
 

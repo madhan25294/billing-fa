@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 // model
 import {
   GetIndustries, CustomerType, GetSalesPerson, ProductCategory,
-  Classification, ParentData, AccountManagers, CollectorData, AgreementData
+  Classification, ParentData, AccountManagers, CollectorData, AgreementData, PostaCodeData
 } from './customer.model';
 
 @Injectable({
@@ -50,6 +50,10 @@ export class CustomerService {
 
   public getAgreementData() {
     return this.httpClient.get<Array<AgreementData>>(`${environment.backendUrl}${API_URL.CUSTOMER.GET_AGREEMENT_DATA}`);
+  }
+
+  public getPostalCodeData(zipcode: string) {
+    return this.httpClient.get<Array<PostaCodeData>>(`${environment.backendUrl}${API_URL.CUSTOMER.GET_POSTAL_CODE_DATA}/${zipcode}`);
   }
 
 }
