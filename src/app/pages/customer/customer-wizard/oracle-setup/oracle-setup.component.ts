@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
@@ -15,16 +15,9 @@ import {
   styleUrls: ['./oracle-setup.component.scss']
 })
 export class OracleSetupComponent {
-
+  @Input() metaData: any;
   // oracle setup
   oracleSetupFormGroup: FormGroup;
-  customerTypes: Array<CustomerType>;
-  salesPersonsList: Array<GetSalesPerson>;
-  productCategoryList: Array<ProductCategory>;
-  classificationsList: Array<Classification>;
-  parentCompaniesList: Array<ParentData>;
-  managersList: Array<AccountManagers>
-  collectorsDataList: Array<CollectorData>;
 
   constructor(
     private snackBService: SnackBarService,
@@ -35,13 +28,6 @@ export class OracleSetupComponent {
     this.oracleSetupFormGroup = this.formBuilder.group({
       secondCtrl: ['', [Validators.required]]
     });
-    this.salesPersonsList = [];
-    this.customerTypes = [];
-    this.productCategoryList = [];
-    this.classificationsList = [];
-    this.parentCompaniesList = [];
-    this.managersList = [];
-    this.collectorsDataList = [];
   }
 
 

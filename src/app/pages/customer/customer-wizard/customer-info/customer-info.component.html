@@ -20,7 +20,7 @@
       <mat-form-field appearance="fill" class="formFieldSizeN">
         <mat-label>Industry</mat-label>
         <mat-select formControlName="industry">
-          <mat-option value="{{industry.id}}" *ngFor="let industry of industryList">{{industry.industry}}
+          <mat-option value="{{industry.id}}" *ngFor="let industry of metaData.industryList">{{industry.industry}}
           </mat-option>
         </mat-select>
       </mat-form-field>

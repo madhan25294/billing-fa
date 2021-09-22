@@ -38,6 +38,11 @@ export class CollectorData {
   "collectorName": string | null;
 }
 
+export class AgreementData {
+  "id": number | null;
+  "agreement": string | null;
+}
+
 
 
 

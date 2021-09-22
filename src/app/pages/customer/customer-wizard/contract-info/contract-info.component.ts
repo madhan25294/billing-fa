@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
@@ -11,6 +11,7 @@ import { CustomerService } from '../../customer.service';
   styleUrls: ['./contract-info.component.scss']
 })
 export class ContractInfoComponent {
+  @Input() metaData: any;
   contractInfoFormGroup: FormGroup
 
   constructor(

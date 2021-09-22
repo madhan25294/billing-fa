@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 // model
 import {
   GetIndustries, CustomerType, GetSalesPerson, ProductCategory,
-  Classification, ParentData, AccountManagers, CollectorData
+  Classification, ParentData, AccountManagers, CollectorData, AgreementData
 } from './customer.model';
 
 @Injectable({
@@ -46,6 +46,10 @@ export class CustomerService {
 
   public getColletorData() {
     return this.httpClient.get<Array<CollectorData>>(`${environment.backendUrl}${API_URL.CUSTOMER.GET_COLLECTOR_DATA}`);
+  }
+
+  public getAgreementData() {
+    return this.httpClient.get<Array<AgreementData>>(`${environment.backendUrl}${API_URL.CUSTOMER.GET_AGREEMENT_DATA}`);
   }
 
 }

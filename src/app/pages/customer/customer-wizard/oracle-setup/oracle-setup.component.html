@@ -9,27 +9,27 @@
       <mat-form-field appearance="fill" class="formFieldSizeXL">
         <mat-label>Sales Person</mat-label>
         <mat-select>
-          <mat-option value="{{salesperson.id}}" *ngFor="let salesperson of salesPersonsList">{{salesperson.name}}
+          <mat-option value="{{salesperson.id}}" *ngFor="let salesperson of metaData.salesPersonsList">{{salesperson.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill" class="formFieldSizeXL">
         <mat-label>Customer Type</mat-label>
         <mat-select>
-          <mat-option value="{{customer.id}}" *ngFor="let customer of customerTypes">{{customer.profile}}
+          <mat-option value="{{customer.id}}" *ngFor="let customer of metaData.customerTypes">{{customer.profile}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill" class="formFieldSizeXL">
         <mat-label>Category</mat-label>
         <mat-select>
-          <mat-option value="{{cat.id}}" *ngFor="let cat of productCategoryList">{{cat.category}}</mat-option>
+          <mat-option value="{{cat.id}}" *ngFor="let cat of metaData.productCategoryList">{{cat.category}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill" class="formFieldSizeXL">
         <mat-label>Classification</mat-label>
         <mat-select>
-          <mat-option value="{{classification.id}}" *ngFor="let classification of classificationsList">
+          <mat-option value="{{classification.id}}" *ngFor="let classification of metaData.classificationsList">
             {{classification.name}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -58,20 +58,20 @@
       <mat-form-field appearance="fill" class="formFieldSizeXL">
         <mat-label>Company</mat-label>
         <mat-select>
-          <mat-option value="{{cmpny.parentId}}" *ngFor="let cmpny of parentCompaniesList">{{cmpny.company}}
+          <mat-option value="{{cmpny.parentId}}" *ngFor="let cmpny of metaData.parentCompaniesList">{{cmpny.company}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill" class="formFieldSizeXL">
         <mat-label>Account Manager</mat-label>
         <mat-select>
-          <mat-option value="{{manager.id}}" *ngFor="let manager of managersList">{{manager.name}}</mat-option>
+          <mat-option value="{{manager.id}}" *ngFor="let manager of metaData.managersList">{{manager.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill" class="formFieldSizeXL">
         <mat-label>Collector</mat-label>
         <mat-select>
-          <mat-option value="{{collector.collectorId}}" *ngFor="let collector of collectorsDataList">
+          <mat-option value="{{collector.collectorId}}" *ngFor="let collector of metaData.collectorsDataList">
             {{collector.collectorName}}</mat-option>
         </mat-select>
       </mat-form-field>

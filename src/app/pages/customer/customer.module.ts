@@ -5,7 +5,6 @@ import { CustomerRoutingModule } from './customer.routing.module';
 import { MaterialModule } from '../../layout/material-component.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // components
-// import { CreateCustomerComponent } from './customer-wizard/create-customer/create-customer.component';
 import { CustomerInfoComponent } from './customer-wizard/customer-info/customer-info.component';
 import { OracleSetupComponent } from './customer-wizard/oracle-setup/oracle-setup.component';
 import { ContractInfoComponent } from './customer-wizard/contract-info/contract-info.component';

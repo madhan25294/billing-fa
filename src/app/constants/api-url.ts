@@ -19,6 +19,7 @@ export const API_URL = {
     GET_CLASSIFICATION: '/Classification/GetClassifications',
     GET_PARENT_DATA: '/Customer/GetParentData',
     GET_ACC_MANAGERS: '/AccountManager/GetAccountManagers',
-    GET_COLLECTOR_DATA: '/Customer/GetCollectorData'
+    GET_COLLECTOR_DATA: '/Customer/GetCollectorData',
+    GET_AGREEMENT_DATA: '/Agreement/GetAgreements'
   }
 };

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
@@ -13,9 +13,9 @@ import {
   styleUrls: ['./customer-info.component.scss']
 })
 export class CustomerInfoComponent {
-  // customer information
+  @Input() metaData: any;
   customerInfoGroup: FormGroup;
-  industryList: Array<GetIndustries>;
+  // industryList: Array<GetIndustries>;
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
@@ -59,7 +59,7 @@ export class CustomerInfoComponent {
         zipcode: ['', [Validators.required]]
       })
     });
-    this.industryList = [];
+    // this.industryList = [];
   }
 
   getContactControls() {

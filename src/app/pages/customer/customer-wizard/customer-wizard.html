@@ -2,15 +2,15 @@
 <mat-vertical-stepper orientation="vertical">
   <mat-step [stepControl]="form1">
     <ng-template matStepLabel>Customer Information</ng-template>
-    <app-customer-info #stepOne></app-customer-info>
+    <app-customer-info #stepOne [metaData]='customerInfoMetadata'></app-customer-info>
   </mat-step>
   <mat-step [stepControl]="form2">
     <ng-template matStepLabel>Oracle Setup</ng-template>
-    <app-oracle-setup #stepTwo></app-oracle-setup>
+    <app-oracle-setup #stepTwo [metaData]='oracleSetupMetadata'></app-oracle-setup>
   </mat-step>
   <mat-step [stepControl]="form3">
     <ng-template matStepLabel>Contract Information</ng-template>
-    <app-contract-info #stepThree></app-contract-info>
+    <app-contract-info #stepThree [metaData]='contractInfoMetadata'></app-contract-info>
   </mat-step>
   <mat-step [stepControl]="form4">
     <ng-template matStepLabel>Finish</ng-template>
