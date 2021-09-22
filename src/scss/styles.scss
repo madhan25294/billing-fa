@@ -368,12 +368,14 @@ mat-vertical-stepper {
   padding: 19px;
 }
 .sow {
-  > .sowContent {
-    margin: {
-      top: 15px;
+  > div {
+    > .sowContent {
+      margin: {
+        top: 15px;
+      }
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 19px;
     }
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    padding: 19px;
   }
 }
 button {
