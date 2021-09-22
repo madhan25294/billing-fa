@@ -17,7 +17,7 @@ export class ContractInfoComponent {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private customerSvc: CustomerService
+    private customerService: CustomerService
   ) {
     this.contractInfoFormGroup = this.formBuilder.group({
       // firstCtrl: ['', [Validators.required]]

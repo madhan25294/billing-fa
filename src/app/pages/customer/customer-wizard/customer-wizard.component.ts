@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../shared/snack-bar.service';
@@ -12,10 +12,10 @@ import { ContractInfoComponent } from './contract-info/contract-info.component';
 import { CustomerFinishComponent } from './customer-finish/customer-finish.component';
 @Component({
   selector: 'app-create-customer',
-  templateUrl: './customer-wizard.html',
-  styleUrls: ['./customer-wizard.scss']
+  templateUrl: './customer-wizard.component.html',
+  styleUrls: ['./customer-wizard.component.scss']
 })
-export class CreateCustomerComponent implements AfterViewInit {
+export class CreateCustomerComponent implements AfterViewInit , OnInit{
   form1: FormGroup;
   @ViewChild('stepOne') customerInfoComponent: CustomerInfoComponent;
   form2: FormGroup;
@@ -32,7 +32,7 @@ export class CreateCustomerComponent implements AfterViewInit {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private customerSvc: CustomerService,
+    private customerService: CustomerService,
     private cdr: ChangeDetectorRef) {
     this.customerInfoMetadata = {};
     this.oracleSetupMetadata = {};
@@ -40,7 +40,6 @@ export class CreateCustomerComponent implements AfterViewInit {
 
     // for customer info step
     this.customerInfoMetadata.industryList = [];
-    this.fetchIndustries();
 
     // for oraclesetup step
     this.oracleSetupMetadata.salesPersonsList = [];
@@ -50,6 +49,17 @@ export class CreateCustomerComponent implements AfterViewInit {
     this.oracleSetupMetadata.parentCompaniesList = [];
     this.oracleSetupMetadata.managersList = [];
     this.oracleSetupMetadata.collectorsDataList = [];
+
+
+    // for contract info step
+    this.contractInfoMetadata.agreementList = [];
+  }
+
+  ngOnInit() {
+    // for customer info step
+    this.fetchIndustries();
+
+    // for oraclesetup step
     this.fetchSalesPersonsList();
     this.fetchCustomerTypes();
     this.fetchProductCategories();
@@ -59,7 +69,6 @@ export class CreateCustomerComponent implements AfterViewInit {
     this.fetchCollectorsData();
 
     // for contract info step
-    this.contractInfoMetadata.agreementList = [];
     this.fetchAgreeementData();
   }
 
@@ -72,7 +81,7 @@ export class CreateCustomerComponent implements AfterViewInit {
   }
 
   fetchIndustries() {
-    this.customerSvc.getIndustryList()
+    this.customerService.getIndustryList()
     .subscribe((industriesList) => {
       this.customerInfoMetadata.industryList = industriesList;
     }, (err: any) => {
@@ -81,7 +90,7 @@ export class CreateCustomerComponent implements AfterViewInit {
   }
 
   fetchCustomerTypes() {
-    this.customerSvc.getCustomerType()
+    this.customerService.getCustomerType()
       .subscribe((customerTypesList) => {
         this.oracleSetupMetadata.customerTypes = customerTypesList;
       }, (err: any) => {
@@ -89,7 +98,7 @@ export class CreateCustomerComponent implements AfterViewInit {
       })
   }
   fetchSalesPersonsList() {
-    this.customerSvc.getSalesPersons()
+    this.customerService.getSalesPersons()
       .subscribe((salesPersonsList) => {
         this.oracleSetupMetadata.salesPersonsList = salesPersonsList;
       }, (err: any) => {
@@ -97,7 +106,7 @@ export class CreateCustomerComponent implements AfterViewInit {
       })
   }
   fetchProductCategories() {
-    this.customerSvc.getProductCategory()
+    this.customerService.getProductCategory()
       .subscribe((categoryList) => {
         this.oracleSetupMetadata.productCategoryList = categoryList;
       }, (err: any) => {
@@ -105,7 +114,7 @@ export class CreateCustomerComponent implements AfterViewInit {
       })
   }
   fetchClassifications() {
-    this.customerSvc.getClassifications()
+    this.customerService.getClassifications()
       .subscribe((classificationsList) => {
         this.oracleSetupMetadata.classificationsList = classificationsList;
       }, (err: any) => {
@@ -113,7 +122,7 @@ export class CreateCustomerComponent implements AfterViewInit {
       })
   }
   fetchParentCompany() {
-    this.customerSvc.getParentCompany()
+    this.customerService.getParentCompany()
       .subscribe((parentCompaniesList) => {
         this.oracleSetupMetadata.parentCompaniesList = parentCompaniesList;
       }, (err: any) => {
@@ -121,7 +130,7 @@ export class CreateCustomerComponent implements AfterViewInit {
       })
   }
   fetchManagersList() {
-    this.customerSvc.getManagers()
+    this.customerService.getManagers()
       .subscribe((managersList) => {
         this.oracleSetupMetadata.managersList = managersList;
       }, (err: any) => {
@@ -129,7 +138,7 @@ export class CreateCustomerComponent implements AfterViewInit {
       })
   }
   fetchCollectorsData() {
-    this.customerSvc.getColletorData()
+    this.customerService.getColletorData()
       .subscribe((collectorsList) => {
         this.oracleSetupMetadata.collectorsDataList = collectorsList;
       }, (err: any) => {
@@ -138,7 +147,7 @@ export class CreateCustomerComponent implements AfterViewInit {
   }
 
   fetchAgreeementData() {
-    this.customerSvc.getAgreementData()
+    this.customerService.getAgreementData()
       .subscribe((agreementsList) => {
         this.contractInfoMetadata.agreementList = agreementsList;
       }, (err: any) => {

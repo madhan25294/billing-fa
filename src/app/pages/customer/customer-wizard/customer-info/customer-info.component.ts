@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 // service
@@ -13,13 +13,13 @@ import {
   templateUrl: './customer-info.component.html',
   styleUrls: ['./customer-info.component.scss']
 })
-export class CustomerInfoComponent {
+export class CustomerInfoComponent implements OnInit {
   @Input() metaData: any;
   customerInfoGroup: FormGroup;
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private customerSvc: CustomerService
+    private customerService: CustomerService
   ) {
     // customer information
     this.customerInfoGroup = this.formBuilder.group({
@@ -59,6 +59,9 @@ export class CustomerInfoComponent {
         zipcode: ['', [Validators.required]]
       })
     });
+  }
+
+  ngOnInit() {
     this.onZipcodeType();
   }
 
@@ -87,16 +90,16 @@ export class CustomerInfoComponent {
     this.customerInfoGroup['controls'].billingAddress.get('zipcode').valueChanges
       .pipe(debounceTime(500))
       .subscribe((val: string) => {
-        this.customerSvc.getPostalCodeData(val)
+        this.customerService.getPostalCodeData(val)
           .subscribe((zipcodeResp: any) => {
             if (zipcodeResp && zipcodeResp.city) {
               this.customerInfoGroup['controls'].billingAddress['controls'].city.setValue(zipcodeResp.city)
-            }else{
+            } else {
               this.customerInfoGroup['controls'].billingAddress['controls'].city.setValue("")
             }
             if (zipcodeResp && zipcodeResp.state) {
               this.customerInfoGroup['controls'].billingAddress['controls'].state.setValue(zipcodeResp.state)
-            }else{
+            } else {
               this.customerInfoGroup['controls'].billingAddress['controls'].state.setValue("")
             }
           }, (err: any) => {
@@ -105,7 +108,6 @@ export class CustomerInfoComponent {
             this.snackBService.error(err.error, '');
           })
       });
-
   }
 
 }

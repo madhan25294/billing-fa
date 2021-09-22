@@ -21,7 +21,7 @@ export class OracleSetupComponent {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private customerSvc: CustomerService
+    private customerService: CustomerService
   ) {
 
     this.oracleSetupFormGroup = this.formBuilder.group({
