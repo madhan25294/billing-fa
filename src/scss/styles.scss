@@ -135,16 +135,7 @@ mat-vertical-stepper {
         }
       }
       > .blocks {
-        > .addedContact {
-          width: $formFieldSizeL;
-        }
-        > .addedPhone,
-        > .addedExtension,
-        > .addedFax {
-          width: $formFieldSizeN;
-        }
         > .addedEmail {
-          width: $formFieldSizeXXL;
           position: relative;
         }
         > .btnSection {
