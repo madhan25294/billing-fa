@@ -1,0 +1,35 @@
+.contractInfobtns {
+  > div {
+    &:first-child {
+      float: left;
+      margin: {
+        bottom: 14px;
+      }
+    }
+    + {
+      .note {
+        font: {
+          size: 16px;
+          weight: 300;
+        }
+        color: #d6b345;
+      }
+    }
+  }
+}
+.contractInfo {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 19px;
+}
+
+.sow {
+  > div {
+    > .sowContent {
+      margin: {
+        top: 15px;
+      }
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 19px;
+    }
+  }
+}

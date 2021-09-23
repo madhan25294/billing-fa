@@ -16,9 +16,7 @@
   </div>
   <div formArrayName="contract"
     *ngFor="let contract of contractInfoFormGroup.get('contract')['controls']; let i = index;">
-    <section class="example-section">
       <mat-checkbox class="example-margin" color="primary">Contract {{i + 1}}</mat-checkbox>
-    </section>
     <div class="cusInfoblock w-100 contractInfo" [formGroupName]="i">
       <div class="w-100 float-left">
         <p class="title active">Contract Information</p>
@@ -67,10 +65,8 @@
             <mat-label>Contract Number</mat-label>
             <input matInput placeholder="Contract Number" formControlName="contractNumber">
           </mat-form-field>
-          <section class="example-section">
             <mat-checkbox class="example-margin" color="primary" formControlName="unlimitedAutoRenew">Unlimited Auto
               Renew</mat-checkbox>
-          </section>
           <mat-form-field appearance="fill" class="w-100">
             <mat-label>Contract Link</mat-label>
             <input matInput placeholder="Contract Link" formControlName="contractLink">
@@ -81,14 +77,10 @@
         <p class="title active w-100">Options</p>
         <div class="w-100" formArrayName="sows"
           *ngFor="let sow of contract.get('sows')['controls']; let sowIndex = index;">
-          <section class="example-section w-100">
             <mat-checkbox class="example-margin" color="primary">Sow {{sowIndex + 1}}</mat-checkbox>
-          </section>
           <div class="blocks w-100 sowContent" [formGroupName]="sowIndex">
             <div class="w-100">
-              <section class="example-section">
                 <mat-checkbox class="example-margin" color="primary" formControlName="cpi">CPI</mat-checkbox>
-              </section>
               <p class="formFieldSize323">
                 <mat-form-field appearance="fill" class="w-100">
                   <mat-label>CPI Cap</mat-label>
