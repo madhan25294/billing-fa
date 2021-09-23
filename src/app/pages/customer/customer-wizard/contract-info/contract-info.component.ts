@@ -51,10 +51,10 @@ export class ContractInfoComponent {
       cpiCap: ['', [Validators.required]],
       sowNo: ['', [Validators.required]],
       sowDate: ['', [Validators.required]],
-      amendmentNo: ['', [Validators.required]],
       amendmentDates: this.formBuilder.array([
         this.formBuilder.group({
-          amendmentDate: ['', [Validators.required]]
+          amendmentDate: ['', [Validators.required]],
+          amendmentNo: ['', [Validators.required]]
         })
       ])
     })
@@ -79,5 +79,13 @@ export class ContractInfoComponent {
   deleteSow(selectedContract: any, ind: number) {
     let sows = selectedContract.get('sows') as FormArray;
     sows.removeAt(ind);
+  }
+
+  addAmmendment(selectedSow: any) {
+    let ammendment = selectedSow.get('amendmentDates') as FormArray;
+    ammendment.push(this.formBuilder.group({
+      amendmentDate: ['', [Validators.required]],
+      amendmentNo: ['', [Validators.required]],
+    }));
   }
 }
