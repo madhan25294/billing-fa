@@ -93,8 +93,8 @@ section {
   margin-top: 8px;
 }
 
-.mat-form-field {
-  margin-top: 16px;
+fieldset {
+  margin-bottom: 16px;
 }
 
 mat-vertical-stepper {
@@ -109,7 +109,7 @@ mat-vertical-stepper {
       }
     }
     &.addedContact {
-      width: 89.276485788%;
+      // width: 89.276485788%;
       float: left;
       padding: {
         top: 19px;
@@ -146,19 +146,6 @@ mat-vertical-stepper {
         > .addedEmail {
           width: $formFieldSizeXXL;
           position: relative;
-          > .note {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            font: {
-              size: 12px;
-              weight: 500;
-            }
-            line-height: 16px;
-            text-transform: capitalize;
-            letter-spacing: 0.4px;
-            color: rgba(0, 0, 0, 0.3);
-          }
         }
         > .btnSection {
           float: left;
@@ -324,16 +311,27 @@ button {
 }
 .mat-checkbox {
   display: inline-block;
+  padding: {
+    top: 12px;
+  }
   margin: {
     right: 2.325581395%;
+  }
+}
+.note {
+  color: rgba(0, 0, 0, 0.3);
+  font: {
+    size: 12px;
+    weight: 300;
+  }
+  &.active {
+    font: {
+      size: 16px;
+    }
+    color: #d6b345;
   }
 }
 
-mat-form-field {
-  margin: {
-    right: 2.325581395%;
-  }
-}
 .mat-step-icon {
   &.mat-step-icon-state-edit {
     color: rgba(252, 207, 69, 1);
