@@ -12,6 +12,8 @@ import { CustomerFinishComponent } from './customer-wizard/customer-finish/custo
 import { CreateCustomerComponent } from './customer-wizard/customer-wizard.component';
 // serives
 import { CustomerService } from './customer.service';
+import { CustomerPubsubService } from './customer.pubsub.service';
+
 @NgModule({
   declarations: [
     CreateCustomerComponent,
@@ -29,7 +31,8 @@ import { CustomerService } from './customer.service';
     ReactiveFormsModule
   ],
   providers: [
-    CustomerService
+    CustomerService,
+    CustomerPubsubService
   ],
   exports: [],
   entryComponents: [],

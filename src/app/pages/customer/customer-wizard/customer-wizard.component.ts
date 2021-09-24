@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../shared/snack-bar.service';
 import { CustomerService } from '../customer.service';
+import { CustomerPubsubService } from '../customer.pubsub.service';
 // models
 
 // components
@@ -34,14 +35,12 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
     private customerService: CustomerService,
-    private cdr: ChangeDetectorRef) {
+    private cdr: ChangeDetectorRef,
+    private customerPubsubService: CustomerPubsubService) {
     this.confirmPopup = {
       show: false,
-      confirm: {
-        show: true,
-        eventCLicked: 'Delete',
-        content: ''
-      }
+      boldContent: '',
+      content: ''
     };
 
     this.customerInfoMetadata = {};
@@ -63,23 +62,45 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
 
     // for contract info step
     this.contractInfoMetadata.agreementList = [];
+    this.bindForToggleConfirmpopup()
+  }
+
+  bindForToggleConfirmpopup() {
+    this.customerPubsubService.subToShowConfirmpopup()
+      .subscribe((res: any) => {
+        if (res.showPopup) {
+          this.confirmPopup.show = res.showPopup;
+          this.confirmPopup.boldContent = res.boldContent;
+          this.confirmPopup.content = res.content;
+          this.confirmPopup.data = res.data;
+        }
+      })
+  }
+
+  confirmoModelNo() {
+    this.confirmPopup.show = false;
+  }
+
+  confirmoModelYes() {
+    this.confirmPopup.show = false;
+    this.customerPubsubService.pubToShowConfirmpopup(this.confirmPopup.data);
   }
 
   ngOnInit() {
-    // // for customer info step
-    // this.fetchIndustries();
+    // for customer info step
+    this.fetchIndustries();
 
-    // // for oraclesetup step
-    // this.fetchSalesPersonsList();
-    // this.fetchCustomerTypes();
-    // this.fetchProductCategories();
-    // this.fetchClassifications();
-    // this.fetchParentCompany();
-    // this.fetchManagersList();
-    // this.fetchCollectorsData();
+    // for oraclesetup step
+    this.fetchSalesPersonsList();
+    this.fetchCustomerTypes();
+    this.fetchProductCategories();
+    this.fetchClassifications();
+    this.fetchParentCompany();
+    this.fetchManagersList();
+    this.fetchCollectorsData();
 
-    // // for contract info step
-    // this.fetchAgreeementData();
+    // for contract info step
+    this.fetchAgreeementData();
   }
 
   ngAfterViewInit() {

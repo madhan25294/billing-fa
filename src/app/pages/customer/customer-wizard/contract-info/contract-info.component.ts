@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
 import { CustomerService } from '../../customer.service';
+import { CustomerPubsubService } from '../../customer.pubsub.service';
 // models
 
 @Component({
@@ -17,14 +18,15 @@ export class ContractInfoComponent {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    public customerPubsubService: CustomerPubsubService
   ) {
     this.contractInfoFormGroup = this.formBuilder.group({
       contract: this.formBuilder.array([
-        this.newContract()
       ]),
-      address: ['', [Validators.required]]
+      notes: ['', [Validators.maxLength(25)]]
     });
+    this.subForConfirmPopup()
   }
 
   newContract(): FormGroup {
@@ -87,5 +89,41 @@ export class ContractInfoComponent {
       amendmentDate: ['', [Validators.required]],
       amendmentNo: ['', [Validators.required]],
     }));
+  }
+
+  pubToReset(selected: any, content) {
+    this.customerPubsubService.pubToShowConfirmpopup({
+      showPopup: true,
+      boldContent: 'Reset',
+      content: content,
+      data: {
+        eventType: 'reset-in-contractinfo',
+        contactToReset: selected
+      }
+    });
+  }
+
+  createCustomerClick() {
+    this.customerPubsubService.pubToShowConfirmpopup({
+      showPopup: true,
+      boldContent: 'Create a Customer',
+      content: 'without adding contract',
+      data: {
+        eventType: 'add-contract',
+      }
+    });
+  }
+
+
+  subForConfirmPopup() {
+    this.customerPubsubService.subToShowConfirmpopup()
+      .subscribe((res: any) => {
+        if (res.eventType && res.eventType === 'reset-in-contractinfo') {
+          res.contactToReset.reset()
+        }
+        if (res.eventType && res.eventType === 'add-contract') {
+          this.addContract()
+        }
+      })
   }
 }

@@ -4,6 +4,7 @@ import { debounceTime } from 'rxjs/operators';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
 import { CustomerService } from '../../customer.service';
+import { CustomerPubsubService } from '../../customer.pubsub.service';
 // models
 import {
   PostaCodeData
@@ -19,7 +20,8 @@ export class CustomerInfoComponent implements OnInit {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    public customerPubsubService: CustomerPubsubService
   ) {
     // customer information
     this.customerInfoGroup = this.formBuilder.group({
@@ -59,6 +61,7 @@ export class CustomerInfoComponent implements OnInit {
         zipcode: ['', [Validators.required, Validators.maxLength(10)]]
       })
     });
+    this.subForConfirmPopup();
   }
 
   ngOnInit() {
@@ -108,6 +111,42 @@ export class CustomerInfoComponent implements OnInit {
             this.snackBService.error(err.error, '');
           })
       });
+  }
+
+  pubToDelete(ind: any) {
+    this.customerPubsubService.pubToShowConfirmpopup({
+      showPopup: true,
+      boldContent: 'Delete',
+      content: 'the contact',
+      data: {
+        eventType: 'delete-contact',
+        ind: ind
+      }
+    });
+  }
+
+  pubToReset(selectedContact: any, content) {
+    this.customerPubsubService.pubToShowConfirmpopup({
+      showPopup: true,
+      boldContent: 'Reset',
+      content: content,
+      data: {
+        eventType: 'reset-in-contactinfo',
+        contactToReset: selectedContact
+      }
+    });
+  }
+
+  subForConfirmPopup() {
+    this.customerPubsubService.subToShowConfirmpopup()
+      .subscribe((res: any) => {
+        if (res.eventType && res.eventType === 'delete-contact') {
+          this.deleteContact(res.ind)
+        }
+        if (res.eventType && res.eventType === 'reset-in-contactinfo') {
+          res.contactToReset.reset()
+        }
+      })
   }
 
 }

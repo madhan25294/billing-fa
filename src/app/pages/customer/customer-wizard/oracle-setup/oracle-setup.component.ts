@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
 import { CustomerService } from '../../customer.service';
+import { CustomerPubsubService } from '../../customer.pubsub.service';
+
 // models
 import {
   CustomerType, GetSalesPerson, ProductCategory,
@@ -21,7 +23,8 @@ export class OracleSetupComponent {
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    public customerPubsubService: CustomerPubsubService
   ) {
 
     this.oracleSetupFormGroup = this.formBuilder.group({
@@ -37,7 +40,28 @@ export class OracleSetupComponent {
       accountManager: ['', []],
       collector: ['', []],
     });
+    this.subForConfirmPopup();
   }
 
+  pubToReset(selected: any, content) {
+    this.customerPubsubService.pubToShowConfirmpopup({
+      showPopup: true,
+      boldContent: 'Reset',
+      content: content,
+      data: {
+        eventType: 'reset-in-oraclesetup',
+        contactToReset: selected
+      }
+    });
+  }
+
+  subForConfirmPopup() {
+    this.customerPubsubService.subToShowConfirmpopup()
+      .subscribe((res: any) => {
+        if (res.eventType && res.eventType === 'reset-in-oraclesetup') {
+          res.contactToReset.reset()
+        }
+      })
+  }
 
 }

@@ -157,8 +157,8 @@
         </fieldset>
       </div>
       <div class="btnSection w-100">
-        <button mat-stroked-button color="primary" (click)="deleteContact(i)">Delete Contact</button>
-        <button mat-stroked-button [disabled]="!cont.valid" (click)="cont.reset()">Reset</button>
+        <button mat-stroked-button color="primary" (click)="pubToDelete(i)">Delete Contact</button>
+        <button mat-stroked-button [disabled]="!cont.valid" (click)="pubToReset(cont, 'the contact')">Reset</button>
       </div>
     </div>
   </div>
@@ -221,7 +221,7 @@
     </div>
   </div>
   <div class="btnSection w-100">
-    <button mat-stroked-button color="primary" (click)="customerInfoGroup.reset()">Reset</button>
-    <button mat-stroked-button disabled matStepperNext>Next</button>
+    <button mat-stroked-button color="primary" (click)="pubToReset(customerInfoGroup, 'customer information')">Reset</button>
+    <button mat-stroked-button [disabled]="!customerInfoGroup.valid" matStepperNext>Next</button>
   </div>
 </form>
