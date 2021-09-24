@@ -1,101 +1,121 @@
 <form class="mt-4">
-    <div class="content" fxLayout="column" fxLayoutGap="8px">
-        <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="8px" fxLayoutGap.gt-xs="24px">
-            
-        <fieldset fxFlex="40%"></fieldset>
-        <fieldset fxFlex="60%"  fxLayoutGap="8px">
-        <mat-form-field fxFlex="35%">
-            <mat-label>Source Type</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let source of sourceType" [value]="source.value">
-                {{ source.viewValue }}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field fxFlex="35%">
-            <mat-label>Invoice Type</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let source of invoiceType" [value]="source.value">
-                {{ source.viewValue }}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field fxFlex="35%">
-            <mat-label>Status</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let source of statusType" [value]="source.value">
-                {{ source.viewValue }}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-        </fieldset>
-</div>
-</div>
-<div>
-  
-  <mat-table [dataSource]="pendingDataLst">
 
-    <ng-container matColumnDef="fileName">
-      <mat-header-cell *matHeaderCellDef> File Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
-    </ng-container>
+  <div fxLayout fxLayoutGap="20px" fxLayoutAlign="end">
+    <mat-form-field fxFlex="15%">
+      <mat-label>Source Type</mat-label>
 
-    <ng-container matColumnDef="invoiceType">
-      <mat-header-cell *matHeaderCellDef> Invoice Type </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.invoiceType}} </mat-cell>
-    </ng-container>
+      <mat-select [(ngModel)]="searchFilterObj.fileCurrentStatusId" name="selSourceType">
+        <mat-option *ngFor="let source of sourceTypes" [value]="source.transSourceId">
+          {{ source.sourceDesc }}
+        </mat-option>
+      </mat-select>
 
-    <ng-container matColumnDef="folderId">
-      <mat-header-cell *matHeaderCellDef> Folder Id </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.folderId}} </mat-cell>
-    </ng-container>
+    </mat-form-field>
+    <mat-form-field fxFlex="15%">
+      <mat-label>Invoice Type</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let source of invoiceType" [value]="source.value">
+          {{ source.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="15%">
+      <mat-label>Status</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let source of statusType" [value]="source.value">
+          {{ source.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
 
-    <ng-container matColumnDef="sendMethod">
-      <mat-header-cell *matHeaderCellDef> Send Method </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.sendMethod}} </mat-cell>
-    </ng-container>
+    <mat-table [dataSource]="pendingDataList">
 
-    <ng-container matColumnDef="importType">
-      <mat-header-cell *matHeaderCellDef> Import Type </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.importType}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="fileName">
+        <mat-header-cell *matHeaderCellDef> File Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="fileType">
-      <mat-header-cell *matHeaderCellDef> File Type </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.fileType}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="sourceType">
-      <mat-header-cell *matHeaderCellDef> Source Type </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.sourceType}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="invoiceType">
+        <mat-header-cell *matHeaderCellDef> Invoice Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.invoiceType}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="ownerType">
-      <mat-header-cell *matHeaderCellDef> Owner Type </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ownerType}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="folderId">
+        <mat-header-cell *matHeaderCellDef> Folder ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.folderId}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="ownerEmail">
-      <mat-header-cell *matHeaderCellDef> Owner Email </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ownerEmail}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="sendMethod">
+        <mat-header-cell *matHeaderCellDef> Send Method </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.sendMethod}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="fileProcessStatus">
-      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.fileProcessStatus}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <button mat-stroked-button color="warn" >Validate</button>
-        <span class="m-1">
-          <button mat-stroked-button color="primary">Return</button>
-        </span>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="importType">
+        <mat-header-cell *matHeaderCellDef> Import Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.importType}} </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+      <ng-container matColumnDef="fileType">
+        <mat-header-cell *matHeaderCellDef> File Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fileType}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sourceType">
+        <mat-header-cell *matHeaderCellDef> Source Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.sourceType}} </mat-cell>
+      </ng-container>
 
-</div>
+      <ng-container matColumnDef="ownerType">
+        <mat-header-cell *matHeaderCellDef> Owner Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ownerType}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ownerEmail">
+        <mat-header-cell *matHeaderCellDef class="w-m"> Owner </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="w-m"> {{element.ownerEmail}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fileProcessStatus">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span *ngIf="element.fileProcessStatus === 'Received'" class="col-blue">{{element.fileProcessStatus}}</span>
+          <span *ngIf="element.fileProcessStatus === 'Validated'"
+            class="col-yellow">{{element.fileProcessStatus}}</span>
+          <span *ngIf="element.fileProcessStatus === 'Returned'" class="col-red">{{element.fileProcessStatus}}</span>
+          <span *ngIf="element.fileProcessStatus === 'Processed'"
+            class="col-lightgreen">{{element.fileProcessStatus}}</span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action1">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.fileProcessStatus==='Received'">
+            <button mat-stroked-button color="info">VALIDATE</button>
+          </ng-container>
+          <ng-container *ngIf="element.fileProcessStatus==='Validated'">
+            <button mat-stroked-button color="accent">PROCESS</button>
+          </ng-container>
+          <ng-container *ngIf="element.fileProcessStatus==='Returned'">
+            <button mat-stroked-button color="warn">DELETE</button>
+          </ng-container>
+          <ng-container *ngIf="element.fileProcessStatus==='Processed'">
+            <button mat-stroked-button color="secondary" disabled>PROCESS</button>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action2">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="ps-1">
+          <button mat-stroked-button
+            [color]="(element.fileProcessStatus ==='Returned' || element.fileProcessStatus ==='Processed') ? '' : 'primary'"
+            [disabled]="element.fileProcessStatus ==='Returned' || element.fileProcessStatus ==='Processed'">RETURN</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" class="m-1"></mat-row>
+    </mat-table>
+
+  </div>
 </form>

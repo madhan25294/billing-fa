@@ -5,9 +5,7 @@
 html,
 body {
   height: 100%;
-  font: {
-    family: "Roboto";
-  }
+  color: $color-gray !important;
 }
 
 .w-10 {
@@ -38,20 +36,18 @@ body {
   overflow: auto;
 }
 
+.mat-button.mat-info,
+.mat-icon-button.mat-info,
+.mat-stroked-button.mat-info {
+  color: $color-yellow-dark;
+  border-color: $color-yellow-dark;
+}
 .snackbar-success {
   background: mat-color($theme-accent);
 }
 .snackbar-error {
   background: mat-color($theme-warn);
 }
-/** mat-table css **/
-.mat-header-cell {
-  color: $color-black;
-  font-weight: bold;
-  text-align: center;
-}
-
-/** mat-table css **/
 .background-white {
   background: $color-white;
 }
@@ -335,4 +331,16 @@ button {
 }
 .float-left {
   float: left;
+}
+.col-blue {
+  color: $color-blue !important;
+}
+.col-red {
+  color: $color-warn;
+}
+.col-yellow {
+  color: $color-yellow-dark;
+}
+.col-lightgreen {
+  color: $color-lightgreen;
 }

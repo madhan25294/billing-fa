@@ -1,0 +1,40 @@
+@import "./variables";
+/* You can add mat-override  css classes */
+
+/** 1. mat-table css **/
+.mat-header-cell {
+  color: $color-gray;
+  font-weight: bold;
+  text-align: center;
+  background-color: $color-yellow;
+}
+.mat-button.mat-warn,
+.mat-icon-button.mat-warn,
+.mat-stroked-button.mat-warn {
+  border-color: $color-warn;
+}
+.mat-button.mat-primary,
+.mat-icon-button.mat-primary,
+.mat-stroked-button.mat-primary {
+  border-color: $color-blue;
+}
+.mat-button.mat-accent,
+.mat-icon-button.mat-accent,
+.mat-stroked-button.mat-accent {
+  border-color: $color-lightgreen;
+}
+.mat-header-row {
+  min-height: 42px;
+}
+.mat-cell,
+.mat-footer-cell {
+  color: $color-gray;
+}
+/** mat-table css **/
+
+/** 2. mat-tab css **/
+
+.mat-tab-link {
+  color: $color-blue;
+}
+/** mat-tab css **/

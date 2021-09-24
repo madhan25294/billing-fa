@@ -6,9 +6,10 @@ export const API_URL = {
     USERNAME: '/Account/UserName'
   },
   GET_FILES: '/ImportData/GetFiles',
+  GET_IMPORT_FILES_DETAILS: '/ImportData/GetImportFilesDetails',
   UPDATE_FILE_STATUS: '/ImportData/UpdateFileStatus',
   BILLING_SEARCH:'/ImportData/Search',
-  BILLING_SRC_TYPE: '/ImportData/SourceType',
+  SOURCE_TYPE: '/ImportData/SourceType',
   VIEW_LOGS: '/ImportData/GetImportFileLogs',
   CUSTOMER: {
     GET_INDUSTRIES: '/Industry/GetIndustries',

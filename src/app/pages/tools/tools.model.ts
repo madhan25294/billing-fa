@@ -10,4 +10,11 @@ export class GetImportFiles {
     "ownerType": string | null;
     "ownerEmail": string | null;
     "fileProcessStatus": string | null;
+    "action1"?: string | null;
+    "action2"?: string | null;
+}
+
+export class GetSourceTypes {
+    "transSourceId": number | null;
+    "sourceDesc": string | null
 }

@@ -19,7 +19,7 @@ export class DataImportService {
   }
 
   getSourceTypes() {
-    return this.httpClient.get<Array<GetSourceTypes>>(`${environment.backendUrl}${API_URL.BILLING_SRC_TYPE}`)
+    return this.httpClient.get<Array<GetSourceTypes>>(`${environment.backendUrl}${API_URL.SOURCE_TYPE}`)
   }
 
   getViewLogsData(fileId: string, sourceId: string, periodId: string) {
