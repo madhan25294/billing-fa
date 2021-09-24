@@ -7,6 +7,10 @@
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>County</mat-label>
             <input matInput placeholder="County Name" formControlName="countyName">
+            <mat-error *ngIf="oracleSetupFormGroup.controls['countyName'].errors?.required">This field is mandatory.
+            </mat-error>
+            <mat-error *ngIf="oracleSetupFormGroup.controls['countyName'].errors?.maxlength">Maximum 45 characters.
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Sales Person</mat-label>
@@ -15,6 +19,8 @@
                 {{salesperson.name}}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="oracleSetupFormGroup.controls['salesPerson'].errors?.required">This field is mandatory.
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Customer Type</mat-label>
@@ -22,6 +28,8 @@
               <mat-option value="{{customer.id}}" *ngFor="let customer of metaData.customerTypes">{{customer.profile}}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="oracleSetupFormGroup.controls['customerType'].errors?.required">This field is mandatory.
+            </mat-error>
           </mat-form-field>
         </fieldset>
       </div>
@@ -33,6 +41,8 @@
               <mat-option value="{{cat.id}}" *ngFor="let cat of metaData.productCategoryList">{{cat.category}}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="oracleSetupFormGroup.controls['category'].errors?.required">This field is mandatory.
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Classification</mat-label>
@@ -40,6 +50,8 @@
               <mat-option value="{{classification.id}}" *ngFor="let classification of metaData.classificationsList">
                 {{classification.name}}</mat-option>
             </mat-select>
+            <mat-error *ngIf="oracleSetupFormGroup.controls['classification'].errors?.required">This field is mandatory.
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Customer Number</mat-label>

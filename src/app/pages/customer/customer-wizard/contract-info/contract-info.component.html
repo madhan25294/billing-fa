@@ -47,6 +47,12 @@
                   <mat-label>Term</mat-label>
                   <input matInput placeholder="Term" formControlName="term">
                   <mat-hint>Months</mat-hint>
+                  <mat-error *ngIf="contract.controls['term'].errors?.required">This field is mandatory.
+                  </mat-error>
+                  <mat-error *ngIf="contract.controls['term'].errors?.maxlength">Maximum 3 characters.
+                  </mat-error>
+                  <mat-error *ngIf="contract.controls['term'].errors?.pattern">Numbers only.
+                  </mat-error>
                 </mat-form-field>
               </p>
               <p fxFlex="12.9%">
@@ -54,6 +60,12 @@
                   <mat-label>Renewal Term</mat-label>
                   <input matInput placeholder="Renewal Term" formControlName="renewalterm">
                   <mat-hint>Months</mat-hint>
+                  <mat-error *ngIf="contract.controls['renewalterm'].errors?.required">This field is mandatory.
+                  </mat-error>
+                  <mat-error *ngIf="contract.controls['renewalterm'].errors?.maxlength">Maximum 3 characters.
+                  </mat-error>
+                  <mat-error *ngIf="contract.controls['renewalterm'].errors?.pattern">Numbers only.
+                  </mat-error>
                 </mat-form-field>
               </p>
             </fieldset>
@@ -65,11 +77,19 @@
                   <mat-label>Notification</mat-label>
                   <input matInput placeholder="Placeholder" formControlName="notification">
                   <mat-hint>Days</mat-hint>
+                  <mat-error *ngIf="contract.controls['notification'].errors?.required">This field is mandatory.
+                  </mat-error>
+                  <mat-error *ngIf="contract.controls['notification'].errors?.maxlength">Maximum 3 characters.
+                  </mat-error>
+                  <mat-error *ngIf="contract.controls['notification'].errors?.pattern">Numbers only.
+                  </mat-error>
                 </mat-form-field>
               </p>
               <mat-form-field appearance="fill" fxFlex="43.4%">
                 <mat-label>Contract Number</mat-label>
                 <input matInput placeholder="Contract Number" formControlName="contractNumber">
+                <mat-error *ngIf="contract.controls['contractNumber'].errors?.maxlength">Maximum 75 characters.
+                </mat-error>
               </mat-form-field>
               <mat-checkbox class="example-margin" color="primary" formControlName="unlimitedAutoRenew">Unlimited Auto
                 Renew</mat-checkbox>
@@ -99,12 +119,18 @@
                     <mat-form-field appearance="fill" class="w-100">
                       <mat-label>CPI Cap</mat-label>
                       <input matInput placeholder="Placeholder" formControlName="cpiCap">
+                      <mat-error *ngIf="sow.controls['cpiCap'].errors?.required">This field is mandatory.
+                      </mat-error>
+                      <mat-error *ngIf="sow.controls['cpiCap'].errors?.pattern">Numbers only.
+                      </mat-error>
                       <mat-hint>Percentage</mat-hint>
                     </mat-form-field>
                   </p>
                   <mat-form-field appearance="fill" fxFlex="12.9%">
                     <mat-label>Sow No</mat-label>
                     <input matInput formControlName="sowNo">
+                    <mat-error *ngIf="sow.controls['sowNo'].errors?.maxlength">Maximum 3 characters.
+                    </mat-error>
                   </mat-form-field>
                   <mat-form-field appearance="fill" fxFlex="12.9%">
                     <mat-label>Sow Date</mat-label>
@@ -125,6 +151,8 @@
                     <mat-form-field appearance="fill" fxFlex="28.1%">
                       <mat-label>Amendment No</mat-label>
                       <input matInput formControlName="amendmentNo">
+                      <mat-error *ngIf="ammendment.controls['amendmentNo'].errors?.maxlength">Maximum 25 characters.
+                      </mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="fill" fxFlex="12.9%">
                       <mat-label>Amendment Date</mat-label>
@@ -182,3 +210,6 @@
     <button mat-stroked-button disabled>Create Customer</button>
   </div>
 </form>
+
+
+

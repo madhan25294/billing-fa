@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit} from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 // service
 import { SnackBarService } from '../../../shared/snack-bar.service';
@@ -15,7 +15,7 @@ import { CustomerFinishComponent } from './customer-finish/customer-finish.compo
   templateUrl: './customer-wizard.component.html',
   styleUrls: ['./customer-wizard.component.scss']
 })
-export class CreateCustomerComponent implements AfterViewInit , OnInit{
+export class CreateCustomerComponent implements AfterViewInit, OnInit {
   form1: FormGroup;
   @ViewChild('stepOne') customerInfoComponent: CustomerInfoComponent;
   form2: FormGroup;
@@ -29,11 +29,21 @@ export class CreateCustomerComponent implements AfterViewInit , OnInit{
   oracleSetupMetadata: { [key: string]: any };
   contractInfoMetadata: { [key: string]: any };
 
+  confirmPopup: { [key: string]: any };
   constructor(
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
     private customerService: CustomerService,
     private cdr: ChangeDetectorRef) {
+    this.confirmPopup = {
+      show: false,
+      confirm: {
+        show: true,
+        eventCLicked: 'Delete',
+        content: ''
+      }
+    };
+
     this.customerInfoMetadata = {};
     this.oracleSetupMetadata = {};
     this.contractInfoMetadata = {};
@@ -82,11 +92,11 @@ export class CreateCustomerComponent implements AfterViewInit , OnInit{
 
   fetchIndustries() {
     this.customerService.getIndustryList()
-    .subscribe((industriesList) => {
-      this.customerInfoMetadata.industryList = industriesList;
-    }, (err: any) => {
-      this.snackBService.error(err.error, '');
-    })
+      .subscribe((industriesList) => {
+        this.customerInfoMetadata.industryList = industriesList;
+      }, (err: any) => {
+        this.snackBService.error(err.error, '');
+      })
   }
 
   fetchCustomerTypes() {

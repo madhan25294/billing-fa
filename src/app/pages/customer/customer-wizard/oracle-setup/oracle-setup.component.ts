@@ -25,17 +25,17 @@ export class OracleSetupComponent {
   ) {
 
     this.oracleSetupFormGroup = this.formBuilder.group({
-      countyName: ['', [Validators.required]],
+      countyName: ['', [Validators.required, Validators.maxLength(45)]],
       salesPerson: ['', [Validators.required]],
       customerType: ['', [Validators.required]],
       category: ['', [Validators.required]],
       classification: ['', [Validators.required]],
-      customerNumber: ['', [Validators.required]],
-      locationNumber: ['', [Validators.required]],
+      customerNumber: ['', []],
+      locationNumber: ['', []],
       // parent
-      company: ['', [Validators.required]],
-      accountManager: ['', [Validators.required]],
-      collector: ['', [Validators.required]],
+      company: ['', []],
+      accountManager: ['', []],
+      collector: ['', []],
     });
   }
 

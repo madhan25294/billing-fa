@@ -29,15 +29,15 @@ export class ContractInfoComponent {
 
   newContract(): FormGroup {
     return this.formBuilder.group({
-      agreement: ['', [Validators.required]],
-      startDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]],
-      term: ['', [Validators.required]],
-      renewalterm: ['', [Validators.required]],
-      notification: ['', [Validators.required]],
-      contractNumber: ['', [Validators.required]],
-      unlimitedAutoRenew: [false, [Validators.required]],
-      contractLink: ['', [Validators.required]],
+      agreement: ['', []],
+      startDate: ['', []],
+      endDate: ['', []],
+      term: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.maxLength(3)]],
+      renewalterm: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.maxLength(3)]],
+      notification: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.maxLength(3)]],
+      contractNumber: ['', [Validators.maxLength(75)]],
+      unlimitedAutoRenew: [false, []],
+      contractLink: ['', []],
       // sow
       sows: this.formBuilder.array([
         this.newSow()
@@ -47,14 +47,14 @@ export class ContractInfoComponent {
 
   newSow(): FormGroup {
     return this.formBuilder.group({
-      cpi: [false, [Validators.required]],
-      cpiCap: ['', [Validators.required]],
-      sowNo: ['', [Validators.required]],
-      sowDate: ['', [Validators.required]],
+      cpi: [false, []],
+      cpiCap: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      sowNo: ['', [Validators.maxLength(3)]],
+      sowDate: ['', []],
       amendmentDates: this.formBuilder.array([
         this.formBuilder.group({
-          amendmentDate: ['', [Validators.required]],
-          amendmentNo: ['', [Validators.required]]
+          amendmentDate: ['', []],
+          amendmentNo: ['', [Validators.maxLength(25)]]
         })
       ])
     })

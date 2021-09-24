@@ -23,40 +23,40 @@ export class CustomerInfoComponent implements OnInit {
   ) {
     // customer information
     this.customerInfoGroup = this.formBuilder.group({
-      cmpName: ['', [Validators.required, Validators.minLength(10)]],
-      accNum: ['', [Validators.required]],
-      branchCode: ['', [Validators.required]],
-      industry: ['', [Validators.required]],
-      active: [false, [Validators.required]],
-      poNo: ['', [Validators.required]],
-      taxable: [false, [Validators.required]],
-      creditCard: [false, [Validators.required]],
+      cmpName: ['', [Validators.required, Validators.maxLength(100)]],
+      accNum: ['', []],
+      branchCode: ['', [Validators.maxLength(15)]],
+      industry: ['', []],
+      active: [false, []],
+      poNo: ['', [Validators.maxLength(42)]],
+      taxable: [false, []],
+      creditCard: [false, []],
       // contact information
-      contactAttention: ['', [Validators.required]],
-      contactCon: ['', [Validators.required]],
-      contactPhone: ['', [Validators.required]],
-      contactExt: ['', [Validators.required]],
-      contactFax: ['', [Validators.required]],
-      contactEmailInvoice: [false, [Validators.required]],
-      contactEmail: ['', [Validators.required]],
+      contactAttention: ['', [Validators.maxLength(55)]],
+      contactCon: ['', [Validators.maxLength(20)]],
+      contactPhone: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
+      contactExt: ['', [Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
+      contactFax: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
+      contactEmailInvoice: [false, []],
+      contactEmail: ['', [Validators.maxLength(99)]],
       // secondary contact
       secondaryContact: this.formBuilder.array([
         this.formBuilder.group({
-          contact: ['', [Validators.required]],
-          phone: ['', [Validators.required]],
-          extension: ['', [Validators.required]],
-          fax: ['', [Validators.required]],
-          emailInvoice: [false, [Validators.required]],
-          email: ['', [Validators.required]]
+          contact: ['', [Validators.maxLength(20)]],
+          phone: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
+          extension: ['', [Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
+          fax: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
+          emailInvoice: [false, []],
+          email: ['', [Validators.maxLength(99)]]
         })
       ]),
       // billing address
       billingAddress: this.formBuilder.group({
-        address1: ['', [Validators.required]],
-        address2: ['', [Validators.required]],
-        city: ['', [Validators.required]],
-        state: ['', [Validators.required]],
-        zipcode: ['', [Validators.required]]
+        address1: ['', [Validators.required, Validators.maxLength(55)]],
+        address2: ['', [Validators.maxLength(55)]],
+        city: ['', [Validators.required, Validators.maxLength(30)]],
+        state: ['', [Validators.required, Validators.maxLength(2)]],
+        zipcode: ['', [Validators.required, Validators.maxLength(10)]]
       })
     });
   }
