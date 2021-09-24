@@ -160,7 +160,7 @@
                       <mat-datepicker-toggle matSuffix [for]="amendmentPicker"></mat-datepicker-toggle>
                       <mat-datepicker #amendmentPicker></mat-datepicker>
                     </mat-form-field>
-                    <button mat-stroked-button *ngIf="amdIndex > 0" class="mt-3">Delete</button>
+                    <button mat-stroked-button *ngIf="amdIndex > 0" class="mt-3" (click)="deleteAmendment(sow, amdIndex)">Delete</button>
                     <button mat-stroked-button [disabled]="!ammendment['controls'].amendmentDate.value"
                       (click)="pubToReset(ammendment, 'the amendment')" class="mt-3">Reset Amendment Date</button>
                     <button mat-stroked-button (click)="addAmmendment(sow)" class="mt-3">
@@ -185,7 +185,7 @@
           </button>
         </div>
         <div class="btnSection w-100">
-          <button mat-stroked-button color="primary" (click)="deleteContract(i)">Delete Contract</button>
+          <button mat-stroked-button color="primary" [disabled]="!(i > 0 )" (click)="deleteContract(i)">Delete Contract</button>
           <button mat-stroked-button color="primary" (click)="pubToReset(contract, 'the selected contract')">Reset
             Contract</button>
           <button mat-stroked-button color="primary">Save Contract</button>

@@ -83,6 +83,11 @@ export class ContractInfoComponent {
     sows.removeAt(ind);
   }
 
+  deleteAmendment(selectedAmendment: any, ind: number) {
+    let amendment = selectedAmendment.get('amendmentDates') as FormArray;
+    amendment.removeAt(ind);
+  }
+
   addAmmendment(selectedSow: any) {
     let ammendment = selectedSow.get('amendmentDates') as FormArray;
     ammendment.push(this.formBuilder.group({
