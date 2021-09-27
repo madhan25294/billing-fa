@@ -10,6 +10,7 @@ import { OracleSetupComponent } from './customer-wizard/oracle-setup/oracle-setu
 import { ContractInfoComponent } from './customer-wizard/contract-info/contract-info.component';
 import { CustomerFinishComponent } from './customer-wizard/customer-finish/customer-finish.component';
 import { CreateCustomerComponent } from './customer-wizard/customer-wizard.component';
+import { CustomerDialogContentComponent } from './customer-wizard/customer-wizard.component';
 // serives
 import { CustomerService } from './customer.service';
 import { CustomerPubsubService } from './customer.pubsub.service';
@@ -20,7 +21,8 @@ import { CustomerPubsubService } from './customer.pubsub.service';
     CustomerInfoComponent,
     OracleSetupComponent,
     ContractInfoComponent,
-    CustomerFinishComponent
+    CustomerFinishComponent,
+    CustomerDialogContentComponent
   ],
   imports: [
     CommonModule,

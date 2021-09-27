@@ -66,7 +66,7 @@ body {
     weight: 400;
   }
   letter-spacing: 0.5px;
-  color: rgba(0, 0, 0, 0.87);
+  color: $color-black;
 }
 section {
   > mat-checkbox {
@@ -95,7 +95,7 @@ fieldset {
 
 mat-vertical-stepper {
   background: {
-    color: #fff;
+    color: $color-white;
   }
   .cusInfoblock {
     float: left;
@@ -113,7 +113,7 @@ mat-vertical-stepper {
         bottom: 32px;
         left: 1.61498708%;
       }
-      border: 1px solid rgba(0, 0, 0, 0.12);
+      border: 1px solid $color-gray;
       margin: {
         left: 0;
       }
@@ -124,7 +124,7 @@ mat-vertical-stepper {
         }
         text-transform: capitalize;
         letter-spacing: 0.15px;
-        color: rgba(32, 92, 158, 1);
+        color: $mat-primary-color;
         &:after {
           width: 0;
           height: 0;
@@ -163,7 +163,7 @@ mat-vertical-stepper {
           margin: {
             top: -12px;
           }
-          color: rgba(214, 179, 69, 1);
+          color: $color-yellow-light;
           font: {
             size: 12px;
             weight: 300;
@@ -191,7 +191,7 @@ mat-vertical-stepper {
     }
     text-transform: uppercase;
     letter-spacing: 2.7px;
-    color: rgba(0, 0, 0, 0.6);
+    color: $popup-text;
     position: relative;
     padding: {
       bottom: 5px;
@@ -207,7 +207,7 @@ mat-vertical-stepper {
       width: 32px;
       height: 4px;
       background: {
-        color: rgba(0, 0, 0, 0.6);
+        color: $popup-text;
       }
     }
     &.active {
@@ -215,10 +215,10 @@ mat-vertical-stepper {
         size: 18px;
         weight: 500;
       }
-      color: rgba(32, 92, 158, 1);
+      color: $mat-primary-color;
       &:after {
         background: {
-          color: #fccf45;
+          color: $color-yellow-light;
         }
       }
     }
@@ -272,7 +272,7 @@ mat-vertical-stepper {
       size: 24px !important;
       weight: normal !important;
     }
-    color: rgba(0, 0, 0, 0.87);
+    color: $color-black;
   }
   .mat-step-label.mat-step-label-active.mat-step-label-selected {
     color: $color-black !important;
@@ -285,7 +285,10 @@ button {
     right: 2.325581395%;
   }
   &.mat-primary {
-    border-color: $mat-primary-color;
+    border-color: $mat-primary-color !important;
+    &.mat-stroked-button {
+      color: $mat-primary-color !important;
+    }
   }
   text-transform: uppercase !important;
   margin: {
@@ -307,7 +310,7 @@ button {
   }
 }
 .note {
-  color: rgba(0, 0, 0, 0.3);
+  color: $popup-bg;
   font: {
     size: 12px;
     weight: 300;
@@ -316,13 +319,51 @@ button {
     font: {
       size: 16px;
     }
-    color: #d6b345;
+    color: $color-yellow-light;
   }
 }
 
 .mat-step-icon {
   &.mat-step-icon-state-edit {
-    color: rgba(252, 207, 69, 1);
+    color: $color-yellow-light;
+  }
+}
+
+mat-form-field {
+  color: $color-black;
+}
+.mat-dialog-container {
+  text-align: center !important;
+  .mat-icon {
+    color: $color-warn;
+  }
+  h2 {
+    font: {
+      size: 24px;
+      weight: 400;
+    }
+    line-height: 24px;
+    color: $mat-primary-color;
+  }
+  .mat-dialog-content {
+    font: {
+      size: 14px;
+      weight: 400;
+    }
+    line-height: 18px;
+    color: $popup-text;
+    span {
+      font: {
+        weight: bold;
+      }
+    }
+  }
+  .mat-dialog-actions {
+    button {
+      span {
+        color: $mat-primary-color;
+      }
+    }
   }
 }
 

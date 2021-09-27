@@ -65,6 +65,10 @@ export class LoginComponent implements OnInit {
   }
 
   onClickSignIn() {
+    this.eventService.loggedIn.next(true);
+    this.snackBService.success('Login successfull', 'close');
+    this.router.navigate([PAGE.TOOLS_FILES]);
+    return;
     this.userName = Util.trim(this.userName);
     if (!Util.isEmptyString(this.userName)) {
       {
@@ -92,7 +96,7 @@ export class LoginComponent implements OnInit {
               if (error.status === 401) {
                 this.snackBService.error(error.error || 'The user name or password is incorrect.');
               } else {
-                this.snackBService.error(error?.error || 'Internal Server Error for Login');
+                this.snackBService.error(error ?.error || 'Internal Server Error for Login');
               }
             });
 

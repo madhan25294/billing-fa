@@ -1,3 +1,4 @@
+@import '../../../../../scss/variables';
 .contractInfobtns {
   > div {
     &:first-child {
@@ -9,7 +10,7 @@
   }
 }
 .contractInfo {
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid $color-gray;
   padding: 19px;
 }
 
@@ -19,7 +20,7 @@
       margin: {
         top: 15px;
       }
-      border: 1px solid rgba(0, 0, 0, 0.12);
+      border: 1px solid $color-gray;
       padding: 19px;
     }
   }

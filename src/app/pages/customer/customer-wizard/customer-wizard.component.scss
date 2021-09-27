@@ -10,7 +10,7 @@
     size: 30px;
     weight: 300;
   }
-  color: rgba(0, 0, 0, 0.4);
+  color: $color-black;
 }
 .mat-step-text-label.ng-star-inserted {
   position: relative;
@@ -37,7 +37,7 @@
   bottom: 0;
   left: 0;
   background: {
-    color: rgba(0, 0, 0, 0.3);
+    color: $popup-bg;
   }
   > .block {
     width: 280px;
@@ -77,7 +77,7 @@
           weight: 400;
         }
         line-height: 18px;
-        color: rgba(0, 0, 0, 0.6);
+        color: $popup-text;
         text-align: center;
         > span {
           color: $color-black;
@@ -112,3 +112,4 @@
     }
   }
 }
+

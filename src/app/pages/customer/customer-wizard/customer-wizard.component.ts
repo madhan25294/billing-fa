@@ -1,5 +1,7 @@
-import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 // service
 import { SnackBarService } from '../../../shared/snack-bar.service';
 import { CustomerService } from '../customer.service';
@@ -36,7 +38,8 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
     private formBuilder: FormBuilder,
     private customerService: CustomerService,
     private cdr: ChangeDetectorRef,
-    private customerPubsubService: CustomerPubsubService) {
+    private customerPubsubService: CustomerPubsubService,
+    public dialog: MatDialog) {
     this.confirmPopup = {
       show: false,
       boldContent: '',
@@ -73,8 +76,19 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
           this.confirmPopup.boldContent = res.boldContent;
           this.confirmPopup.content = res.content;
           this.confirmPopup.data = res.data;
+          this.openDialog({});
         }
       })
+  }
+
+  openDialog(selectedData: { [key: string]: any }) {
+    const dialogRef = this.dialog.open(CustomerDialogContentComponent, {
+      data: {
+        modelData: selectedData,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   confirmoModelNo() {
@@ -187,3 +201,18 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
   }
 
 }
+
+@Component({
+  selector: 'app-customer-dialog-content',
+  templateUrl: 'customer-wizard-model.html',
+  styleUrls: ['./customer-wizard.component.scss'],
+})
+export class CustomerDialogContentComponent {
+  
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { [key: string]: any }) {
+   
+  }
+
+  
+}
+

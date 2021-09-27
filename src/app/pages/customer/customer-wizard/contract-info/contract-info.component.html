@@ -45,7 +45,7 @@
               <p fxFlex="12.9%">
                 <mat-form-field appearance="fill" class="w-100">
                   <mat-label>Term</mat-label>
-                  <input matInput placeholder="Term" formControlName="term">
+                  <input matInput placeholder="Term" formControlName="term" required>
                   <mat-hint>Months</mat-hint>
                   <mat-error *ngIf="contract.controls['term'].errors?.required">This field is mandatory.
                   </mat-error>
@@ -58,7 +58,7 @@
               <p fxFlex="12.9%">
                 <mat-form-field appearance="fill" class="w-100">
                   <mat-label>Renewal Term</mat-label>
-                  <input matInput placeholder="Renewal Term" formControlName="renewalterm">
+                  <input matInput placeholder="Renewal Term" formControlName="renewalterm" required>
                   <mat-hint>Months</mat-hint>
                   <mat-error *ngIf="contract.controls['renewalterm'].errors?.required">This field is mandatory.
                   </mat-error>
@@ -75,7 +75,7 @@
               <p fxFlex="12.9%">
                 <mat-form-field appearance="fill" class="w-100">
                   <mat-label>Notification</mat-label>
-                  <input matInput placeholder="Placeholder" formControlName="notification">
+                  <input matInput placeholder="Placeholder" formControlName="notification" required>
                   <mat-hint>Days</mat-hint>
                   <mat-error *ngIf="contract.controls['notification'].errors?.required">This field is mandatory.
                   </mat-error>
@@ -118,7 +118,7 @@
                   <p fxFlex="20.8%">
                     <mat-form-field appearance="fill" class="w-100">
                       <mat-label>CPI Cap</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="cpiCap">
+                      <input matInput placeholder="Placeholder" formControlName="cpiCap" required>
                       <mat-error *ngIf="sow.controls['cpiCap'].errors?.required">This field is mandatory.
                       </mat-error>
                       <mat-error *ngIf="sow.controls['cpiCap'].errors?.pattern">Numbers only.
