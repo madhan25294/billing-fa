@@ -27,30 +27,23 @@ export class CustomerInfoComponent implements OnInit {
     this.customerInfoGroup = this.formBuilder.group({
       cmpName: ['', [Validators.required, Validators.maxLength(100)]],
       accNum: ['', []],
-      branchCode: ['', [Validators.maxLength(15)]],
+      branchCode: ['', [Validators.maxLength(15), Validators.pattern("0{0,5}([1-9][0-9]*)?")]],
       industry: ['', []],
       active: [false, []],
-      poNo: ['', [Validators.maxLength(42)]],
+      poNo: ['', [Validators.maxLength(42), Validators.pattern("0{0,5}([1-9][0-9]*)?")]],
       taxable: [false, []],
       creditCard: [false, []],
       // contact information
       contactAttention: ['', [Validators.maxLength(55)]],
       contactCon: ['', [Validators.maxLength(20)]],
-      contactPhone: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
+      contactPhone: ['', [Validators.maxLength(12), Validators.pattern("0{0,5}([1-9][0-9]*)?")]],
       contactExt: ['', [Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
       contactFax: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
       contactEmailInvoice: [false, []],
       contactEmail: ['', [Validators.maxLength(99)]],
       // secondary contact
       secondaryContact: this.formBuilder.array([
-        this.formBuilder.group({
-          contact: ['', [Validators.maxLength(20)]],
-          phone: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
-          extension: ['', [Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
-          fax: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
-          emailInvoice: [false, []],
-          email: ['', [Validators.maxLength(99)]]
-        })
+
       ]),
       // billing address
       billingAddress: this.formBuilder.group({
@@ -108,7 +101,6 @@ export class CustomerInfoComponent implements OnInit {
           }, (err: any) => {
             this.customerInfoGroup['controls'].billingAddress['controls'].state.setValue("")
             this.customerInfoGroup['controls'].billingAddress['controls'].city.setValue("")
-            this.snackBService.error(err.error, '');
           })
       });
   }
@@ -147,6 +139,25 @@ export class CustomerInfoComponent implements OnInit {
           res.contactToReset.reset()
         }
       })
+  }
+
+  toogleEnableDisableAddContact() {
+    if (this.customerInfoGroup.get('secondaryContact')['controls'].length > 0) {
+      return (this.customerInfoGroup.controls.contactAttention.value &&
+        this.customerInfoGroup.controls.contactCon.value && this.customerInfoGroup.controls.contactPhone.value &&
+        this.customerInfoGroup.controls.contactEmail.value && this.customerInfoGroup.get('secondaryContact')['controls'][this.customerInfoGroup.get('secondaryContact')['controls'].length - 1].valid)
+    } else {
+      return (this.customerInfoGroup.controls.contactAttention.value &&
+        this.customerInfoGroup.controls.contactCon.value && this.customerInfoGroup.controls.contactPhone.value &&
+        this.customerInfoGroup.controls.contactEmail.value)
+    }
+    
+  }
+
+  toogleEnableDisableResetSecondaryContact(selectedContact: any) {
+    return (selectedContact.controls.contact.value || selectedContact.controls.phone.value ||
+      selectedContact.controls.extension.value || selectedContact.controls.fax.value ||
+      selectedContact.controls.email.value)
   }
 
 }

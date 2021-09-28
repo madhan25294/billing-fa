@@ -6,7 +6,7 @@
         <fieldset fxFlex="100%" fxLayoutGap="2.3%">
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>County</mat-label>
-            <input matInput placeholder="County Name" formControlName="countyName">
+            <input matInput placeholder="County Name" formControlName="countyName" required>
             <mat-error *ngIf="oracleSetupFormGroup.controls['countyName'].errors?.required">This field is mandatory.
             </mat-error>
             <mat-error *ngIf="oracleSetupFormGroup.controls['countyName'].errors?.maxlength">Maximum 45 characters.
@@ -14,7 +14,7 @@
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Sales Person</mat-label>
-            <mat-select formControlName="salesPerson">
+            <mat-select formControlName="salesPerson" required>
               <mat-option value="{{salesperson.id}}" *ngFor="let salesperson of metaData.salesPersonsList">
                 {{salesperson.name}}
               </mat-option>
@@ -24,7 +24,7 @@
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Customer Type</mat-label>
-            <mat-select formControlName="customerType">
+            <mat-select formControlName="customerType" required>
               <mat-option value="{{customer.id}}" *ngFor="let customer of metaData.customerTypes">{{customer.profile}}
               </mat-option>
             </mat-select>
@@ -37,7 +37,7 @@
         <fieldset fxFlex="100%" fxLayoutGap="2.3%">
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Category</mat-label>
-            <mat-select formControlName="category">
+            <mat-select formControlName="category" required>
               <mat-option value="{{cat.id}}" *ngFor="let cat of metaData.productCategoryList">{{cat.category}}
               </mat-option>
             </mat-select>
@@ -46,7 +46,7 @@
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Classification</mat-label>
-            <mat-select formControlName="classification">
+            <mat-select formControlName="classification" required>
               <mat-option value="{{classification.id}}" *ngFor="let classification of metaData.classificationsList">
                 {{classification.name}}</mat-option>
             </mat-select>
@@ -110,7 +110,7 @@
     </div>
   </div>
   <div class="btnSection w-100">
-    <button mat-stroked-button
+    <button mat-stroked-button [color]="toogleEnableDisableResetOracleSetup() ? 'primary' : null" [disabled]="!toogleEnableDisableResetOracleSetup()"
       (click)="pubToReset(oracleSetupFormGroup, 'the oracle setup information')">Reset</button>
     <button mat-stroked-button color="primary" matStepperPrevious>Previous</button>
     <button mat-stroked-button [disabled]="!oracleSetupFormGroup.valid" matStepperNext>Next</button>

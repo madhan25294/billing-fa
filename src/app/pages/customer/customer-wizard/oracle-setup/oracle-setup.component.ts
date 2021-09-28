@@ -64,4 +64,12 @@ export class OracleSetupComponent {
       })
   }
 
+  toogleEnableDisableResetOracleSetup() {
+    return (this.oracleSetupFormGroup.controls.countyName.value || this.oracleSetupFormGroup.controls.salesPerson.value ||
+      this.oracleSetupFormGroup.controls.customerType.value || this.oracleSetupFormGroup.controls.category.value ||
+      this.oracleSetupFormGroup.controls.classification.value || this.oracleSetupFormGroup.controls.customerNumber.value ||
+      this.oracleSetupFormGroup.controls.locationNumber.value || this.oracleSetupFormGroup.controls.company.value || 
+      this.oracleSetupFormGroup.controls.accountManager.value || this.oracleSetupFormGroup.controls.collector.value)
+  }
+
 }

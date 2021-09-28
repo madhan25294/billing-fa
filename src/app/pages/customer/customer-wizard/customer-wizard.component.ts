@@ -1,6 +1,6 @@
 import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // service
 import { SnackBarService } from '../../../shared/snack-bar.service';
@@ -72,19 +72,19 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
     this.customerPubsubService.subToShowConfirmpopup()
       .subscribe((res: any) => {
         if (res.showPopup) {
-          this.confirmPopup.show = res.showPopup;
-          this.confirmPopup.boldContent = res.boldContent;
-          this.confirmPopup.content = res.content;
-          this.confirmPopup.data = res.data;
-          this.openDialog({});
+          const popupData: any = {};
+          popupData.boldContent = res.boldContent;
+          popupData.content = res.content;
+          popupData.data = res.data;
+          this.openDialog(popupData);
         }
       })
   }
 
-  openDialog(selectedData: { [key: string]: any }) {
+  openDialog(data: { [key: string]: any }) {
     const dialogRef = this.dialog.open(CustomerDialogContentComponent, {
       data: {
-        modelData: selectedData,
+        modelData: data,
       }
     });
 
@@ -101,20 +101,20 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    // for customer info step
-    this.fetchIndustries();
+    // // for customer info step
+    // this.fetchIndustries();
 
-    // for oraclesetup step
-    this.fetchSalesPersonsList();
-    this.fetchCustomerTypes();
-    this.fetchProductCategories();
-    this.fetchClassifications();
-    this.fetchParentCompany();
-    this.fetchManagersList();
-    this.fetchCollectorsData();
+    // // for oraclesetup step
+    // this.fetchSalesPersonsList();
+    // this.fetchCustomerTypes();
+    // this.fetchProductCategories();
+    // this.fetchClassifications();
+    // this.fetchParentCompany();
+    // this.fetchManagersList();
+    // this.fetchCollectorsData();
 
-    // for contract info step
-    this.fetchAgreeementData();
+    // // for contract info step
+    // this.fetchAgreeementData();
   }
 
   ngAfterViewInit() {
@@ -209,10 +209,16 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
 })
 export class CustomerDialogContentComponent {
   
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { [key: string]: any }) {
-   
+  constructor(
+    public dialogRef: MatDialogRef<CustomerDialogContentComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { [key: string]: any },
+    private customerPubsubService: CustomerPubsubService) {
   }
 
+  confirmoModelYes() {
+    this.customerPubsubService.pubToShowConfirmpopup(this.data.modelData.data);
+    this.dialogRef.close();
+  }
   
 }
 

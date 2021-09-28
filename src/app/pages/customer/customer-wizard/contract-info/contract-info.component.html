@@ -185,7 +185,7 @@
           </button>
         </div>
         <div class="btnSection w-100">
-          <button mat-stroked-button color="primary" [disabled]="!(i > 0 )" (click)="deleteContract(i)">Delete Contract</button>
+          <button mat-stroked-button [color]="(i > 0 ) ? 'primary' : null"  [disabled]="!(i > 0 )" (click)="deleteContract(i)">Delete Contract</button>
           <button mat-stroked-button color="primary" (click)="pubToReset(contract, 'the selected contract')">Reset
             Contract</button>
           <button mat-stroked-button color="primary">Save Contract</button>
@@ -198,20 +198,20 @@
       <mat-icon>add</mat-icon>Add Contract
     </button>
   </div>
-  <div class="w-100 float-left">
+  <div class="w-100 float-left" *ngIf="contractInfoFormGroup.get('contract')['controls'].length > 0">
     <p class="w-100 float-left">
       <mat-form-field class="example-full-width" appearance="fill" class="w-100">
         <mat-label>Notes</mat-label>
         <textarea matInput placeholder="Ex. 100 Main St" formControlName="notes"></textarea>
-        <mat-error *ngIf="contractInfoFormGroup.controls['notes'].errors?.maxlength">Maximum 25 characters.
+        <mat-error *ngIf="contractInfoFormGroup.controls['notes'].errors?.maxlength">Maximum 10240 characters.
         </mat-error>
       </mat-form-field>
     </p>
   </div>
   <div class="btnSection w-100">
     <button mat-stroked-button color="primary" (click)="pubToReset(contractInfoFormGroup,
-    'the customer contract information')">Reset</button>
+    'the customer contract information')">Cancel</button>
     <button mat-stroked-button color="primary" matStepperPrevious>Previous</button>
-    <button mat-stroked-button color="primary" [disabled]="(contractInfoFormGroup.get('contract')['controls'].length > 0 )" (click)="createCustomerClick()">Create Customer</button>
+    <button mat-stroked-button color="primary" (click)="createCustomerClick()">Create Customer</button>
   </div>
 </form>

@@ -24,7 +24,7 @@ export class ContractInfoComponent {
     this.contractInfoFormGroup = this.formBuilder.group({
       contract: this.formBuilder.array([
       ]),
-      notes: ['', [Validators.maxLength(25)]]
+      notes: ['', [Validators.maxLength(10240)]]
     });
     this.subForConfirmPopup()
   }
@@ -127,7 +127,8 @@ export class ContractInfoComponent {
           res.contactToReset.reset()
         }
         if (res.eventType && res.eventType === 'add-contract') {
-          this.addContract()
+          // this.addContract()
+          // it should go to the next step
         }
       })
   }

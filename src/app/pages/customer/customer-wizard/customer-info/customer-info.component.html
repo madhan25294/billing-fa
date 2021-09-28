@@ -21,6 +21,8 @@
             <input matInput placeholder="Account Number" formControlName="branchCode">
             <mat-error *ngIf="customerInfoGroup.controls['branchCode'].errors?.maxlength">Maximum 15 characters.
             </mat-error>
+            <mat-error *ngIf="customerInfoGroup.controls['branchCode'].errors?.pattern">Enter valid number
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="12.9%">
             <mat-label>Industry</mat-label>
@@ -39,9 +41,11 @@
             <input matInput placeholder="" formControlName="poNo">
             <mat-error *ngIf="customerInfoGroup.controls['poNo'].errors?.maxlength">Maximum 42 characters.
             </mat-error>
+            <mat-error *ngIf="customerInfoGroup.controls['poNo'].errors?.pattern">Enter valid number
+            </mat-error>
           </mat-form-field>
           <mat-checkbox class="example-margin" formControlName="taxable" color="primary">Taxable</mat-checkbox>
-          <mat-checkbox class="example-margin" formControlName="creditCard" color="primary">Creditcard</mat-checkbox>
+          <mat-checkbox class="example-margin" formControlName="creditCard" color="primary">Credit Card</mat-checkbox>
         </fieldset>
       </div>
     </div>
@@ -68,7 +72,7 @@
             <input matInput placeholder="Phone" formControlName="contactPhone">
             <mat-error *ngIf="customerInfoGroup.controls['contactPhone'].errors?.maxlength">Maximum 12 characters.
             </mat-error>
-            <mat-error *ngIf="customerInfoGroup.controls['contactExt'].errors?.pattern">Number only
+            <mat-error *ngIf="customerInfoGroup.controls['contactPhone'].errors?.pattern">Enter valid number
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="10.3%">
@@ -84,7 +88,7 @@
       <div fxLayout="column" fxLayout.gt-xs="row">
         <fieldset fxFlex="100%" fxLayoutGap="2.3%">
           <mat-form-field appearance="fill" fxFlex="15.5%">
-            <mat-label>FAX</mat-label>
+            <mat-label>Fax</mat-label>
             <input matInput placeholder="Fax" formControlName="contactFax">
             <mat-error *ngIf="customerInfoGroup.controls['contactFax'].errors?.maxlength">Maximum 12 characters.
             </mat-error>
@@ -157,14 +161,14 @@
         </fieldset>
       </div>
       <div class="btnSection w-100">
-        <button mat-stroked-button color="primary" (click)="pubToDelete(i)">Delete Contact</button>
-        <button mat-stroked-button [disabled]="!cont.valid" (click)="pubToReset(cont, 'the contact')">Reset</button>
+        <button type="button" mat-stroked-button color="primary" (click)="pubToDelete(i)">Delete Contact</button>
+        <button type="button" mat-stroked-button  [color]="toogleEnableDisableResetSecondaryContact(cont) ? 'primary' : null" [disabled]="!toogleEnableDisableResetSecondaryContact(cont)" 
+        (click)="pubToReset(cont, 'the contact')">Reset</button>
       </div>
     </div>
   </div>
   <div class="btnSection w-100">
-    <button mat-stroked-button [disabled]="!customerInfoGroup.get('secondaryContact')['controls'][
-    customerInfoGroup.get('secondaryContact')['controls'].length -1].valid"
+    <button type="button" mat-stroked-button [color]="toogleEnableDisableAddContact() ? 'primary' : null" [disabled]="!toogleEnableDisableAddContact()"
       (click)="addContact()">
       <mat-icon>add</mat-icon>Add Contact
     </button>
@@ -209,7 +213,7 @@
       <div fxLayout="column" fxLayout.gt-xs="row">
         <fieldset fxFlex="100%" fxLayoutGap="2.3%">
           <mat-form-field appearance="fill" fxFlex="15.5%">
-            <mat-label>Zip</mat-label>
+            <mat-label>ZIP</mat-label>
             <input matInput placeholder="Zip" formControlName="zipcode" required>
             <mat-error *ngIf="customerInfoGroup.controls['billingAddress']['controls']['zipcode'].errors?.required">This field is mandatory.
             </mat-error>
