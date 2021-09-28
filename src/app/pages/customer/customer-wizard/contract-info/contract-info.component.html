@@ -1,7 +1,7 @@
 <form [formGroup]="contractInfoFormGroup">
   <div class="contractInfobtns" *ngIf="false">
     <div class="w-100">
-      <button mat-stroked-button color="primary">
+      <button type="button" mat-stroked-button color="primary">
         <mat-icon>add</mat-icon>Add Contract
       </button>
     </div>
@@ -9,9 +9,9 @@
       You can add multiple contracts or skip this step and finish the customer creation process
     </div>
     <div class="w-100 btnSection">
-      <button mat-stroked-button color="primary">Cancel</button>
-      <button mat-stroked-button color="primary">Previous</button>
-      <button mat-flat-button color="primary">Create Customer</button>
+      <button type="button" mat-stroked-button color="primary">Cancel</button>
+      <button type="button" mat-stroked-button color="primary">Previous</button>
+      <button type="button" mat-flat-button color="primary">Create Customer</button>
     </div>
   </div>
   <div formArrayName="contract"
@@ -138,7 +138,7 @@
                     <mat-datepicker-toggle matSuffix [for]="sowDatePicker"></mat-datepicker-toggle>
                     <mat-datepicker #sowDatePicker></mat-datepicker>
                   </mat-form-field>
-                  <button mat-stroked-button [disabled]="!sow['controls'].sowDate.value"
+                  <button type="button" mat-stroked-button [disabled]="!sow['controls'].sowDate.value"
                     (click)="sow['controls'].sowDate.setValue('')" class="mt-3">Reset Sow Date</button>
                 </fieldset>
               </div>
@@ -160,10 +160,10 @@
                       <mat-datepicker-toggle matSuffix [for]="amendmentPicker"></mat-datepicker-toggle>
                       <mat-datepicker #amendmentPicker></mat-datepicker>
                     </mat-form-field>
-                    <button mat-stroked-button *ngIf="amdIndex > 0" class="mt-3" (click)="deleteAmendment(sow, amdIndex)">Delete</button>
-                    <button mat-stroked-button [disabled]="!ammendment['controls'].amendmentDate.value"
+                    <button type="button" mat-stroked-button *ngIf="amdIndex > 0" class="mt-3" (click)="deleteAmendment(sow, amdIndex)">Delete</button>
+                    <button type="button" mat-stroked-button [disabled]="!ammendment['controls'].amendmentDate.value"
                       (click)="pubToReset(ammendment, 'the amendment')" class="mt-3">Reset Amendment Date</button>
-                    <button mat-stroked-button (click)="addAmmendment(sow)" class="mt-3">
+                    <button type="button" mat-stroked-button (click)="addAmmendment(sow)" class="mt-3">
                       <mat-icon>add</mat-icon>Add Amendment
                     </button>
                   </fieldset>
@@ -172,29 +172,29 @@
             </div>
 
             <div class="btnSection w-100">
-              <button mat-stroked-button [disabled]="sowIndex === 0" (click)="deleteSow(contract, i)">Delete
+              <button type="button" mat-stroked-button [disabled]="sowIndex === 0" (click)="deleteSow(contract, i)">Delete
                 Sow</button>
-              <button mat-stroked-button color="primary" (click)="pubToReset(sow, 'the selected sow')">Reset
+              <button type="button" mat-stroked-button color="primary" (click)="pubToReset(sow, 'the selected sow')">Reset
                 Sow</button>
             </div>
           </div>
         </div>
         <div class="btnSection w-100">
-          <button mat-stroked-button color="primary" (click)="addSow(contract)">
+          <button type="button" mat-stroked-button color="primary" (click)="addSow(contract)">
             <mat-icon>add</mat-icon>Add Sow
           </button>
         </div>
         <div class="btnSection w-100">
-          <button mat-stroked-button [color]="(i > 0 ) ? 'primary' : null"  [disabled]="!(i > 0 )" (click)="deleteContract(i)">Delete Contract</button>
-          <button mat-stroked-button color="primary" (click)="pubToReset(contract, 'the selected contract')">Reset
+          <button type="button" mat-stroked-button [color]="(i > 0 ) ? 'primary' : null"  [disabled]="!(i > 0 )" (click)="deleteContract(i)">Delete Contract</button>
+          <button type="button" mat-stroked-button color="primary" (click)="pubToReset(contract, 'the selected contract')">Reset
             Contract</button>
-          <button mat-stroked-button color="primary">Save Contract</button>
+          <button type="button" mat-stroked-button color="primary">Save Contract</button>
         </div>
       </div>
     </div>
   </div>
   <div class="btnSection w-100">
-    <button mat-stroked-button color="primary" (click)="addContract()">
+    <button type="button" mat-stroked-button color="primary" (click)="addContract()">
       <mat-icon>add</mat-icon>Add Contract
     </button>
   </div>
@@ -209,9 +209,9 @@
     </p>
   </div>
   <div class="btnSection w-100">
-    <button mat-stroked-button color="primary" (click)="pubToReset(contractInfoFormGroup,
+    <button type="button" mat-stroked-button color="primary" (click)="pubToReset(contractInfoFormGroup,
     'the customer contract information')">Cancel</button>
-    <button mat-stroked-button color="primary" matStepperPrevious>Previous</button>
-    <button mat-stroked-button color="primary" (click)="createCustomerClick()">Create Customer</button>
+    <button type="button" mat-stroked-button color="primary" matStepperPrevious>Previous</button>
+    <button type="button" mat-stroked-button color="primary" (click)="createCustomerClick()">Create Customer</button>
   </div>
 </form>

@@ -110,9 +110,9 @@
     </div>
   </div>
   <div class="btnSection w-100">
-    <button mat-stroked-button [color]="toogleEnableDisableResetOracleSetup() ? 'primary' : null" [disabled]="!toogleEnableDisableResetOracleSetup()"
+    <button type="button" mat-stroked-button [color]="toogleEnableDisableResetOracleSetup() ? 'primary' : null" [disabled]="!toogleEnableDisableResetOracleSetup()"
       (click)="pubToReset(oracleSetupFormGroup, 'the oracle setup information')">Reset</button>
-    <button mat-stroked-button color="primary" matStepperPrevious>Previous</button>
-    <button mat-stroked-button [disabled]="!oracleSetupFormGroup.valid" matStepperNext>Next</button>
+    <button type="button" mat-stroked-button color="primary" matStepperPrevious>Previous</button>
+    <button type="button" mat-stroked-button [disabled]="!oracleSetupFormGroup.valid" matStepperNext>Next</button>
   </div>
 </form>

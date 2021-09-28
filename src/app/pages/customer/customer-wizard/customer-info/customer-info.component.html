@@ -225,7 +225,7 @@
     </div>
   </div>
   <div class="btnSection w-100">
-    <button mat-stroked-button color="primary" (click)="pubToReset(customerInfoGroup, 'customer information')">Reset</button>
-    <button mat-stroked-button [disabled]="!customerInfoGroup.valid" matStepperNext>Next</button>
+    <button type="button" mat-stroked-button color="primary" (click)="pubToReset(customerInfoGroup, 'customer information')">Reset</button>
+    <button type="button" mat-stroked-button [disabled]="!customerInfoGroup.valid" matStepperNext>Next</button>
   </div>
 </form>
