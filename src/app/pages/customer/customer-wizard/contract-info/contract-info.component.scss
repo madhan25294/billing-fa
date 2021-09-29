@@ -1,14 +1,4 @@
 @import '../../../../../scss/variables';
-.contractInfobtns {
-  > div {
-    &:first-child {
-      float: left;
-      margin: {
-        bottom: 14px;
-      }
-    }
-  }
-}
 .contractInfo {
   border: 1px solid $color-gray;
   padding: 19px;
