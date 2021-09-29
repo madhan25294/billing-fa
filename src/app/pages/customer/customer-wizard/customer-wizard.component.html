@@ -1,5 +1,5 @@
 <div class="title">Create Customer</div>
-<mat-vertical-stepper orientation="vertical">
+<mat-vertical-stepper orientation="vertical" #stepper>
   <mat-step [stepControl]="form1">
     <ng-template matStepLabel>Customer Information</ng-template>
     <app-customer-info #stepOne [metaData]='customerInfoMetadata'></app-customer-info>

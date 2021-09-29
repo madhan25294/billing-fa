@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 export class CustomerPubsubService {
 
   confirmPopup: Subject<any> = new Subject<any>();
+  moveSteps: Subject<any> = new Subject<any>();
 
   constructor() {
 
@@ -16,6 +17,13 @@ export class CustomerPubsubService {
   }
   subToShowConfirmpopup() {
     return this.confirmPopup.asObservable();
+  }
+
+  pubToMoveStep(ind: number) {
+    this.moveSteps.next(ind);
+  }
+  subToMoveStep() {
+    return this.moveSteps.asObservable();
   }
 
 }

@@ -27,16 +27,16 @@ export class CustomerInfoComponent implements OnInit {
     this.customerInfoGroup = this.formBuilder.group({
       cmpName: ['', [Validators.required, Validators.maxLength(100)]],
       accNum: ['', []],
-      branchCode: ['', [Validators.maxLength(15), Validators.pattern("0{0,5}([1-9][0-9]*)?")]],
+      branchCode: ['', [Validators.maxLength(15), Validators.pattern("0{0,10}([1-9][0-9]*)?")]],
       industry: ['', []],
       active: [false, []],
-      poNo: ['', [Validators.maxLength(42), Validators.pattern("0{0,5}([1-9][0-9]*)?")]],
+      poNo: ['', [Validators.maxLength(42), Validators.pattern("0{0,10}([1-9][0-9]*)?")]],
       taxable: [false, []],
       creditCard: [false, []],
       // contact information
       contactAttention: ['', [Validators.maxLength(55)]],
       contactCon: ['', [Validators.maxLength(20)]],
-      contactPhone: ['', [Validators.maxLength(12), Validators.pattern("0{0,5}([1-9][0-9]*)?")]],
+      contactPhone: ['', [Validators.maxLength(12), Validators.pattern("0{0,10}([1-9][0-9]*)?")]],
       contactExt: ['', [Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
       contactFax: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
       contactEmailInvoice: [false, []],
@@ -68,12 +68,12 @@ export class CustomerInfoComponent implements OnInit {
   addContact() {
     let contacts = this.customerInfoGroup.get('secondaryContact') as FormArray;
     contacts.push(this.formBuilder.group({
-      contact: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      extension: ['', [Validators.required]],
-      fax: ['', [Validators.required]],
-      emailInvoice: [false, [Validators.required]],
-      email: ['', [Validators.required]],
+      contact: ['', [Validators.required, Validators.maxLength(20)]],
+      phone: ['', [Validators.required, Validators.maxLength(12), Validators.pattern("0{0,10}([1-9][0-9]*)?")]],
+      extension: ['', [Validators.maxLength(5)]],
+      fax: ['', [Validators.maxLength(12)]],
+      emailInvoice: [false, []],
+      email: ['', [Validators.required, Validators.maxLength(99)]],
     }));
   }
 
@@ -151,7 +151,7 @@ export class CustomerInfoComponent implements OnInit {
         this.customerInfoGroup.controls.contactCon.value && this.customerInfoGroup.controls.contactPhone.value &&
         this.customerInfoGroup.controls.contactEmail.value)
     }
-    
+
   }
 
   toogleEnableDisableResetSecondaryContact(selectedContact: any) {

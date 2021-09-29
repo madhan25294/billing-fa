@@ -1,7 +1,7 @@
 import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { MatStepper } from "@angular/material/stepper";
 // service
 import { SnackBarService } from '../../../shared/snack-bar.service';
 import { CustomerService } from '../customer.service';
@@ -27,6 +27,8 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
   @ViewChild('stepThree') contractInfoComponent: ContractInfoComponent;
   form4: FormGroup;
   @ViewChild('stepFour') customerFinishComponent: CustomerFinishComponent;
+
+  @ViewChild('stepper') stepper: MatStepper;
 
   customerInfoMetadata: { [key: string]: any };
   oracleSetupMetadata: { [key: string]: any };
@@ -65,7 +67,15 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
 
     // for contract info step
     this.contractInfoMetadata.agreementList = [];
-    this.bindForToggleConfirmpopup()
+    this.bindForToggleConfirmpopup();
+    this.bindForStepMove();
+  }
+
+  bindForStepMove() {
+    this.customerPubsubService.subToMoveStep()
+    .subscribe((res: number) => {
+      this.stepper.selectedIndex = res;
+    })
   }
 
   bindForToggleConfirmpopup() {
@@ -88,7 +98,7 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => { });
   }
 
   confirmoModelNo() {
@@ -208,7 +218,7 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
   styleUrls: ['./customer-wizard.component.scss'],
 })
 export class CustomerDialogContentComponent {
-  
+
   constructor(
     public dialogRef: MatDialogRef<CustomerDialogContentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { [key: string]: any },
@@ -219,6 +229,6 @@ export class CustomerDialogContentComponent {
     this.customerPubsubService.pubToShowConfirmpopup(this.data.modelData.data);
     this.dialogRef.close();
   }
-  
+
 }
 

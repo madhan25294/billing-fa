@@ -50,7 +50,7 @@ export class ContractInfoComponent {
   newSow(): FormGroup {
     return this.formBuilder.group({
       cpi: [false, []],
-      cpiCap: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      cpiCap: ['', [Validators.required, Validators.pattern(/^\d+\.\d{0,4}$/)]],
       sowNo: ['', [Validators.maxLength(3)]],
       sowDate: ['', []],
       amendmentDates: this.formBuilder.array([
@@ -69,8 +69,15 @@ export class ContractInfoComponent {
   }
 
   deleteContract(ind: number) {
-    let contracts = this.contractInfoFormGroup.get('contract') as FormArray;
-    contracts.removeAt(ind);
+    this.customerPubsubService.pubToShowConfirmpopup({
+      showPopup: true,
+      boldContent: 'Delete',
+      content: 'the added contract',
+      data: {
+        eventType: 'delete-contract',
+        ind: ind
+      }
+    });
   }
 
   addSow(selectedContract: any) {
@@ -79,13 +86,29 @@ export class ContractInfoComponent {
   }
 
   deleteSow(selectedContract: any, ind: number) {
-    let sows = selectedContract.get('sows') as FormArray;
-    sows.removeAt(ind);
+    this.customerPubsubService.pubToShowConfirmpopup({
+      showPopup: true,
+      boldContent: 'Delete',
+      content: 'the added sow',
+      data: {
+        eventType: 'delete-sow',
+        selectedContract: selectedContract,
+        ind: ind
+      }
+    });
   }
 
   deleteAmendment(selectedAmendment: any, ind: number) {
-    let amendment = selectedAmendment.get('amendmentDates') as FormArray;
-    amendment.removeAt(ind);
+    this.customerPubsubService.pubToShowConfirmpopup({
+      showPopup: true,
+      boldContent: 'Delete',
+      content: 'the added amendment',
+      data: {
+        eventType: 'delete-amendment',
+        selectedAmendment: selectedAmendment,
+        ind: ind
+      }
+    });
   }
 
   addAmmendment(selectedSow: any) {
@@ -96,7 +119,7 @@ export class ContractInfoComponent {
     }));
   }
 
-  pubToReset(selected: any, content) {
+  pubToReset(selected: any, content: any) {
     this.customerPubsubService.pubToShowConfirmpopup({
       showPopup: true,
       boldContent: 'Reset',
@@ -104,6 +127,18 @@ export class ContractInfoComponent {
       data: {
         eventType: 'reset-in-contractinfo',
         contactToReset: selected
+      }
+    });
+  }
+
+  pubToResetAmendment(selected: any, content: any) {
+    this.customerPubsubService.pubToShowConfirmpopup({
+      showPopup: true,
+      boldContent: 'Reset',
+      content: content,
+      data: {
+        eventType: 'reset-amendmentdate',
+        amendmentToReset: selected
       }
     });
   }
@@ -126,10 +161,28 @@ export class ContractInfoComponent {
         if (res.eventType && res.eventType === 'reset-in-contractinfo') {
           res.contactToReset.reset()
         }
+        if (res.eventType && res.eventType === 'reset-amendmentdate') {
+          res.amendmentToReset.controls.amendmentDate.setValue('');
+        }
         if (res.eventType && res.eventType === 'add-contract') {
-          // this.addContract()
-          // it should go to the next step
+          this.customerPubsubService.pubToMoveStep(3);
+        }
+        if (res.eventType && res.eventType === 'delete-amendment') {
+          let amendment = res.selectedAmendment.get('amendmentDates') as FormArray;
+          amendment.removeAt(res.ind);
+        }
+        if (res.eventType && res.eventType === 'delete-sow') {
+          let sows = res.selectedContract.get('sows') as FormArray;
+          sows.removeAt(res.ind);
+        }
+        if (res.eventType && res.eventType === 'delete-contract') {
+          let contracts = this.contractInfoFormGroup.get('contract') as FormArray;
+          contracts.removeAt(res.ind);
         }
       })
+  }
+
+  toggleDisableEnableAddAmendment(amendment: any) {
+    return (amendment.controls.amendmentNo.value && amendment.controls.amendmentDate.value)
   }
 }
