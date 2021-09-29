@@ -2,7 +2,7 @@
   <div class="cusInfoblock w-100">
     <p class="title active">Oracle Setup</p>
     <div class="blocks w-100">
-      <div fxLayout="column" fxLayout.gt-xs="row" class="mb-3">
+      <div fxLayout="column" fxLayout.gt-xs="row">
         <fieldset fxFlex="100%" fxLayoutGap="2.3%">
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>County</mat-label>
@@ -33,7 +33,7 @@
           </mat-form-field>
         </fieldset>
       </div>
-      <div fxLayout="column" fxLayout.gt-xs="row" class="mb-3">
+      <div fxLayout="column" fxLayout.gt-xs="row">
         <fieldset fxFlex="100%" fxLayoutGap="2.3%">
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Category</mat-label>
@@ -59,13 +59,13 @@
           </mat-form-field>
         </fieldset>
       </div>
-      <div fxLayout="column" fxLayout.gt-xs="row" class="mb-3">
+      <div fxLayout="column" fxLayout.gt-xs="row">
         <fieldset fxFlex="100%" fxLayoutGap="2.3%">
           <div class="oracleSetup w-100">
             <div class="oracleLocation w-100">
               <mat-form-field appearance="fill" fxFlex="28.1%">
                 <mat-label>Location Number</mat-label>
-                <input matInput placeholder="Customer Number" formControlName="locationNumber">
+                <input matInput placeholder="Location Number" formControlName="locationNumber">
               </mat-form-field>
             </div>
             <div class="locationNote w-100">
@@ -81,7 +81,7 @@
   <div class="cusInfoblock w-100">
     <p class="title">Parent</p>
     <div class="blocks w-100">
-      <div fxLayout="column" fxLayout.gt-xs="row" class="mb-3">
+      <div fxLayout="column" fxLayout.gt-xs="row">
         <fieldset fxFlex="100%" fxLayoutGap="2.3%">
           <mat-form-field appearance="fill" fxFlex="28.1%">
             <mat-label>Company</mat-label>
@@ -113,6 +113,6 @@
     <button type="button" mat-stroked-button [color]="toogleEnableDisableResetOracleSetup() ? 'primary' : null" [disabled]="!toogleEnableDisableResetOracleSetup()"
       (click)="pubToReset(oracleSetupFormGroup, 'the oracle setup information')">Reset</button>
     <button type="button" mat-stroked-button color="primary" matStepperPrevious>Previous</button>
-    <button type="button" mat-stroked-button [disabled]="!oracleSetupFormGroup.valid" matStepperNext>Next</button>
+    <button type="button" mat-stroked-button [color]="oracleSetupFormGroup.valid ? 'primary': null" [disabled]="!oracleSetupFormGroup.valid" matStepperNext>Next</button>
   </div>
 </form>

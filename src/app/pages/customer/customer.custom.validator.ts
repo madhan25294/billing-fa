@@ -3,7 +3,7 @@ import { ConstantService } from '../../shared/constant.service'
 
 export function validateEmailList(control: AbstractControl) {
     let constService = new ConstantService();
-    let emails = control.value.split(',')
+    let emails = control.value ? control.value.split(',') : [];
     let invalid = false;
     if (emails.length > 4) {
         invalid = true;

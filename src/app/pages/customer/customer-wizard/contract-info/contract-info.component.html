@@ -1,4 +1,19 @@
 <form [formGroup]="contractInfoFormGroup">
+  <div class="contractInfobtns" *ngIf="false">
+    <div class="w-100">
+      <button type="button" mat-stroked-button color="primary">
+        <mat-icon>add</mat-icon>Add Contract
+      </button>
+    </div>
+    <div class="note active">
+      You can add multiple contracts or skip this step and finish the customer creation process
+    </div>
+    <div class="w-100 btnSection">
+      <button type="button" mat-stroked-button color="primary">Cancel</button>
+      <button type="button" mat-stroked-button color="primary">Previous</button>
+      <button type="button" mat-flat-button color="primary">Create Customer</button>
+    </div>
+  </div>
   <div formArrayName="contract"
     *ngFor="let contract of contractInfoFormGroup.get('contract')['controls']; let i = index;">
     <mat-checkbox class="example-margin" color="primary">Contract {{i + 1}}</mat-checkbox>
@@ -6,7 +21,7 @@
       <div class="w-100 float-left">
         <p class="title active">Contract Information</p>
         <div class="blocks w-100">
-          <div fxLayout="column" fxLayout.gt-xs="row" class="mb-3">
+          <div fxLayout="column" fxLayout.gt-xs="row">
             <fieldset fxFlex="100%" fxLayoutGap="2.3%">
               <mat-form-field appearance="fill" fxFlex="28.1%">
                 <mat-label>Agreement</mat-label>
@@ -55,7 +70,7 @@
               </p>
             </fieldset>
           </div>
-          <div fxLayout="column" fxLayout.gt-xs="row" class="mb-3">
+          <div fxLayout="column" fxLayout.gt-xs="row">
             <fieldset fxFlex="100%" fxLayoutGap="2.3%">
               <p fxFlex="12.9%">
                 <mat-form-field appearance="fill" class="w-100">
@@ -80,7 +95,7 @@
                 Renew</mat-checkbox>
             </fieldset>
           </div>
-          <div fxLayout="column" fxLayout.gt-xs="row" class="mb-3">
+          <div fxLayout="column" fxLayout.gt-xs="row">
             <fieldset fxFlex="100%" fxLayoutGap="2.3%">
               <mat-form-field appearance="fill" class="w-100">
                 <mat-label>Contract Link</mat-label>
@@ -97,7 +112,7 @@
           <mat-checkbox class="example-margin" color="primary">SOW {{sowIndex + 1}}</mat-checkbox>
           <div class="blocks w-100 sowContent" [formGroupName]="sowIndex">
             <div class="w-100">
-              <div fxLayout="column" fxLayout.gt-xs="row" class="mb-3">
+              <div fxLayout="column" fxLayout.gt-xs="row">
                 <fieldset fxFlex="100%" fxLayoutGap="2.3%">
                   <mat-checkbox class="example-margin" color="primary" formControlName="cpi">CPI</mat-checkbox>
                   <p fxFlex="20.8%">
@@ -123,7 +138,7 @@
                     <mat-datepicker-toggle matSuffix [for]="sowDatePicker"></mat-datepicker-toggle>
                     <mat-datepicker #sowDatePicker></mat-datepicker>
                   </mat-form-field>
-                  <button type="button" mat-stroked-button [disabled]="!sow['controls'].sowDate.value"
+                  <button type="button" mat-stroked-button [color]="sow['controls'].sowDate.value ? 'primary' : null" [disabled]="!sow['controls'].sowDate.value"
                     (click)="sow['controls'].sowDate.setValue('')" class="mt-3">Reset Sow Date</button>
                 </fieldset>
               </div>
@@ -131,7 +146,7 @@
             <div class="w-100" formArrayName="amendmentDates"
               *ngFor="let ammendment of sow.get('amendmentDates')['controls']; let amdIndex = index;">
               <div [formGroupName]="amdIndex">
-                <div fxLayout="column" fxLayout.gt-xs="row" class="mb-3">
+                <div fxLayout="column" fxLayout.gt-xs="row">
                   <fieldset fxFlex="100%" fxLayoutGap="2.3%">
                     <mat-form-field appearance="fill" fxFlex="28.1%">
                       <mat-label>Amendment No</mat-label>
@@ -181,7 +196,7 @@
       </div>
     </div>
   </div>
-  <div class="btnSection w-100 mb-2">
+  <div class="btnSection w-100">
     <button type="button" mat-stroked-button color="primary" (click)="addContract()">
       <mat-icon>add</mat-icon>Add Contract
     </button>
@@ -196,9 +211,6 @@
       </mat-form-field>
     </p>
   </div>
-    <div class="note active" *ngIf="!(contractInfoFormGroup.get('contract')['controls'].length > 0)">
-      You can add multiple contracts or skip this step and finish the customer creation process
-    </div>
   <div class="btnSection w-100">
     <button type="button" mat-stroked-button *ngIf="!(contractInfoFormGroup.get('contract')['controls'].length > 0)" color="primary">Cancel</button>
     <button type="button" mat-stroked-button *ngIf="(contractInfoFormGroup.get('contract')['controls'].length > 0)" color="primary" (click)="pubToReset(contractInfoFormGroup,

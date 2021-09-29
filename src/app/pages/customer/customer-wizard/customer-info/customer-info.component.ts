@@ -41,7 +41,7 @@ export class CustomerInfoComponent implements OnInit {
       contactExt: ['', [Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
       contactFax: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
       contactEmailInvoice: [false, []],
-      contactEmail: ['', [Validators.maxLength(99), validateEmailList]],
+      contactEmail: ['', [Validators.maxLength(99)]],
       // secondary contact
       secondaryContact: this.formBuilder.array([
 
