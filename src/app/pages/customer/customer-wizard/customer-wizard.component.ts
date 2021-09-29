@@ -111,20 +111,20 @@ export class CreateCustomerComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    // // for customer info step
-    // this.fetchIndustries();
+    // for customer info step
+    this.fetchIndustries();
 
-    // // for oraclesetup step
-    // this.fetchSalesPersonsList();
-    // this.fetchCustomerTypes();
-    // this.fetchProductCategories();
-    // this.fetchClassifications();
-    // this.fetchParentCompany();
-    // this.fetchManagersList();
-    // this.fetchCollectorsData();
+    // for oraclesetup step
+    this.fetchSalesPersonsList();
+    this.fetchCustomerTypes();
+    this.fetchProductCategories();
+    this.fetchClassifications();
+    this.fetchParentCompany();
+    this.fetchManagersList();
+    this.fetchCollectorsData();
 
-    // // for contract info step
-    // this.fetchAgreeementData();
+    // for contract info step
+    this.fetchAgreeementData();
   }
 
   ngAfterViewInit() {
