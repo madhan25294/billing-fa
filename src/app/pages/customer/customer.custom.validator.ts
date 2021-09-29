@@ -1,5 +1,5 @@
 import { AbstractControl } from '@angular/forms';
-import { ConstantService } from '../..//shared/constant.service'
+import { ConstantService } from '../../shared/constant.service'
 
 export function validateEmailList(control: AbstractControl) {
     let constService = new ConstantService();
