@@ -102,7 +102,7 @@
             <input matInput placeholder="Email" formControlName="contactEmail" required>
             <mat-error *ngIf="customerInfoGroup.controls['contactEmail'].errors?.maxlength">Maximum 99 characters.
             </mat-error>
-            <mat-error *ngIf="customerInfoGroup.controls['contactEmail'].errors?.validateEmailList">Enter valid emails not more than 4
+            <mat-error *ngIf="customerInfoGroup.controls['contactEmail'].errors?.invalid">Enter valid emails not more than 4
             </mat-error>
           </mat-form-field>
         </fieldset>

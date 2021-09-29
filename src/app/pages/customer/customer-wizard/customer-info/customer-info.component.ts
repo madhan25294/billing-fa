@@ -5,6 +5,7 @@ import { debounceTime } from 'rxjs/operators';
 import { SnackBarService } from '../../../../shared/snack-bar.service';
 import { CustomerService } from '../../customer.service';
 import { CustomerPubsubService } from '../../customer.pubsub.service';
+import { validateEmailList } from '../../customer.custom.validator';
 // models
 import {
   PostaCodeData
@@ -40,7 +41,7 @@ export class CustomerInfoComponent implements OnInit {
       contactExt: ['', [Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
       contactFax: ['', [Validators.maxLength(12), Validators.pattern("^[0-9]*$")]],
       contactEmailInvoice: [false, []],
-      contactEmail: ['', [Validators.maxLength(99)]],
+      contactEmail: ['', [Validators.maxLength(99), validateEmailList]],
       // secondary contact
       secondaryContact: this.formBuilder.array([
 
@@ -159,5 +160,7 @@ export class CustomerInfoComponent implements OnInit {
       selectedContact.controls.extension.value || selectedContact.controls.fax.value ||
       selectedContact.controls.email.value)
   }
+
+  
 
 }
