@@ -1,20 +1,35 @@
-export class GetImportFiles {
-    "id": number;
+export class ImportFileDetails {
+    "fileId": number;
     "fileName": string | null;
-    "invoiceType": string | null;
-    "folderId": number;
-    "sendMethod": string | null;
-    "importType": string | null;
+    "sourceId": number;
     "fileType": string | null;
-    "sourceType": string | null;
-    "ownerType": string | null;
-    "ownerEmail": string | null;
-    "fileProcessStatus": string | null;
-    "action1"?: string | null;
-    "action2"?: string | null;
+    "sourceDescription": string | null;
+    "fileCurrentStatusId": number;
+    "fileCurrentStatus": string | null;
+    "forwardActionId": number;
+    "forwardAction": string | null;
+    "backwardAction": string | null;
+    "backwardActionId": number;
+}
+export class ImportFilesDetails {
+    count: number;
+    rows: Array<ImportFileDetails>;
+}
+export class FilterObj {
+    "fileCurrentStatusId": number;
+    "pageSize": number;
+    "pageNumber": number;
+    "sortColumnId": number;
+    "sortdirection"?: string | null;
+    "userName"?: string | null;
 }
 
-export class GetSourceTypes {
+export class SourceTypes {
     "transSourceId": number | null;
-    "sourceDesc": string | null
+    "sourceDesc": string | null;
+}
+
+export class FileStatusTypes {
+    "statusId": number | null;
+    "statusDescription": string | null;
 }

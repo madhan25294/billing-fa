@@ -10,6 +10,7 @@ export const API_URL = {
   UPDATE_FILE_STATUS: '/ImportData/UpdateFileStatus',
   BILLING_SEARCH:'/ImportData/Search',
   SOURCE_TYPE: '/ImportData/SourceType',
+  GET_IMPORT_FILE_STATUSES: '/ImportData/GetImportFileStatuses',
   VIEW_LOGS: '/ImportData/GetImportFileLogs',
   CUSTOMER: {
     GET_INDUSTRIES: '/Industry/GetIndustries',

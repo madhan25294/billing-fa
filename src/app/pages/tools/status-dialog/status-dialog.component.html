@@ -1,0 +1,14 @@
+<h1 class="text-center">
+  <mat-icon class="col-red">priority_high</mat-icon>
+</h1>
+<h1 mat-dialog-title class="title text-center">
+  <span class="col-blue">Are you sure?</span>
+</h1>
+
+<div mat-dialog-content class="mat-typography">
+  <p>Do you want to change status to<b> File validate</b> for <b>{{data.title}} ?</b></p>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onDismiss()" color="primary">NO</button>
+  <button mat-button color="primary" cdkFocusInitial>YES</button>
+</mat-dialog-actions>

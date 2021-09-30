@@ -8,9 +8,10 @@ import { DataImportComponent } from './data-import/data-import.component';
 import { ViewLogsDialogContentComponent } from './data-import/data-import.component';
 import { FormsModule } from '@angular/forms';
 import { ToolsComponent } from './tools.component';
+import { StatusDialogComponent } from './status-dialog/status-dialog.component';
 
 @NgModule({
-  declarations: [ToolsComponent,AllFilesComponent, DataImportComponent,ViewLogsDialogContentComponent],
+  declarations: [ToolsComponent,AllFilesComponent, DataImportComponent,ViewLogsDialogContentComponent,StatusDialogComponent],
   imports: [
     CommonModule,
     RouterModule,

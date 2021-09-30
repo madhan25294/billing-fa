@@ -8,21 +8,6 @@
   text-align: center;
   background-color: $color-yellow;
 }
-.mat-button.mat-warn,
-.mat-icon-button.mat-warn,
-.mat-stroked-button.mat-warn {
-  border-color: $color-warn;
-}
-.mat-button.mat-primary,
-.mat-icon-button.mat-primary,
-.mat-stroked-button.mat-primary {
-  border-color: $color-blue;
-}
-.mat-button.mat-accent,
-.mat-icon-button.mat-accent,
-.mat-stroked-button.mat-accent {
-  border-color: $color-lightgreen;
-}
 .mat-header-row {
   min-height: 42px;
 }
@@ -38,3 +23,147 @@
   color: $color-blue;
 }
 /** mat-tab css **/
+
+/** 3.mat-checkbox css **/
+
+.mat-checkbox-inner-container {
+  width: 22px !important;
+  height: 22px !important;
+  float: left;
+}
+.mat-checkbox-label {
+  margin: {
+    top: 3px;
+  }
+  font: {
+    size: 16px;
+    weight: 400;
+  }
+  letter-spacing: 0.5px;
+  color: $color-black
+}
+/** mat-checkbox css **/
+
+/** 4.mat-stepper css **/
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+.mat-step-header {
+  .mat-step-label.mat-step-label-active {
+    font: {
+      family: "roboto" !important;
+      size: 24px !important;
+      weight: normal !important;
+    }
+    color: $color-black;
+  }
+  .mat-step-label.mat-step-label-active.mat-step-label-selected {
+    color: $color-black !important;
+  }
+}
+
+.mat-step-icon {
+  &.mat-step-icon-state-edit {
+    color: $color-yellow-dark;
+  }
+}
+
+/** mat-stepper css **/
+
+/** mat-button css **/
+
+button {
+  height: 35px;
+  margin: {
+    right: 2.325581395%;
+  }
+  &.mat-primary {
+    border-color: $mat-primary-color !important;
+    &.mat-stroked-button {
+      color: $mat-primary-color !important;
+    }
+  }
+  text-transform: uppercase !important;
+  margin: {
+    right: 1.550387597% !important;
+  }
+  mat-icon {
+    margin: {
+      right: 8px !important;
+    }
+  }
+}
+
+.mat-button.mat-warn,
+.mat-icon-button.mat-warn,
+.mat-stroked-button.mat-warn {
+  border-color: $color-warn;
+}
+.mat-button.mat-primary,
+.mat-icon-button.mat-primary,
+.mat-stroked-button.mat-primary {
+  border-color: $color-blue;
+}
+.mat-button.mat-accent,
+.mat-icon-button.mat-accent,
+.mat-stroked-button.mat-accent {
+  border-color: $color-lightgreen;
+}
+/** mat-button css **/
+
+/** mat-form fields css **/
+
+.mat-checkbox {
+  display: inline-block;
+  padding: {
+    top: 12px;
+  }
+  margin: {
+    right: 2.325581395%;
+  }
+}
+
+.mat-step-icon {
+  &.mat-step-icon-state-edit {
+    color: $color-yellow-light;
+  }
+}
+mat-form-field {
+  color: $color-black;
+}
+.mat-dialog-container {
+  text-align: center !important;
+  .mat-icon {
+    color: $color-warn;
+  }
+  h2 {
+    font: {
+      size: 24px;
+      weight: 400;
+    }
+    line-height: 24px;
+    color: $mat-primary-color;
+  }
+  .mat-dialog-content {
+    font: {
+      size: 14px;
+      weight: 400;
+    }
+    line-height: 18px;
+    color: $popup-text;
+    span {
+      font: {
+        weight: bold;
+      }
+    }
+  }
+  .mat-dialog-actions {
+    button {
+      span {
+        color: $mat-primary-color;
+      }
+    }
+  }
+}
+/** mat-form fields css **/
