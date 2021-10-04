@@ -4,10 +4,11 @@ import { MaterialModule } from './material-component.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BodyComponent } from './body/body.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 @NgModule({
-  declarations: [BodyComponent],
+  declarations: [BodyComponent,SidenavComponent],
   imports: [
     CommonModule,
     RouterModule,

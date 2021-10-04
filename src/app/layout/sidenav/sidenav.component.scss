@@ -1,0 +1,67 @@
+
+ .fa-toolbar {
+background-color: #f5f5f5;
+
+ } 
+.fa-container {
+    
+    /* Using 100vh causes double scrollbars to appear on some devices */
+    height:calc(100vh - 64px);
+    // border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  .fa-sidenav-content {
+    display: inherit;
+    // height: 100%;
+    // align-items: center;
+    // justify-content: center;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-right: 1%;
+
+  }
+  .fa-sidenav {
+     user-select: none;
+     background-color: #205c9e;
+  }
+  .full-width {
+    width: 100%;
+  }
+  .menu-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+  }
+  .menu-button.rotated {
+    transform: rotate(180deg);
+  }
+  .submenu {
+    overflow-y: hidden;
+    transition: transform 300ms ease;
+    transform: scaleY(0);
+    transform-origin: top;
+    padding-left: 30px;
+    display: none;
+  }
+  .submenu.expanded {
+    transform: scaleY(1);
+    display: block;
+  }
+
+  .mat-list-base .mat-list-item.mat-list-item-with-avatar, .mat-list-base .mat-list-option.mat-list-item-with-avatar {
+    background: #2969af;
+    color:#aeb9c5;
+    border-bottom: 2px solid #205c9e;
+    border-left:4px solid#205c9e;
+}
+.mat-nav-list .mat-list-item {
+  color:#aeb9c5;
+}
+.padding-none {
+  padding: 0px;
+}
+
+.mat-nav-list .mat-list-item:focus,  .mat-list-item:active {
+  background-color: #104580;
+  border-left:4px solid#fccf45;
+  color: #fccf45;
+}
+

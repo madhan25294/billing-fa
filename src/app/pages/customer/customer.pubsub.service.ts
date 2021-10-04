@@ -7,7 +7,8 @@ export class CustomerPubsubService {
 
   confirmPopup: Subject<any> = new Subject<any>();
   moveSteps: Subject<any> = new Subject<any>();
-
+  toogleDialog: Subject<any> = new Subject<any>();
+  saveCustomerTrigger: Subject<any> = new Subject<any>();
   constructor() {
 
   }
@@ -24,6 +25,15 @@ export class CustomerPubsubService {
   }
   subToMoveStep() {
     return this.moveSteps.asObservable();
+  }
+
+  
+
+  pubToSaveCustomer(obj: any) {
+    this.toogleDialog.next(obj);
+  }
+  subToSaveCustomer() {
+    return this.toogleDialog.asObservable();
   }
 
 }

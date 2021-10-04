@@ -10,6 +10,7 @@ import {
   CustomerType, GetSalesPerson, ProductCategory,
   Classification, ParentData, AccountManagers, CollectorData
 } from '../../customer.model';
+import { DialogService } from 'src/app/shared/dialog.service';
 
 @Component({
   selector: 'app-oracle-setup',
@@ -24,7 +25,7 @@ export class OracleSetupComponent {
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
     private customerService: CustomerService,
-    public customerPubsubService: CustomerPubsubService
+    private dialogService: DialogService
   ) {
 
     this.oracleSetupFormGroup = this.formBuilder.group({
@@ -40,28 +41,26 @@ export class OracleSetupComponent {
       accountManager: ['', []],
       collector: ['', []],
     });
-    this.subForConfirmPopup();
   }
 
   pubToReset(selected: any, content) {
-    this.customerPubsubService.pubToShowConfirmpopup({
-      showPopup: true,
-      boldContent: 'Reset',
-      content: content,
-      data: {
-        eventType: 'reset-in-oraclesetup',
-        contactToReset: selected
+
+    const popupData: any = {};
+    popupData.showPopup = true;
+    popupData.confirmPopup = true;
+    popupData.boldContent = 'Reset';
+    popupData.content = content;
+    popupData.data =  {
+      eventType: 'reset-in-oraclesetup',
+      contactToReset: selected
+    };
+
+    this.dialogService.confirmDialog(popupData).subscribe((res: any) => {
+      
+      if (res.eventType && res.eventType === 'reset-in-oraclesetup') {
+        res.contactToReset.reset()
       }
     });
-  }
-
-  subForConfirmPopup() {
-    this.customerPubsubService.subToShowConfirmpopup()
-      .subscribe((res: any) => {
-        if (res.eventType && res.eventType === 'reset-in-oraclesetup') {
-          res.contactToReset.reset()
-        }
-      })
   }
 
   toogleEnableDisableResetOracleSetup() {

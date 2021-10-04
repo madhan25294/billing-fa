@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
             Promise.all([this.getUserDetails()]).then((data) => {
               this.eventService.loggedIn.next(true);
               this.snackBService.success('Login successfull', 'close');
-              this.router.navigate([PAGE.TOOLS_FILES]);
+              this.router.navigate([PAGE.CUSTOMER]);
 
             }).catch((error) => {
               this.snackBService.error('Error while getting user details');

@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list'; 
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -31,6 +32,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatButtonModule,
     MatDialogModule,
     MatTooltipModule,
+    MatListModule,
     MatSidenavModule,
     MatCheckboxModule,
     MatRadioModule,

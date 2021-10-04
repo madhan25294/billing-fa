@@ -23,6 +23,8 @@ export const API_URL = {
     GET_ACC_MANAGERS: '/AccountManager/GetAccountManagers',
     GET_COLLECTOR_DATA: '/Customer/GetCollectorData',
     GET_AGREEMENT_DATA: '/Agreement/GetAgreements',
-    GET_POSTAL_CODE_DATA: '/Customer/Location'
+    GET_POSTAL_CODE_DATA: '/Customer/Location',
+    POST_CUSTOMER_SAVE: '/Customer'
+
   }
 };

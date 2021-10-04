@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PAGE } from 'src/app/constants/page';
@@ -19,9 +20,5 @@ export class BodyComponent implements OnInit {
     this.isLoggedIn$ = this.eventService.isLoggedIn;
   }
 
-  onLogout() {
-    Util.clearStorage();
-    this.eventService.loggedIn.next(false);
-    this.router.navigate([PAGE.LOGIN]);
-  }
+  
 }

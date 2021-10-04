@@ -14,6 +14,7 @@ import { CustomerDialogContentComponent } from './customer-wizard/customer-wizar
 // serives
 import { CustomerService } from './customer.service';
 import { CustomerPubsubService } from './customer.pubsub.service';
+import { GenericDialogComponent } from './generic-dialog/generic-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CustomerPubsubService } from './customer.pubsub.service';
     OracleSetupComponent,
     ContractInfoComponent,
     CustomerFinishComponent,
-    CustomerDialogContentComponent
+    CustomerDialogContentComponent,
+    GenericDialogComponent
   ],
   imports: [
     CommonModule,

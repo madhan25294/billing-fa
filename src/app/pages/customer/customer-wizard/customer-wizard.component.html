@@ -10,10 +10,11 @@
   </mat-step>
   <mat-step [stepControl]="form3">
     <ng-template matStepLabel>Contract Information</ng-template>
-    <app-contract-info #stepThree [metaData]='contractInfoMetadata'></app-contract-info>
+    <app-contract-info #stepThree [metaData]='contractInfoMetadata' (myOutput)="GetChildData($event)"></app-contract-info>
   </mat-step>
   <mat-step [stepControl]="form4">
     <ng-template matStepLabel>Finish</ng-template>
-    <app-customer-finish #stepFour></app-customer-finish>
+    <app-customer-finish #stepFour [metaData]="finishInfoMetadata"
+    ></app-customer-finish>
   </mat-step>
 </mat-vertical-stepper>

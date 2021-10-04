@@ -4,12 +4,9 @@ import { debounceTime } from 'rxjs/operators';
 // service
 import { SnackBarService } from '../../../../shared/snack-bar.service';
 import { CustomerService } from '../../customer.service';
-import { CustomerPubsubService } from '../../customer.pubsub.service';
-import { validateEmailList } from '../../customer.custom.validator';
 // models
-import {
-  PostaCodeData
-} from '../../customer.model';
+
+import { DialogService } from 'src/app/shared/dialog.service';
 @Component({
   selector: 'app-customer-info',
   templateUrl: './customer-info.component.html',
@@ -22,8 +19,9 @@ export class CustomerInfoComponent implements OnInit {
     private snackBService: SnackBarService,
     private formBuilder: FormBuilder,
     private customerService: CustomerService,
-    public customerPubsubService: CustomerPubsubService
+    private dialogService: DialogService
   ) {
+   
     // customer information
     this.customerInfoGroup = this.formBuilder.group({
       cmpName: ['', [Validators.required, Validators.maxLength(100)]],
@@ -55,7 +53,6 @@ export class CustomerInfoComponent implements OnInit {
         zipcode: ['', [Validators.required, Validators.maxLength(10)]]
       })
     });
-    this.subForConfirmPopup();
   }
 
   ngOnInit() {
@@ -107,40 +104,43 @@ export class CustomerInfoComponent implements OnInit {
   }
 
   pubToDelete(ind: any) {
-    this.customerPubsubService.pubToShowConfirmpopup({
-      showPopup: true,
-      boldContent: 'Delete',
-      content: 'the contact',
-      data: {
-        eventType: 'delete-contact',
-        ind: ind
-      }
-    });
+
+    const popupData: any = {};
+          popupData.showPopup = true;
+          popupData.confirmPopup = true;
+          popupData.boldContent = 'Delete';
+          popupData.content = 'the contact';
+          popupData.data =  {
+            eventType: 'delete-contact',
+            ind: ind
+          };
+
+          this.dialogService.confirmDialog(popupData).subscribe((res: any) => {
+      
+            if (res.eventType && res.eventType === 'delete-contact') {
+              this.deleteContact(res.ind)
+            }
+          });
   }
 
   pubToReset(selectedContact: any, content) {
-    this.customerPubsubService.pubToShowConfirmpopup({
-      showPopup: true,
-      boldContent: 'Reset',
-      content: content,
-      data: {
+    const popupData: any = {};
+          popupData.showPopup = true;
+          popupData.confirmPopup = true;
+          popupData.boldContent = 'Reset';
+          popupData.content = content;
+          popupData.data = {
         eventType: 'reset-in-contactinfo',
-        contactToReset: selectedContact
+        contactToReset:selectedContact
+          };
+          this.dialogService.confirmDialog(popupData).subscribe((res: any) => {
+      
+            if (res.eventType && res.eventType === 'reset-in-contactinfo') {
+              res.contactToReset.reset()
+            }
+          });
       }
-    });
-  }
 
-  subForConfirmPopup() {
-    this.customerPubsubService.subToShowConfirmpopup()
-      .subscribe((res: any) => {
-        if (res.eventType && res.eventType === 'delete-contact') {
-          this.deleteContact(res.ind)
-        }
-        if (res.eventType && res.eventType === 'reset-in-contactinfo') {
-          res.contactToReset.reset()
-        }
-      })
-  }
 
   toogleEnableDisableAddContact() {
     if (this.customerInfoGroup.get('secondaryContact')['controls'].length > 0) {

@@ -54,6 +54,11 @@ export class CustomerService {
 
   public getPostalCodeData(zipcode: string) {
     return this.httpClient.get<Array<PostaCodeData>>(`${environment.backendUrl}${API_URL.CUSTOMER.GET_POSTAL_CODE_DATA}/${zipcode}`);
+  } 
+  
+  public saveCustomer(payload: any) {
+    return this.httpClient.post<any>(`${environment.backendUrl}${API_URL.CUSTOMER.POST_CUSTOMER_SAVE}`, payload);
   }
+
 
 }

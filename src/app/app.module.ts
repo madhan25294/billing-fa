@@ -16,6 +16,7 @@ import { AuthGuard } from './shared/auth-guard.service';
 import { EventService } from './shared/event.service';
 import { RouterModule } from '@angular/router';
 import { UserService } from './shared/user.service';
+import { DialogService } from './shared/dialog.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +40,7 @@ import { UserService } from './shared/user.service';
     AuthGuard,
     EventService,
     UserService,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })

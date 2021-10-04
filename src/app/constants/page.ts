@@ -3,5 +3,5 @@ export const PAGE = {
     DASHBOARD: 'dashboard',
     TOOLS_FILES: 'tools/files',
     DATA_DATAIMPORT: 'data/dataimport',
-    CUSTOMER: 'customer'
+    CUSTOMER: 'customer/create'
 };

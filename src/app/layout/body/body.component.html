@@ -1,30 +1,9 @@
 <ng-container  *ngIf="isLoggedIn$ | async as isLoggedIn; else elseBlck;">
-
-<mat-toolbar color="primary">
-  <a title="First American Home">
-    <img src="//s21.q4cdn.com/992793803/files/design/logo.png" alt="First American Logo" class="img-width">
-  </a>
-
-  <button mat-button [matMenuTriggerFor]="toolsMenu">Tools</button>
-  <mat-menu #toolsMenu="matMenu">
-    <button mat-menu-item routerLink="tools/files" routerLinkActive="active">Files</button>
-    <button mat-menu-item routerLink="tools/dataimport">Data Import</button>
-  </mat-menu>
-  <button mat-button routerLink="pending">Data Management</button>
-  <button mat-button routerLink="customer/create">Create Customer</button>
-  <button mat-button [matMenuTriggerFor]="settingsMenu">Settings</button>
-  <mat-menu #settingsMenu="matMenu">
-    <button mat-menu-item (click)="onLogout()">Logout</button>
-  </mat-menu>
-</mat-toolbar>
-<div class="content">
-  <div class="section">
-  <router-outlet></router-outlet>
-  </div>
-</div>
-
+<app-sidenav></app-sidenav>
 </ng-container>
 
-<ng-template #elseBlck>
-  <router-outlet></router-outlet>
-</ng-template>
+  
+  <ng-template #elseBlck>
+    <router-outlet></router-outlet>
+  </ng-template>
+  
